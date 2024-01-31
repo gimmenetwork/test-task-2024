@@ -22,6 +22,7 @@ export default {
         dashboard: "Dashboard",
         notRegistered: "Not Registered?",
         bookList: "List of Books",
+        addNewBook: "Add New Book",
       },
       de: {
         welcome: "Welcome to to Read_Book",
