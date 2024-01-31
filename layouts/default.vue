@@ -250,7 +250,7 @@ const navigation = [
   },
   {
     name: "bookList",
-    href: "/",
+    href: "/listofbooks",
     icon: ArchiveBoxIcon,
     current: false,
   },

@@ -23,6 +23,10 @@ export default {
         notRegistered: "Not Registered?",
         bookList: "List of Books",
         addNewBook: "Add New Book",
+        save: "Save",
+        bookName: "Book Name",
+        bookGenre: "Book Genre",
+        bookSize: "Book Size",
       },
       de: {
         welcome: "Welcome to to Read_Book",
