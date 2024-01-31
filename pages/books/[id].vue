@@ -1,7 +1,6 @@
 <template>
   <NuxtLayout class="h-min-full min-h-screen">
     <div class="body bg-cover h-screen">
-
     <div
       class="flex pt-5 cursor-pointer justify-between ml-80 mb-10 text-sm"
       @click="navigateBack"
