@@ -115,7 +115,11 @@
               <select v-model="locale" @change="changeLanguage(locale)">
                 <option value="en">EN</option>
                 <option value="de">DE</option>
-                <option value="du">DU</option>
+                <option value="du">ES</option>
+                <option value="du">RU</option>
+                <option value="du">AZE</option>
+                <option value="du">TUR</option>
+                <option value="du">UKR</option>
               </select>
             </form>
             <button
@@ -204,6 +208,7 @@ import {
   HomeIcon,
   ChevronDownIcon,
   ArchiveBoxIcon,
+  UserIcon
 } from "@heroicons/vue/24/outline";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
@@ -245,15 +250,13 @@ const navigation = [
   },
   {
     name: "myAccount",
-    href: "/myaccount",
-    icon: HomeIcon,
+    href: "#",
+    icon: UserIcon,
     current: false,
-  },
-  {
-    name: "bookList",
-    href: "/listofbooks",
-    icon: ArchiveBoxIcon,
-    current: false,
+    children: [
+      { name: "allBooks", href: "/listofbooks" },
+      { name: "readBooks", href: "/readbooks" },
+    ],
   },
   {
     name: "addNewBook",

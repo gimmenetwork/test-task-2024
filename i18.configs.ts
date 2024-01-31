@@ -28,6 +28,9 @@ export default {
         bookGenre: "Book Genre",
         bookSize: "Book Size",
         myAccount: "My Account",
+        allBooks: "All Books",
+        readBooks: "Read Books",
+        readPages: "Read Pages",
       },
       de: {
         welcome: "Welcome to to Read_Book",
@@ -46,7 +49,17 @@ export default {
         contact: "Contact",
         services: "Services",
         dashboard: "Dashboard",
-        notRegistered: "Not Registered?"
+        notRegistered: "Not Registered?",
+        addNewBook: "Add New Book",
+        save: "Save",
+        bookName: "Book Name",
+        bookGenre: "Book Genre",
+        bookSize: "Book Size",
+        myAccount: "My Account",
+        allBooks: "All Books",
+        readBooks: "Read Books",
+        readPages: "Read Pages",
+
       },
       es: {
         welcome: "Welcome to to Wes-Con Warehouse",
@@ -65,7 +78,15 @@ export default {
         contact: "Contact",
         services: "Services",
         dashboard: "Dashboard",
-        notRegistered: "Not Registered?"
+        notRegistered: "Not Registered?",
+        save: "Save",
+        bookName: "Book Name",
+        bookGenre: "Book Genre",
+        bookSize: "Book Size",
+        myAccount: "My Account",
+        allBooks: "All Books",
+        readBooks: "Read Books",
+        readPages: "Read Pages",
       },
       ucr: {
         welcome: "Welcome to to Wes-Con Warehouse",
@@ -84,7 +105,15 @@ export default {
         contact: "Contact",
         services: "Services",
         dashboard: "Dashboard",
-        notRegistered: "Not Registered?"
+        notRegistered: "Not Registered?",
+        save: "Save",
+        bookName: "Book Name",
+        bookGenre: "Book Genre",
+        bookSize: "Book Size",
+        myAccount: "My Account",
+        allBooks: "All Books",
+        readBooks: "Read Books",
+        readPages: "Read Pages",
       },
       ru: {
         welcome: "Welcome to to Wes-Con Warehouse",
@@ -102,7 +131,7 @@ export default {
         faq: "FAQ",
         contact: "Контакты",
         dashboard: "Панель управления",
-        notRegistered: "Not Registered?"
+        notRegistered: "Not Registered?",
       },
       az: {
         welcome: "Welcome to to Wes-Con Warehouse",
@@ -120,7 +149,7 @@ export default {
         faq: "FAQ",
         contact: "Əlaqə",
         dashboard: "İdarə paneli",
-        notRegistered: "Not Registered?"
+        notRegistered: "Not Registered?",
       },
       tr: {
         welcome: "Welcome to Read_Book",
@@ -138,7 +167,7 @@ export default {
         faq: "FAQ",
         contact: "Temas etmek",
         dashboard: "Gösterge Paneli",
-        notRegistered: "Not Registered?"
+        notRegistered: "Not Registered?",
       },
     },
   },

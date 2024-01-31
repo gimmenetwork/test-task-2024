@@ -23,6 +23,7 @@
     "papaparse": "^5.4.1",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "volar-service-vetur": "^0.0.14"
+    "volar-service-vetur": "^0.0.14",
+    "vue-social-share": "^0.0.3"
   }
 }
