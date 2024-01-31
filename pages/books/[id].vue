@@ -80,6 +80,10 @@
                 class="w-1/3 font-bold text-green-600 border-black rounded-md border text-right"
               />
             </div>
+            <div class="flex justify-between mb-2">
+              <p>Book Image:</p>
+              <img :src="book.Book_Image" alt="Book Image" class="w-1/3" />
+            </div>
           </div>
           <div class="w-1/5">
             <div>
