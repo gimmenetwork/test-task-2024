@@ -25,7 +25,7 @@
             class="border rounded-md"
           />
         </div>
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap mr-4">
           <label for="" class="text-white w-2/3">Filter by Size</label>
           <input
             type="text"
@@ -34,18 +34,30 @@
             class="border rounded-md"
           />
         </div>
+        <div class="flex flex-wrap">
+          <label for="" class="text-white w-2/3">Filter by Size</label>
+          <input
+            type="text"
+            v-model="filterReadPage"
+            @input="filterByReadPage"
+            class="border rounded-md"
+          />
+        </div>
       </div>
       <div class="min-h-80 custom-max-height overflow-y-scroll">
         <div
           v-for="book in allBooks"
           :key="book.id"
-          @click="selectBook(book)"
           class="pl-40 overflow-y-scroll m-auto p-3 pb-0 w-2/3"
         >
           <div
             class="text-left cursor-pointer hover:scale-95 transition-all duration-500 flex w-full bg-white bg-opacity-40 rounded-md p-5"
           >
-            <img src="@/assets/images/bookCover4.jpeg" class="w-1/5" />
+            <img
+              @click="selectBook(book)"
+              src="@/assets/images/bookCover4.jpeg"
+              class="w-1/5"
+            />
             <div class="pl-5 pt-5 w-full">
               <p>
                 Book Name:
@@ -58,6 +70,14 @@
               <p>
                 Book Size:
                 <span class="italic font-bold">{{ book.Book_Size }}</span>
+              </p>
+              <p>
+                Pages Read:
+                <span class="italic font-bold">{{ book.Read_Page }}</span>
+              </p>
+              <p v-if="book.Book_Review">
+                Book Review:
+                <span class="italic font-bold">{{ book.Book_Review }}</span>
               </p>
             </div>
           </div>
@@ -76,6 +96,7 @@ const allBooks = ref([]);
 const filterName = ref("");
 const filterGenre = ref("");
 const filterSize = ref("");
+const filterReadPage = ref("");
 
 const fetchBooks = async () => {
   try {
@@ -96,46 +117,57 @@ const selectBook = (book) => {
   router.push({ path: baseUrl, query: queryParam });
 };
 
-
-
 // filtration start
-
 const filterByName = () => {
   if (!filterName.value) {
     fetchBooks();
+  } else {
+    const filteredBooks = allBooks.value.filter((book) => {
+      return book.Book_Name.toLowerCase().includes(
+        filterName.value.toLowerCase()
+      );
+    });
+    allBooks.value = filteredBooks;
   }
-  const filteredBooks = allBooks.value.filter((book) => {
-    return book.Book_Name.toLowerCase().includes(
-      filterName.value.toLowerCase()
-    );
-  });
-  allBooks.value = filteredBooks;
 };
 
 const filterByGenre = () => {
   if (!filterGenre.value) {
     fetchBooks();
+  } else {
+    const filteredBooks = allBooks.value.filter((book) => {
+      return book.Book_Genre.toLowerCase().includes(
+        filterGenre.value.toLowerCase()
+      );
+    });
+    allBooks.value = filteredBooks;
   }
-  const filteredBooks = allBooks.value.filter((book) => {
-    return book.Book_Genre.toLowerCase().includes(
-      filterGenre.value.toLowerCase()
-    );
-  });
-  allBooks.value = filteredBooks;
 };
 
 const filterBySize = () => {
   if (!filterSize.value) {
     fetchBooks();
+  } else {
+    const filteredBooks = allBooks.value.filter((book) => {
+      return String(book.Book_Size).includes(filterSize.value.toLowerCase());
+    });
+    allBooks.value = filteredBooks;
   }
-  const filteredBooks = allBooks.value.filter((book) => {
-    return String(book.Book_Size).includes(filterSize.value.toLowerCase());
-  });
-  allBooks.value = filteredBooks;
 };
 
+const filterByReadPage = () => {
+  if (!filterReadPage.value) {
+    fetchBooks();
+  } else {
+    const filteredBooks = allBooks.value.filter((book) => {
+      return String(book.Read_Page).includes(
+        filterReadPage.value.toLowerCase()
+      );
+    });
+    allBooks.value = filteredBooks;
+  }
+};
 // filtration end
-
 
 watchEffect(() => {
   if (filterGenre) {
@@ -150,7 +182,7 @@ watchEffect(() => {
 });
 
 onMounted(() => {
-  fetchBooks();
+  fetchBooks(allBooks.value);
 });
 </script>
 
@@ -158,7 +190,6 @@ onMounted(() => {
 .custom-max-height {
   max-height: 600px;
 }
-
 .parallax {
   position: relative;
 }

@@ -27,6 +27,7 @@ export default {
         bookName: "Book Name",
         bookGenre: "Book Genre",
         bookSize: "Book Size",
+        myAccount: "My Account",
       },
       de: {
         welcome: "Welcome to to Read_Book",

@@ -194,19 +194,14 @@
 
 <script setup>
 import { ref } from "vue";
-import { TransitionChild } from "@headlessui/vue";
 import { MenuItems } from "@headlessui/vue";
-import { TransitionRoot } from "@headlessui/vue";
 import { Menu } from "@headlessui/vue";
 import { MenuItem } from "@headlessui/vue";
 import { MenuButton } from "@headlessui/vue";
-import { Dialog } from "@headlessui/vue";
-import { DialogPanel } from "@headlessui/vue";
 import {
   Bars3Icon,
   Cog6ToothIcon,
   HomeIcon,
-  XMarkIcon,
   ChevronDownIcon,
   ArchiveBoxIcon,
 } from "@heroicons/vue/24/outline";
@@ -245,6 +240,12 @@ const navigation = [
   {
     name: "dashboard",
     href: "/MainPage",
+    icon: HomeIcon,
+    current: false,
+  },
+  {
+    name: "myAccount",
+    href: "/myaccount",
     icon: HomeIcon,
     current: false,
   },

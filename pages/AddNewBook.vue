@@ -64,12 +64,11 @@ const saveBook = async () => {
       Book_Size: bookSize.value,
     })
     .select();
-
   if (error) {
     console.log(error);
   }
   alert("Book was added successfully");
-  navigateTo("/MainPage");
+  navigateTo("/listofbooks");
 };
 </script>
 

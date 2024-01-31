@@ -4,7 +4,6 @@
       <h2 class="font-semibold text-xl">{{ $t('welcome') }}</h2>
     </div>
     <div class="w-11/12 ml-96 m-auto">
-      <img class="pl-52 mt-10" src="" alt="">
     </div>
   </NuxtLayout>
 </template>
