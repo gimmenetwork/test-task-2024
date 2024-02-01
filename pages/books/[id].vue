@@ -125,7 +125,7 @@
         <div class="m-auto mt-4">
           <button
             @click="sentReview"
-            class="bg-green-500 border p-2 w-1/6 text-white uppercase"
+            class="bg-green-500 border p-2 w-52 text-white uppercase"
           >
             {{ $t("sendReview") }}
           </button>

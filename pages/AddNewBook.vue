@@ -44,7 +44,7 @@
           <div class="flex flex-nowrap">
             <button
               type="submit"
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded w-1/5 border-2 border-grey mt-5"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded w-32 border-2 border-grey mt-5"
             >
               {{ $t("save") }}
             </button>
