@@ -42,6 +42,9 @@ export default {
         historyBooks: "History of books read",
         stars: "stars",
         settings: "Settings",
+        createAccount: "Create Account",
+        confPassword: "Confirm Password",
+        signUp: "Sign Up",
       },
       de: {
         welcome: "Willkommen bei Read_Book",
@@ -84,6 +87,10 @@ export default {
         historyBooks: "Geschichte der gelesenen Bücher",
         stars: "Sterne",
         settings: "Einstellungen",
+        createAccount: "Benutzerkonto erstellen",
+        confPassword: "Bestätige das Passwort",
+        signUp: "Unterschreiben",
+
       },
       es: {
         welcome: "Bienvenido a Read_Book",
@@ -126,6 +133,10 @@ export default {
         historyBooks: "Historia de los libros leídos.",
         stars: "estrellas",
         settings: "Ajustes",
+        createAccount: "Crear una cuenta",
+        confPassword: "Confirmar Contraseña",
+        signUp: "Inscribirse",
+
       },
       uk: {
         welcome: "Ласкаво просимо до Read_Book",
@@ -166,6 +177,10 @@ export default {
         historyBooks: "Історія прочитаних книг",
         stars: "зірки",
         settings: "Налаштування",
+        createAccount: "Створити акаунт",
+        confPassword: "Підтвердьте пароль",
+        signUp: "Зареєструватися",
+
       },
       ru: {
         welcome: "Добро пожаловать в Read_Book",
@@ -210,6 +225,10 @@ export default {
         historyBooks: "История прочитаних книг",
         stars: "звезды",
         settings: "Настройки",
+        createAccount: "Регистрация",
+        confPassword: "Подтвердите пароль",
+        signUp: "Зарегистрироваться",
+
       },
       az: {
         welcome: "Read_Book-a xoş gəlmisiniz",
@@ -251,6 +270,9 @@ export default {
         historyBooks: "Oxunan kitabların tarixi",
         stars: "ulduzlar",
         settings: "Parametrlər",
+        createAccount: "Hesab yaratmaq",
+        confPassword: "Şifrəni təsdiqləyin",
+        signUp: "Abunə olmaq",
       },
       tr: {
         welcome: "Read_Book'a hoş geldiniz",
@@ -291,6 +313,10 @@ export default {
         historyBooks: "Okunan kitapların tarihi",
         stars: "yıldızlar",
         settings: "Ayarlar",
+        createAccount: "Create Account",
+        confPassword: "Şifreyi Onayla",
+        signUp: "Üye olmak",
+
       },
     },
   },

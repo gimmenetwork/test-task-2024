@@ -56,14 +56,6 @@
           }}</nuxt-link>
         </div>
       </form>
-      <div class="flex mt-5">
-        <button
-          @click="signInWithGoogle"
-          class="bg-white mr-5 px-1.5 py-2 rounded-full"
-        >
-          <img src="../assets/images/icon-google.png" class="h-8" />
-        </button>
-      </div>
     </div>
   </div>
 </template>
@@ -77,15 +69,6 @@ const client = useSupabaseClient();
 const { locale } = useI18n();
 import { useI18n } from "#imports";
 
-const signInWithGoogle = async () => {
-  const { error } = client.auth.signInWithOAuth({
-    provider: "google",
-  });
-  if (error) {
-    console.log(error);
-    textIsValid.value = false;
-  }
-};
 definePageMeta({
   layout: "login",
 });
