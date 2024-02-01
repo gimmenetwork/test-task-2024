@@ -63,7 +63,7 @@
               src="@/assets/images/bookCover4.jpeg"
               class="w-1/5"
             />
-            <div class="pl-5 pt-5 w-full">
+            <div class="pl-5 pt-5 w-full text-xl">
               <p>
                 {{ $t("bookName") }}:
                 <span class="italic font-bold">{{ book.Book_Name }}</span>

@@ -1,12 +1,9 @@
 <template>
   <NuxtLayout class="bg-white w-full">
     <div
-      class="text-center w-full pl-60 pt-10 body z-0 parallax bg-cover h-screen"
+      class="text-center w-full pl-60 pt-5 body z-0 parallax bg-cover h-screen"
     >
-      <h1 class="text-white text-3xl mb-10">{{ $t("historyBooks") }}</h1>
-      <div class="w-11/12 ml-96 m-auto">
-        <img class="pl-52 mt-10" src="" alt="" />
-      </div>
+      <h1 class="text-white text-3xl font-bold uppercase mb-5 ml-32">{{ $t("historyBooks") }}</h1>
       <div class="w-1/3 mb-4 m-auto flex justify-between">
         <div class="flex flex-wrap mr-4">
           <label for="" class="text-white w-2/3">{{ $t("filterName") }}</label>
@@ -51,7 +48,7 @@
         <div
           v-for="book in allBooks"
           :key="book.id"
-          class="pl-40 overflow-y-scroll m-auto p-3 pb-0 w-2/3"
+          class="pl-40 overflow-y-scroll text-xl m-auto p-3 pb-0 w-2/3"
           :style="formStyle"
         >
           <div
