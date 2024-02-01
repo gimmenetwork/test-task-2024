@@ -161,7 +161,6 @@ const fetchBook = async () => {
     console.log(error);
   }
 };
-
 const saveChanges = async () => {
   const modifiedBook = allBooks.value;
   const updatePromises = modifiedBook.map(async (book) => {
@@ -177,7 +176,6 @@ const saveChanges = async () => {
       );
       return null;
     }
-
     if (readPage == bookSize) {
       alert(`Our congratulations! You finished reading ${book.Book_Name}`);
       finished.value = true;

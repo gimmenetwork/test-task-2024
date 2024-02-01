@@ -87,7 +87,7 @@
                 class="group -mx-2 flex gap-x-3 rounded-md p-2 font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
               >
                 <Cog6ToothIcon class="h-6 w-6 shrink-0" aria-hidden="true" />
-                {{ $t("settings") }}
+                {{ $t("logOut") }}
               </a>
             </li>
           </ul>
@@ -152,10 +152,6 @@
                     aria-hidden="true"
                     >Kostiantyn Stupak</span
                   >
-                  <ChevronDownIcon
-                    class="ml-2 h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
                 </span>
               </MenuButton>
               <transition

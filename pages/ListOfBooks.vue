@@ -8,7 +8,7 @@
       </div>
       <div class="w-1/3 mb-4 m-auto flex justify-between">
         <div class="flex flex-wrap mr-4">
-          <label for="" class="text-white w-2/3">{{ $t("filterName") }}</label>
+          <label for="" class="text-white w-full">{{ $t("filterName") }}</label>
           <input
             type="text"
             v-model="filterName"
@@ -17,7 +17,9 @@
           />
         </div>
         <div class="flex flex-wrap mr-4">
-          <label for="" class="text-white w-2/3">{{ $t("filterGenre") }}</label>
+          <label for="" class="text-white w-full">{{
+            $t("filterGenre")
+          }}</label>
           <input
             type="text"
             v-model="filterGenre"
@@ -26,7 +28,7 @@
           />
         </div>
         <div class="flex flex-wrap mr-4">
-          <label for="" class="text-white w-2/3">{{ $t("filterSize") }}</label>
+          <label for="" class="text-white w-full">{{ $t("filterSize") }}</label>
           <input
             type="text"
             v-model="filterSize"
