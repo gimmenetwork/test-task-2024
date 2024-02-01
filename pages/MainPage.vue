@@ -1,13 +1,13 @@
 <template>
   <NuxtLayout class="h-screen bg-white w-full">
-    <div class="body h-screen bg-cover">
-      <div class="text-center w-full pl-52 pt-20" :style="formStyle">
-        <h2 class="text-4xl rounded-md p-2 w-1/3 m-auto bg-opacity-50">
+    <div class="body h-screen bg-cover ml-60">
+      <div class="text-center w-full pt-20" :style="formStyle">
+        <h2 class="text-4xl w-1/3">
           {{ $t("welcome") }}
         </h2>
       </div>
       <div
-        class="w-9/12 ml-80 bg-white bg-opacity-80 border-8 border-red-300 border-opacity-70 rounded-md m-auto mt-80 flex align-middle items-center h-52"
+        class="w-9/12 bg-white bg-opacity-80 border-8 border-red-300 border-opacity-70 rounded-md m-auto mt-80 flex align-middle items-center h-52"
         :style="formStyle"
       >
         <div
@@ -84,7 +84,7 @@ h2 {
   margin: 0;
   position: absolute;
   top: 30%;
-  left: 50%;
+  left: 56%;
   transform: translateX(-50%) translateY(-50%);
 }
 
