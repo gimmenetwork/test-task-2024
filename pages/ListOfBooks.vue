@@ -79,6 +79,10 @@
                 Book Review:
                 <span class="italic font-bold">{{ book.Book_Review }}</span>
               </p>
+              <p v-if="book.Book_Stars">
+                Book Rating:
+                <span class="italic font-bold">{{ book.Book_Stars }} stars!</span>
+              </p>
             </div>
           </div>
         </div>

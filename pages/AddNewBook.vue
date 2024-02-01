@@ -35,17 +35,6 @@
               class="block w-full h-10 border-2 border-gray-400 rounded-md p-2"
             />
           </div>
-          <div class="mb-4">
-            <label for="bookImg" class="block text-white">Book Image:</label>
-            <input
-              type="file"
-              id="bookImg"
-              ref="imageInput"
-              accept="image/*"
-              @change="handleImageChange"
-              class="block w-full h-10 border-2 border-gray-400 rounded-md p-2"
-            />
-          </div>
           <div class="flex flex-nowrap">
             <button
               type="submit"
@@ -65,72 +54,65 @@ const supabase = useSupabaseClient();
 const bookName = ref("");
 const bookGenre = ref("");
 const bookSize = ref(0);
-const bookImg = ref(""); // Store image URL
 
-const handleImageChange = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      bookImg.value = file; // Store the file object itself
-    };
-    reader.readAsDataURL(file);
-  }
-};
-
-const saveBook = async () => {
-  console.log(bookImg.value); // Log the file object
-  const filename = `${bookImg.value.name}`;
-  const { data: fileError, error: fileUploadError } = await supabase.storage
-    .from("Book_Images")
-    .upload(`book_images/${filename}`, bookImg.value);
-
-  if (fileError || fileUploadError) {
-    console.error(fileError || fileUploadError);
-    return;
-  }
-
-  const imageUrl = `${supabase.storage
-    .from("Book_Images")
-    .url(`book_images/${bookImg.value.name}`)}`;
-    console.log(imageUrl)
-  const { data: dbError } = await supabase
-    .from("Book_History")
-    .insert({
-      Book_Name: bookName.value,
-      Book_Genre: bookGenre.value,
-      Book_Size: bookSize.value,
-      Book_Image: imageUrl,
-    })
-    .select();
-
-  if (dbError) {
-    console.error(dbError);
-    return;
-  }
-
-  alert("Book was added successfully");
-  // navigateTo("/listofbooks"); // Assuming navigateTo is defined somewhere
-};
-
-
+// const handleImageChange = (event) => {
+//   const file = event.target.files[0];
+//   if (file) {
+//     const reader = new FileReader();
+//     reader.onloadend = () => {
+//       bookImg.value = file;
+//     };
+//     reader.readAsDataURL(file);
+//   }
+// };
 
 // const saveBook = async () => {
-//   const { data: error } = await supabase
+//   // console.log(bookImg.value);
+//   // const filename = `${bookImg.value.name}`;
+//   // const { data: fileError, error: fileUploadError } = await supabase.storage
+//   //   .from("Book_Images")
+//   //   .upload(`book_images/${filename}`, bookImg.value);
+
+//   // if (fileError || fileUploadError) {
+//   //   console.error(fileError || fileUploadError);
+//   //   return;
+//   // }
+
+//   // const imageUrl = `${supabase.storage
+//   //   .from("Book_Images")
+//   //   .url(`book_images/${bookImg.value.name}`)}`;
+//   //   console.log(imageUrl)
+//   const { data: dbError } = await supabase
 //     .from("Book_History")
 //     .insert({
 //       Book_Name: bookName.value,
 //       Book_Genre: bookGenre.value,
 //       Book_Size: bookSize.value,
-//       Book_Image: bookImg.value,
 //     })
 //     .select();
-//   if (error) {
-//     console.log(error);
+
+//   if (dbError) {
+//     console.error(dbError);
+//     return;
 //   }
 //   alert("Book was added successfully");
-//   navigateTo("/listofbooks");
 // };
+
+const saveBook = async () => {
+  const { data: error } = await supabase
+    .from("Book_History")
+    .insert({
+      Book_Name: bookName.value,
+      Book_Genre: bookGenre.value,
+      Book_Size: bookSize.value,
+    })
+    .select();
+  if (error) {
+    console.log(error);
+  }
+  alert("Book was added successfully");
+  navigateTo("/listofbooks");
+};
 </script>
 
 <style scoped>
