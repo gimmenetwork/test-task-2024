@@ -4,9 +4,11 @@
       <div
         class="bg-black bg-opacity-70 ml-36 text-black font-bold border-3 border-gray-300 rounded-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-1/3 p-8"
       >
-        <form @submit.prevent="saveBook" class="h-96">
+        <form @submit.prevent="saveBook" class="h-96" :style="formStyle">
           <div class="mb-4">
-            <label for="email" class="block text-white">Book Name:</label>
+            <label for="email" class="block text-white"
+              >{{ $t("bookName") }}:</label
+            >
             <input
               type="text"
               id="bookName"
@@ -16,7 +18,9 @@
             />
           </div>
           <div class="mb-4">
-            <label for="password" class="block text-white">Book Genre:</label>
+            <label for="password" class="block text-white"
+              >{{ $t("bookGenre") }}:</label
+            >
             <input
               v-model="bookGenre"
               type="text"
@@ -26,7 +30,9 @@
             />
           </div>
           <div class="mb-4">
-            <label for="email" class="block text-white">Book Size:</label>
+            <label for="email" class="block text-white"
+              >{{ $t("bookSize") }}:</label
+            >
             <input
               v-model="bookSize"
               type="number"
@@ -55,49 +61,6 @@ const bookName = ref("");
 const bookGenre = ref("");
 const bookSize = ref(0);
 
-// const handleImageChange = (event) => {
-//   const file = event.target.files[0];
-//   if (file) {
-//     const reader = new FileReader();
-//     reader.onloadend = () => {
-//       bookImg.value = file;
-//     };
-//     reader.readAsDataURL(file);
-//   }
-// };
-
-// const saveBook = async () => {
-//   // console.log(bookImg.value);
-//   // const filename = `${bookImg.value.name}`;
-//   // const { data: fileError, error: fileUploadError } = await supabase.storage
-//   //   .from("Book_Images")
-//   //   .upload(`book_images/${filename}`, bookImg.value);
-
-//   // if (fileError || fileUploadError) {
-//   //   console.error(fileError || fileUploadError);
-//   //   return;
-//   // }
-
-//   // const imageUrl = `${supabase.storage
-//   //   .from("Book_Images")
-//   //   .url(`book_images/${bookImg.value.name}`)}`;
-//   //   console.log(imageUrl)
-//   const { data: dbError } = await supabase
-//     .from("Book_History")
-//     .insert({
-//       Book_Name: bookName.value,
-//       Book_Genre: bookGenre.value,
-//       Book_Size: bookSize.value,
-//     })
-//     .select();
-
-//   if (dbError) {
-//     console.error(dbError);
-//     return;
-//   }
-//   alert("Book was added successfully");
-// };
-
 const saveBook = async () => {
   const { data: error } = await supabase
     .from("Book_History")
@@ -113,6 +76,17 @@ const saveBook = async () => {
   alert("Book was added successfully");
   navigateTo("/listofbooks");
 };
+
+const formStyle = ref({
+  opacity: 0,
+  transition: "opacity 1s ease",
+});
+
+onMounted(() => {
+  setTimeout(() => {
+    formStyle.value.opacity = 1;
+  }, 500);
+});
 </script>
 
 <style scoped>
@@ -125,5 +99,13 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
+}
+
+.bg-opacity-70 {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+form {
+  transition: opacity 1s ease;
 }
 </style>

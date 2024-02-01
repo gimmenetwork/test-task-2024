@@ -6,19 +6,18 @@
         @click="navigateBack"
       >
         <div class="flex">
-          <img
-            src="@/assets/images/arrowLeft.png"
-            class="h-3 mt-1 mr-4"
-            alt=""
-          />
-          <p class="text-white mr-2">back</p>
+          <img src="@/assets/images/arrr.png" class="h-3 mt-1 mr-4" alt="" />
+          <p class="text-white mr-2">{{ $t("back") }}</p>
         </div>
       </div>
-      <div class="flex justify-between mb-5">
-        <p class="text-2xl font-bold ml-80 uppercase text-white">Book</p>
+      <div class="flex justify-between mb-5" :style="formStyle">
+        <p class="text-2xl font-bold ml-80 uppercase text-white">
+          {{ $t("book") }}
+        </p>
       </div>
       <div
         class="w-1/2 ml-80 p-4 border border-gray-500 bg-white bg-opacity-90 rounded-md"
+        :style="formStyle"
       >
         <div
           class="uppercase flex justify-between"
@@ -54,7 +53,7 @@
               />
             </div>
             <div class="flex justify-between mb-2">
-              <p>readedPages:</p>
+              <p>{{ $t("readPages") }}:</p>
               <input
                 type="number"
                 id="readedPages"
@@ -63,7 +62,7 @@
               />
             </div>
             <div v-if="book.Book_Review" class="flex justify-between mb-2">
-              <p>Book Review:</p>
+              <p>{{ $t("bookReview") }}:</p>
               <input
                 type="text"
                 id="readedPages"
@@ -72,17 +71,13 @@
               />
             </div>
             <div v-if="book.Book_Stars" class="flex justify-between mb-2">
-              <p>Book Rating:</p>
+              <p>{{ $t("bookRating") }}:</p>
               <input
                 type="number"
                 id="readedPages"
                 v-model="book.Book_Stars"
                 class="w-1/3 font-bold text-green-600 border-black rounded-md border text-right"
               />
-            </div>
-            <div class="flex justify-between mb-2">
-              <p>Book Image:</p>
-              <img :src="book.Book_Image" alt="Book Image" class="w-1/3" />
             </div>
           </div>
           <div class="w-1/5">
@@ -97,12 +92,12 @@
             </div>
           </div>
         </div>
-        <div class="m-auto mt-4">
+        <div class="m-auto mt-4" :style="formStyle">
           <button
             @click="saveChanges"
             class="bg-green-500 p-2 w-1/6 text-white uppercase"
           >
-            Save
+            {{ $t("save") }}
           </button>
         </div>
       </div>
@@ -111,7 +106,7 @@
         v-if="finished"
         class="w-1/2 mt-10 ml-80 p-4 border border-gray-500 bg-white bg-opacity-90 rounded-md"
       >
-        <p class="mb-4">Your Review</p>
+        <p class="mb-4">{{ $t("yourReview") }}</p>
         <input
           type="text"
           v-model="bookReview"
@@ -119,7 +114,7 @@
           id="review"
         />
         <div class="flex align-middle items-center">
-          <p class="mb-4 mt-5 mr-5">Your Rating:</p>
+          <p class="mb-4 mt-5 mr-5">{{ $t("yourRating") }}:</p>
           <input
             type="number"
             v-model="bookRating"
@@ -132,7 +127,7 @@
             @click="sentReview"
             class="bg-green-500 border p-2 w-1/6 text-white uppercase"
           >
-            Sent Review
+            {{ $t("sendReview") }}
           </button>
         </div>
       </div>
@@ -152,7 +147,6 @@ const readedPages = ref(0);
 const finished = ref(false);
 const bookReview = ref("");
 const bookRating = ref(0);
-const invalidValueEncountered = ref(false);
 
 const fetchBook = async () => {
   try {
@@ -301,8 +295,16 @@ const navigateBack = () => {
   router.go(-1);
 };
 
+const formStyle = ref({
+  opacity: 0,
+  transition: "opacity 1s ease",
+});
+
 onMounted(() => {
   fetchBook(allBooks.value);
+  setTimeout(() => {
+    formStyle.value.opacity = 1;
+  }, 500);
 });
 </script>
 
@@ -334,5 +336,9 @@ body {
 
 .custom-max-height {
   max-height: 600px;
+}
+
+form {
+  transition: opacity 1s ease;
 }
 </style>

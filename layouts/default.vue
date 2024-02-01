@@ -87,7 +87,7 @@
                 class="group -mx-2 flex gap-x-3 rounded-md p-2 font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
               >
                 <Cog6ToothIcon class="h-6 w-6 shrink-0" aria-hidden="true" />
-                Settings
+                {{ $t("settings") }}
               </a>
             </li>
           </ul>
@@ -115,11 +115,11 @@
               <select v-model="locale" @change="changeLanguage(locale)">
                 <option value="en">EN</option>
                 <option value="de">DE</option>
-                <option value="du">ES</option>
-                <option value="du">RU</option>
-                <option value="du">AZE</option>
-                <option value="du">TUR</option>
-                <option value="du">UKR</option>
+                <option value="es">ES</option>
+                <option value="ru">RU</option>
+                <option value="az">AZ</option>
+                <option value="tr">TR</option>
+                <option value="uk">UK</option>
               </select>
             </form>
             <button
@@ -141,7 +141,7 @@
                 <span class="sr-only">Open user menu</span>
                 <img
                   class="h-8 w-8 rounded-full bg-gray-50"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  src="@/assets/images/stupak.jpeg"
                   alt=""
                 />
                 <span
@@ -150,7 +150,7 @@
                   <span
                     class="ml-4 font-semibold leading-6 text-gray-900"
                     aria-hidden="true"
-                    >Tom Cook</span
+                    >Kostiantyn Stupak</span
                   >
                   <ChevronDownIcon
                     class="ml-2 h-5 w-5 text-gray-400"
@@ -208,7 +208,7 @@ import {
   HomeIcon,
   ChevronDownIcon,
   ArchiveBoxIcon,
-  UserIcon
+  UserIcon,
 } from "@heroicons/vue/24/outline";
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
@@ -331,6 +331,6 @@ onMounted(() => {
 
 <style>
 * {
-  font-family: "Cabin", sans-serif;
+  font-family: "Cormorant", serif;
 }
 </style>

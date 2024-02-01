@@ -7,8 +7,12 @@
         <option value="en">en</option>
         <option value="de">de</option>
         <option value="es">es</option>
+        <option value="ru">ru</option>
+        <option value="az">az</option>
+        <option value="tr">tr</option>
+        <option value="uk">uk</option>
       </select>
-      <h2 class="text-2xl mb-4 text-white">LOGIN</h2>
+      <h2 class="text-2xl mb-4 text-white uppercase">{{ $t("login") }}</h2>
       <form @submit.prevent="signInWithEmail">
         <div class="mb-4">
           <label for="email" class="block text-white">{{ $t("email") }}:</label>

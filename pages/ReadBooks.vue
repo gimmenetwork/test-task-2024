@@ -3,13 +3,13 @@
     <div
       class="text-center w-full pl-60 pt-10 body z-0 parallax bg-cover h-screen"
     >
-      <h1 class="text-white text-3xl mb-10">History of books read</h1>
+      <h1 class="text-white text-3xl mb-10">{{ $t("historyBooks") }}</h1>
       <div class="w-11/12 ml-96 m-auto">
         <img class="pl-52 mt-10" src="" alt="" />
       </div>
-      <div class="w-1/3 ml-96 pl-4 mb-4 m-auto flex justify-between">
+      <div class="w-1/3 mb-4 m-auto flex justify-between">
         <div class="flex flex-wrap mr-4">
-          <label for="" class="text-white w-2/3">Filter by Name</label>
+          <label for="" class="text-white w-2/3">{{ $t("filterName") }}</label>
           <input
             type="text"
             v-model="filterName"
@@ -18,7 +18,7 @@
           />
         </div>
         <div class="flex flex-wrap mr-4">
-          <label for="" class="text-white w-2/3">Filter by Genre</label>
+          <label for="" class="text-white w-2/3">{{ $t("filterGenre") }}</label>
           <input
             type="text"
             v-model="filterGenre"
@@ -27,7 +27,7 @@
           />
         </div>
         <div class="flex flex-wrap mr-4">
-          <label for="" class="text-white w-2/3">Filter by Size</label>
+          <label for="" class="text-white w-2/3">{{ $t("filterSize") }}</label>
           <input
             type="text"
             v-model="filterSize"
@@ -36,7 +36,9 @@
           />
         </div>
         <div class="flex flex-wrap">
-          <label for="" class="text-white w-2/3">Filter by Size</label>
+          <label for="" class="text-white w-full">{{
+            $t("filterPages")
+          }}</label>
           <input
             type="text"
             v-model="filterReadPage"
@@ -50,6 +52,7 @@
           v-for="book in allBooks"
           :key="book.id"
           class="pl-40 overflow-y-scroll m-auto p-3 pb-0 w-2/3"
+          :style="formStyle"
         >
           <div
             class="text-left cursor-pointer hover:scale-95 transition-all duration-500 flex w-full bg-white bg-opacity-40 rounded-md p-5"
@@ -61,26 +64,33 @@
             />
             <div class="pl-5 pt-5 w-full">
               <p>
-                Book Name:
+                {{ $t("bookName") }}:
                 <span class="italic font-bold">{{ book.Book_Name }}</span>
               </p>
               <p>
-                Book Genre:
+                {{ $t("bookGenre") }}:
                 <span class="italic font-bold">{{ book.Book_Genre }}</span>
               </p>
               <p>
-                Book Size:
+                {{ $t("bookSize") }}:
                 <span class="italic font-bold">{{ book.Book_Size }}</span>
               </p>
               <p>
-                Pages Read:
+                {{ $t("readPages") }}:
                 <span class="italic font-bold">{{ book.Read_Page }}</span>
               </p>
-              <div>
-                <button @click="shareOnTwitter(book)" class="mt-5">
-                  Share on Twitter
+              <div class="flex">
+                <button
+                  @click="shareOnTwitter(book)"
+                  class="bg-gray-200 hover:scale-95 hover:bg-opacity-0 bg-opacity-20 border rounded-md p-1.5 flex mt-5"
+                >
+                  {{ $t("twitter") }}
+                  <img
+                    src="@/assets/images/twitter.png"
+                    class="h-4 mt-1 ml-1"
+                    alt=""
+                  />
                 </button>
-                <img src="" alt="" />
               </div>
             </div>
           </div>
@@ -183,6 +193,11 @@ const shareOnTwitter = (book) => {
   window.open(tweetUrl, "_blank");
 };
 
+const formStyle = ref({
+  opacity: 0,
+  transition: "opacity 1s ease",
+});
+
 watchEffect(() => {
   if (filterGenre) {
     filterByGenre();
@@ -197,6 +212,9 @@ watchEffect(() => {
 
 onMounted(() => {
   fetchBooks(allBooks.value);
+  setTimeout(() => {
+    formStyle.value.opacity = 1;
+  }, 500);
 });
 </script>
 
@@ -220,5 +238,9 @@ onMounted(() => {
   background-attachment: fixed;
   filter: brightness(55%);
   z-index: -1;
+}
+
+form {
+  transition: opacity 1s ease;
 }
 </style>
