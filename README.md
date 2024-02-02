@@ -23,5 +23,5 @@ Bonus points are given for:
 2. Accessibility
 3. Aggregation and analytics based on user's data e.g. "2023 these are your 5 top-rated books", or "This month you've read 750 pages with most pages read on Tuesday each week". 
 4. Tests
-5. Using current industry-standard-tools properly. Ideal project is done using VueJS, Symfony and RDBMS of your choice.
+5. Using current industry-standard-tools properly. Ideal project is done using VueJS (for a full-stack role - Symfony and any RDBMS of your liking)
 6. Good documentation
