@@ -10,6 +10,9 @@ export const useBooksStore = defineStore({
     // Getter to retrieve a book by its ID
     getBookById: (state) => (id) => {
       return state.books.find(book => book.id === id);
+    },
+    getBookByUserId: (state) => (userId) => {
+      return state.books.filter(book => book.userId === userId);
     }
   },
   actions: {
@@ -23,18 +26,24 @@ export const useBooksStore = defineStore({
           const bookIndex = this.books.findIndex(book => book.id === bookId);
           if (bookIndex !== -1) {
             // Update the progress of the book
-            const updatedPagesRead = Number(this.books[bookIndex].pagesRead) + Number(pagesRead);
+            const formattedOriginalPagesRead = Number(this.books[bookIndex].pagesRead);
+            const formattedNewPagesRead = Number(pagesRead);
+            const formattedTotalPages = Number(this.books[bookIndex].pageCount);
+            const updatedPagesRead = formattedOriginalPagesRead + formattedNewPagesRead
             const progressUpdate = {
               date: new Date().toISOString(), // Current date in ISO format
               pagesRead: pagesRead // Number of pages read on this update
             };
-            const isFinished = this.books[bookIndex].pageCount >= pagesRead || this.books[bookIndex].pageCount === pagesRead ? true : false;
+            const isFinished = updatedPagesRead >= formattedTotalPages;
 
             if (isFinished) {
               this.books[bookIndex].finished = true;
+              this.books[bookIndex].pagesRead = formattedTotalPages;
+            } else {
+              console.log('read', updatedPagesRead);
+              this.books[bookIndex].pagesRead = updatedPagesRead;
             }
 
-            this.books[bookIndex].pagesRead = updatedPagesRead;
             this.books[bookIndex].progressUpdates.push(progressUpdate);
             
             console.log('the books', this.books[bookIndex])

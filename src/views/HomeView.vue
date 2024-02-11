@@ -10,9 +10,9 @@
       <template v-else>
         <div class="flex my-12 flex-col items-center">
           <div class="flex my-4 flex-1">
-            <AddBook />
+            <AddBook @bookAdded="fetchBooks" />
           </div>
-          <div class="flex flex-1">
+          <div  v-if="books.length > 0" class="flex flex-1">
             <MyLibrary />
           </div>
         </div>
@@ -21,11 +21,36 @@
 </main>
 </template>
 <script setup>
-import { computed } from 'vue';
+import axios from 'axios';
+import { computed, ref, onMounted, watch } from 'vue';
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/stores/user';
-import AddBook from '../components/AddBook.vue'
+import { useBooksStore } from '@/stores/books';
 import MyLibrary from '../components/MyLibrary.vue';
+import AddBook from '../components/AddBook.vue'
+
+const booksStore = useBooksStore();
+const books = ref([]);
+
+// Fetch books when the component is mounted
+const fetchBooks = async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/books');
+        books.value = response.data; // Update the reactive books variable
+        booksStore.setBooks(response.data); // Update the books store
+    } catch (error) {
+        console.error('Failed to fetch books:', error);
+        // Handle the error appropriately
+    }
+};
+
+// Define a reactive variable to store the books
+
+// Call the fetchBooks function when the component is mounted
+onMounted(fetchBooks);
+watch(() => booksStore.books, async () => {
+    await fetchBooks();
+}, { deep: true });
 
 const userStore = useUserStore();
 

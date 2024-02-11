@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleLogin" class="bg-amber-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <form @submit.prevent="handleLogin" class="bg-amber-100 w-full shadow-md rounded flex-1 px-8 pt-6 pb-8 mb-4">
     <div v-if="errorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
       {{ errorMessage }}
     </div>
@@ -36,7 +36,6 @@ const handleLogin = async () => {
   try {
     // Call the login action from the authentication store
     await userStore.login(formData.email, formData.password);
-    
     // Clear the form after successful login
     formData.email = '';
     formData.password = '';

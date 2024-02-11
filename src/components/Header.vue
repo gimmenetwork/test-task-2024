@@ -16,9 +16,11 @@
                 <template v-else>
                     <!-- Render profile icon and user's name -->
                     <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-user text-2xl"></i>
-                        <!-- Display the user's name -->
-                        <span class="text-xl">{{ user.name }}</span>
+                        <RouterLink class="flex flex-col items-center" to="/profile"> 
+                            <i class="fa-solid fa-user text-4xl"></i>
+                            <!-- Display the user's name -->
+                            <span class="text-xl">{{ user.name }}</span>
+                        </RouterLink>
                     </div>
                 </template>
             </nav>

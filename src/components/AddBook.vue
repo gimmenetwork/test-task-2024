@@ -30,13 +30,12 @@
 <script setup>
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import { ref } from 'vue';
-import { computed } from 'vue';
+import { computed, ref, defineEmits } from 'vue';
 import { useUserStore } from '@/stores/user';
 import Modal from '../components/Modal.vue';
 
 const userStore = useUserStore();
-
+const emit = defineEmits(['bookAdded']);
 const addBookModalRef = ref(null);
 const title = ref('');
 const genre = ref('');
@@ -59,7 +58,7 @@ const addNewBook = async () => {
             userId: user.value.id,
             title: title.value,
             genre: genre.value,
-            pageCount: pageCount.value,
+            pageCount: Number(pageCount.value),
             pagesRead: 0, // Initial progress
             finished: false, // Initial finished state
             progressUpdates: [],
@@ -70,7 +69,7 @@ const addNewBook = async () => {
         title.value = '';
         genre.value = '';
         pageCount.value = 0;
-
+        emit('bookAdded');
         closeAddBookModal();
     } catch (error) {
         // Handle any errors

@@ -23,7 +23,7 @@
     </div>
     <div class="px-6 pt-4 pb-2">
       <button v-if="!book.finished" @click="openUpdateProgressModal" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors">Update Progress</button>
-      <button v-else @click="openLeaveReviewModal" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition-colors">Leave Review</button>
+      <button v-if="book.finished && !book.review" @click="openLeaveReviewModal" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition-colors">Leave Review</button>
     </div>
     
     <!-- Modal -->
@@ -95,7 +95,7 @@ const openLeaveReviewModal = () => {
 // Method to handle updating the progress
 const handleUpdateProgress = async () => {
   try {
-    await booksStore.updateBookProgress(book.value.id, pagesRead.value);    
+    await booksStore.updateBookProgress(book.value.id, pagesRead.value);   
     // Make API call to get all books
   } catch (error) {
     console.error('Error updating progress:', error);
@@ -107,11 +107,23 @@ const handleLeaveReview = async () => {
   try {
       await booksStore.addReview(book.value.id, review.value, rating.value);    
       // Make API call to get all books
+      fetchBookDetail(book.value.id);
     } catch (error) {
       console.error('Error updating progress:', error);
     }
   leaveReviewModalRef.value.closeModal();
 }
+
+// Fetch books when the component is mounted
+const fetchBookDetail = async (bookId) => {
+    try {
+        const response = await axios.get(`http://localhost:3000/books/${bookId}`);
+        book.value = response.data; // Update the reactive books variable
+    } catch (error) {
+        console.error('Failed to fetch books:', error);
+        // Handle the error appropriately
+    }
+};
 
 
 onMounted(async () => {
