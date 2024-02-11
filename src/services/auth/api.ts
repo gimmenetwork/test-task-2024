@@ -9,3 +9,25 @@ export const Login = async (email:string, password:string) => {
     return loggedInUser
 
 }
+
+export const Register = async (registerData: User) => {
+    const users = await axios.post('http://localhost:3000/users', registerData)
+    console.log('return on register', users)
+    return users.data
+    // const data: User[] = users.data
+    // const loggedInUser = data?.filter((user:User) => email === user.email && password === user.password)
+    // //find user with login details   
+    // return loggedInUser
+
+}
+
+export const Logout = async () => {
+    try{
+        localStorage.removeItem('user')
+        return true
+    }
+    catch(e){
+        console.log(e)
+    }
+    return 
+}
