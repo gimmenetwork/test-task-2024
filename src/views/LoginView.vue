@@ -1,5 +1,5 @@
 <template>
-  <main class="container pt-6">
+  <main class="container max-w-5xl pt-6">
     <div>
       <h1>This is the Login page</h1>
       <LoginForm />

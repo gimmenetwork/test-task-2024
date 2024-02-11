@@ -1,6 +1,6 @@
 <template>
     <header class="sticky top-0 bg-bookclub-primary shadow-lg">
-        <div class="container flex flex-col sm:flex-row items-center gap-4 text-white py-6">
+        <div class="container max-w-5xl flex flex-col sm:flex-row items-center gap-4 text-white py-6">
             <RouterLink to="/">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-book text-6xl"></i>
