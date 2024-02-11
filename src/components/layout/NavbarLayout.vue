@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
+
+const router = useRouter()
+const { authLogout } = useAuthStore()
+
+function logout(){
+  const loggedOut = authLogout()
+  if(loggedOut){
+    router.push('/')
+  }
+ 
+}
 </script>
 
 <template>
@@ -18,7 +30,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
         <li>
-          <RouterLink class="text-white" to="/">Login</RouterLink>
+          <button class="text-white" @click="logout">Logout</button>
         </li>
       </ul>
     </div>
