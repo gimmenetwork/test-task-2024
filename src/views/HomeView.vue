@@ -12,7 +12,7 @@
           <div class="flex my-4 flex-1">
             <AddBook @bookAdded="fetchBooks" />
           </div>
-          <div  v-if="books.length > 0" class="flex flex-1">
+          <div  v-if="books.length > 0" class="flex w-full flex-1">
             <MyLibrary />
           </div>
         </div>

@@ -1,5 +1,5 @@
 <template> 
-    <div class="container max-w-5xl flex flex-col sm:flex-row items-center gap-4 text-white py-6">
+    <div class="container w-full bg-yellow-100 rounded overflow-hidden shadow-lg max-w-5xl flex flex-col sm:flex-row items-center gap-4 text-white py-6">
         <div v-if="user" class="px-6 py-4">
             <div class="font-bold text-xl mb-2">Hi {{ user.name}}</div>
             <p class="text-gray-700 text-base">

@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5">
+  <div class="mt-2">
     <div class="stars-outer">
         <div class="stars-inner" :style="{ width: calculateWidth() }"></div>
     </div>

@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="w-full">
         <h3 class="text-3xl font-Roboto mt-10 mb-6 font-bold">My Library:</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <BookCard
-            v-for="book in books"
-            :key="book.id"
-            :book="book"
+                v-for="book in books"
+                :key="book.id"
+                :book="book"
             />
         </div>
     </div>

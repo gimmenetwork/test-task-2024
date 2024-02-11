@@ -1,27 +1,37 @@
 <template>
-  <div v-if="book" class="max-w-sm bg-yellow-100 rounded overflow-hidden shadow-lg">
+  <div v-if="book" class="w-full bg-yellow-100 rounded overflow-hidden shadow-lg">
+
+      <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+      </svg>
+      <span>Go back</span>
+
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">{{ book.title }}</div>
-      <p class="text-gray-700 text-base">
+      <div class="font-bold text-5xl mb-8">{{ book.title }}</div>
+      <p class="text-gray-700 text-xl mb-2">
         Genre: {{ book.genre }}
       </p>
-      <p class="text-gray-700 text-base">
+      <p class="text-gray-700 text-xl mb-2">
         Pages: {{ book.pageCount }}
       </p>
         
-      <p class="text-gray-700 text-base">
+      <p class="text-gray-700 text-xl mb-2">
         Pages Read: {{ book.pagesRead }}
       </p>
       <div v-if="book.review">
-         <p class="text-gray-700 text-base">
+         <p class="text-gray-700 text-xl mb-2">
             Review: {{ book.review }}
           </p>
-          <p class="text-gray-700 text-base">
-            Rating:
-          </p><StarRating :rating="5.5" />
+          <div>
+            <p class="text-gray-700 text-xl">
+              Rating:
+            </p>
+            <StarRating :rating="5.5" />
+          </div>
+          
       </div>
     </div>
-    <div class="px-6 pt-4 pb-2">
+    <div class="px-4 pt-2 pb-4">
       <button v-if="!book.finished" @click="openUpdateProgressModal" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors">Update Progress</button>
       <button v-if="book.finished && !book.review" @click="openLeaveReviewModal" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition-colors">Leave Review</button>
     </div>

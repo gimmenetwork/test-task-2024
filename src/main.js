@@ -1,5 +1,5 @@
 import './assets/index.css'
-
+import persistStatePlugin from './stores/persistStatePlugin'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -8,7 +8,9 @@ import router from './router'
 
 const app = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+const pinia = createPinia();
+pinia.use(persistStatePlugin);
 
+app.use(pinia)
+app.use(router)
 app.mount('#app')
