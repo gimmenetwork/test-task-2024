@@ -1,41 +1,13 @@
 <template>
-    <div>
-        <nav>
-            <!-- TODO: add nav items -->
-            Nav
-            <span v-if="authStore.token"> {{ username }} logged in</span>
-            <button v-if="authStore.token" @click="logout">Logout</button>
-        </nav>
-
+    <div class="relative min-h-screen py-20">
+        <Navbar></Navbar>
         <main>
             <slot></slot>
         </main>
-
-        <footer>
-            <!-- TODO: add footer -->
-            Footer
-        </footer>
+        <Footer></Footer>
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { useAuthStore } from '@/store/auth';
-
-export default defineComponent({
-    setup() {
-        const authStore = useAuthStore();
-        const username = computed(() => authStore.user);
-
-        function logout() {
-            authStore.logout();
-        }
-
-        return {
-            authStore,
-            username,
-            logout,
-        };
-    },
-});
+<script setup lang="ts">
+import { Footer, Navbar } from '@/components';
 </script>

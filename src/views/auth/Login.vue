@@ -1,18 +1,33 @@
 <template>
-    <form @submit.prevent="login" class="flex flex-col gap-y-5">
-        <input required type="text" v-model="username" placeholder="Username" />
-        <input
-            required
-            type="password"
-            v-model="password"
-            placeholder="Password"
-        />
-        <button type="submit" class="button-primary">Login</button>
-
-        <router-link to="/register">
-            <span class="link">Register</span>
-        </router-link>
-    </form>
+    <div>
+        <h1 class="mb-5 text-center font-semibold">PageTracker 📚</h1>
+        <div class="form-wrapper">
+            <h2 class="mb-5 text-center text-2xl font-semibold">Login</h2>
+            <form @submit.prevent="login" class="flex flex-col gap-y-5">
+                <input
+                    required
+                    type="text"
+                    class="input"
+                    v-model="username"
+                    placeholder="Username"
+                />
+                <input
+                    required
+                    class="input"
+                    type="password"
+                    v-model="password"
+                    placeholder="Password"
+                />
+                <button type="submit" class="button-primary">Login</button>
+                <div class="flex flex-col text-center">
+                    <p>Don't have an account yet?</p>
+                    <router-link to="/register">
+                        <span class="link">Register</span>
+                    </router-link>
+                </div>
+            </form>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -38,4 +53,3 @@ export default defineComponent({
     },
 });
 </script>
-@/stores/auth
