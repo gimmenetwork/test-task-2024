@@ -20,6 +20,18 @@ const routes: Array<RouteRecordRaw> = [
         meta: { requiresAuth: true },
     },
     {
+        path: '/edit-book/:id',
+        name: 'EditBook',
+        component: () => import('@/views/books/EditBook.vue'),
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/review-book/:id',
+        name: 'ReviewBook',
+        component: () => import('@/views/books/ReviewBook.vue'),
+        meta: { requiresAuth: true },
+    },
+    {
         path: '/login',
         name: 'Login',
         component: () => import('@/views/auth/Login.vue'),
@@ -29,6 +41,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Register',
         component: () => import('@/views/auth/Register.vue'),
     },
+
     {
         path: '/:pathMatch(.*)*',
         name: 'PageNotFound',
@@ -48,7 +61,7 @@ router.beforeEach((to, _from, next) => {
 
     // Redirect logged-in users away from login and register pages
     if (isAuthenticated && (to.name === 'Login' || to.name === 'Register')) {
-        next({ name: 'Home' });
+        next({ name: 'BooksView' });
         return;
     }
 
