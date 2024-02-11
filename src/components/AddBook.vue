@@ -60,8 +60,11 @@ const addNewBook = async () => {
             title: title.value,
             genre: genre.value,
             pageCount: pageCount.value,
-            progress: 0, // Initial progress
+            pagesRead: 0, // Initial progress
             finished: false, // Initial finished state
+            progressUpdates: [],
+            review: null,
+            rating: null
         }
         await axios.post('http://localhost:3000/books', formData);
         title.value = '';

@@ -11,32 +11,29 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import axios from 'axios';
 import BookCard from './BookCard.vue';
+import { ref, onMounted} from 'vue';
+import { useBooksStore } from '@/stores/books'; // Import the books store from Pinia
 
-export default {
-  components: {
-    BookCard
-  },
-  data() {
-    return {
-      books: [] // Initialize books as an empty array
-    }
-  },
-  async mounted() {
-    await this.fetchBooks();
-  },
-  methods: {
-    async fetchBooks() {
-      try {
+const booksStore = useBooksStore();
+const books = ref([]);
+
+// Fetch books when the component is mounted
+const fetchBooks = async () => {
+    try {
         const response = await axios.get('http://localhost:3000/books');
-        this.books = response.data; // Assume the API returns an array of book objects
-      } catch (error) {
+        books.value = response.data; // Update the reactive books variable
+        booksStore.setBooks(response.data); // Update the books store
+    } catch (error) {
         console.error('Failed to fetch books:', error);
         // Handle the error appropriately
-      }
     }
-  }
-}
+};
+
+// Define a reactive variable to store the books
+
+// Call the fetchBooks function when the component is mounted
+onMounted(fetchBooks);
 </script>
