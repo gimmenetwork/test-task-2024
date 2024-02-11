@@ -1,9 +1,18 @@
 <template>
-  <div>
-    <h1>This is the registration page</h1>
-  </div>
+  <main class="container pt-6">
+    <div>
+      <h1>This is the registration page</h1>
+      <RegistrationFrom />
+    </div>
+  </main>
 </template>
 
-<style>
+<script>
+import RegistrationFrom from '../components/RegistrationForm.vue';
 
-</style>
+export default {
+  components: {
+    RegistrationFrom
+  }
+};
+</script>
