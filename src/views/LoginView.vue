@@ -6,7 +6,10 @@ import { useAuthStore } from '@/stores/authStore'
 import { RouterLink } from 'vue-router'
 import { VueSpinnerBall } from 'vue3-spinners';
 import { useLocalStorage} from '@/composables/useLocalStorage'
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
+import router from '@/router';
 const store = useAuthStore()
 const { localStorageSetup } = useLocalStorage()
 const isLoading = ref(false)
@@ -27,17 +30,18 @@ const [email, emailAttrs] = defineField('email');
 const [password, passwordAttrs] = defineField('password');
 
 const onSubmit = handleSubmit(async (values) => {
-    isLoading.value = !isLoading.value
-    console.log('isloading',isLoading)
-    setTimeout(async()=>{
+   isLoading.value = true
         const user = await store.authLogin(values.email as string, values.password as string)
         if(user){
             localStorageSetup('user', user)
+            isLoading.value = false
+            router.push('/home')
         }
-    }, 5000)
-   
-    isLoading.value = !isLoading.value
-    return
+        else{
+            toast.error("Incorrect user details!", { autoClose: 2000});
+            isLoading.value = false
+            return
+        }
 });
 
 </script>
