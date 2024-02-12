@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-
 import router from '@/router';
 import { AuthService } from '@/services/authService';
 import { AuthState } from '@/types';
@@ -9,10 +8,6 @@ export const useAuthStore = defineStore('auth', {
         user: localStorage.getItem('username') || null,
         token: localStorage.getItem('authToken') || null,
     }),
-    getters: {
-        // TODO: check if needed - idea
-        isAuthenticated: (state) => !!state.token,
-    },
     actions: {
         // Ideally here we would ensure passwords are hashed before storing them in the "database" using libraries like bcrypt.
         // We would also generate tokens based on sessions or an external service that generates the token instead.

@@ -10,6 +10,7 @@
         "server": "npx json-server src/db/db.json --port 3001"
     },
     "dependencies": {
+        "@kyvg/vue3-notification": "^3.1.4",
         "axios": "^1.6.7",
         "json-server": "^1.0.0-alpha.23",
         "pinia": "^2.1.7",

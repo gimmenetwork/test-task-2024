@@ -1,4 +1,5 @@
 <template>
+    <notifications position="top left" classes="notification" />
     <Layout>
         <RouterView />
     </Layout>
