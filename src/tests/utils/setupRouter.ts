@@ -16,6 +16,18 @@ const testRoutes: Array<RouteRecordRaw> = [
         name: 'Register',
         component: () => import('@/views/auth/Register.vue'),
     },
+    {
+        path: '/books',
+        name: 'BooksView',
+        component: () => import('@/views/books/BooksView.vue'),
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/add-book',
+        name: 'AddNewBook',
+        component: () => import('@/views/books/AddNewBook.vue'),
+        meta: { requiresAuth: true },
+    },
 ];
 
 export function setupTestRouter() {
