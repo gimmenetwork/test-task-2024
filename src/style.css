@@ -101,3 +101,21 @@ input[type='number']::-webkit-outer-spin-button {
 #app {
     min-height: 100vh;
 }
+
+/* Notification styles */
+.notification .notification-title,
+.notification .notification-content {
+    padding: 4px;
+    background-color: #fbd87f;
+    color: #343a1a;
+}
+
+.notification.success {
+    border-left: 10px solid #98ce00;
+}
+.notification.info {
+    border-left: 10px solid #bacc81;
+}
+.notification.error {
+    border-left: 10px solid #a80874;
+}
