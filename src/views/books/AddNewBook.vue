@@ -46,64 +46,75 @@
                     />
                 </label>
                 <button type="submit" class="button-primary">Add Book</button>
-                <button @click="cancelBook" class="button-secondary">
-                    Cancel
-                </button>
             </form>
+            <button @click="cancelBook" class="button-secondary mt-5 w-full">
+                Cancel
+            </button>
         </div>
     </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { useBooksStore } from '@/store/books';
 import { Loading } from '@/components';
-import { ref, watch } from 'vue';
+import { ref, watch, defineComponent } from 'vue';
 import router from '@/router';
 import { v4 as uuidv4 } from 'uuid';
 
-const booksStore = useBooksStore();
-const newBook = ref({
-    title: '',
-    genre: '',
-    pageCount: 0,
-    progress: 0,
-    review: { score: 0, text: '' },
+export default defineComponent({
+    components: {
+        Loading,
+    },
+    setup() {
+        const booksStore = useBooksStore();
+        const newBook = ref({
+            title: '',
+            genre: '',
+            pageCount: 0,
+            progress: 0,
+            review: { score: 0, text: '' },
+        });
+
+        watch(
+            () => newBook.value.pageCount,
+            (newValue) => {
+                if (newValue > 1000) {
+                    newBook.value.pageCount = 1000;
+                }
+            }
+        );
+
+        watch(
+            () => newBook.value.progress,
+            (newValue) => {
+                if (newValue > 100) {
+                    newBook.value.progress = 100;
+                }
+            }
+        );
+
+        const submitBook = () => {
+            const bookId = uuidv4();
+            booksStore.addBook({ ...newBook.value, id: bookId });
+            newBook.value = {
+                title: '',
+                genre: '',
+                pageCount: 0,
+                progress: 0,
+                review: { score: 0, text: '' },
+            };
+            router.push('/books');
+        };
+
+        const cancelBook = () => {
+            router.push('/books');
+        };
+        return {
+            booksStore,
+            newBook,
+            submitBook,
+            cancelBook,
+        };
+    },
 });
-
-watch(
-    () => newBook.value.pageCount,
-    (newValue) => {
-        if (newValue > 1000) {
-            newBook.value.pageCount = 1000;
-        }
-    }
-);
-
-watch(
-    () => newBook.value.progress,
-    (newValue) => {
-        if (newValue > 100) {
-            newBook.value.progress = 100;
-        }
-    }
-);
-
-const submitBook = () => {
-    const bookId = uuidv4();
-    booksStore.addBook({ ...newBook.value, id: bookId });
-    newBook.value = {
-        title: '',
-        genre: '',
-        pageCount: 0,
-        progress: 0,
-        review: { score: 0, text: '' },
-    };
-    // TODO: better notification for the user
-    alert('Book added successfully');
-    router.push('/books');
-};
-
-const cancelBook = () => {
-    router.push('/books');
-};
 </script>

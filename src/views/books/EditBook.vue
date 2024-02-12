@@ -24,7 +24,7 @@
                         />
                     </label>
                     <label class="flex flex-col"
-                        >Title
+                        >Progress (%)
                         <input
                             type="number"
                             class="input"
@@ -78,7 +78,6 @@ export default defineComponent({
                 if (fetchedBook) {
                     book.value = fetchedBook;
                 } else {
-                    alert('Book not found');
                     router.push('/books');
                 }
             } catch (error) {

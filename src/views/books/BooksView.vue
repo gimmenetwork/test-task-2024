@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-20">
         <h1 class="mb-10 text-center">Your books 📚</h1>
         <Loading v-if="booksStore.isLoadingBooks" />
         <ul
@@ -80,6 +80,7 @@ import { defineComponent, onMounted } from 'vue';
 import { useBooksStore } from '@/store/books';
 import { Loading } from '@/components';
 import router from '@/router';
+import { notify } from '@kyvg/vue3-notification';
 
 export default defineComponent({
     components: {
@@ -91,8 +92,11 @@ export default defineComponent({
         const editBook = (bookId: string | undefined) => {
             if (!bookId) {
                 console.error('Book ID is undefined');
-                alert('Could not fetch the book');
-                // TODO: Better way to show the user that the book could not be fetched
+                notify({
+                    type: 'error',
+                    title: 'Could not find book!',
+                    text: 'There was an issue accessing your book. Please try again.',
+                });
                 return;
             }
             router.push(`/edit-book/${bookId}`);
@@ -101,8 +105,11 @@ export default defineComponent({
         const deleteBook = (bookId: string | undefined) => {
             if (!bookId) {
                 console.error('Book ID is undefined');
-                alert('Could not delete the book');
-                // TODO: Better way to show the user that the book could not be deleted
+                notify({
+                    type: 'error',
+                    title: 'Could not find book!',
+                    text: 'There was an issue accessing your book. Please try again.',
+                });
                 return;
             }
             booksStore.deleteBook(bookId);
@@ -112,8 +119,11 @@ export default defineComponent({
         const goToReviewPage = (bookId: string | undefined) => {
             if (!bookId) {
                 console.error('Book ID is undefined');
-                alert('Could not fetch the book');
-                // TODO: Better way to show the user that the book could not be fetched
+                notify({
+                    type: 'error',
+                    title: 'Could not find book!',
+                    text: 'There was an issue accessing your book. Please try again.',
+                });
                 return;
             }
             router.push(`/review-book/${bookId}`);
