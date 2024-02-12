@@ -3,10 +3,16 @@ import type { User } from "@/types/auth/User"
 
 export function useLocalStorage() {
 
-    // function getItem(key:string){
-    //     const user = localStorage.getItem(key)
-    //     return user && JSON.parse(user)
-    // }
+    function getStorageItem(key:string){
+        try{
+            const user = localStorage.getItem(key)
+            return user && JSON.parse(user)
+        }catch(error){
+            console.log(error)
+            return false
+        }
+        
+    }
 
     // function setItem(key:string, value:string){
     //     localStorage.setItem(key, JSON.stringify(value))
@@ -35,5 +41,5 @@ export function useLocalStorage() {
         
     }
 
-    return { localStorageSetup }
+    return { localStorageSetup, getStorageItem }
 }
