@@ -8,7 +8,7 @@
             <p class="text-gray-700 text-base">
                 Email: {{ user.email }}
             </p>
-            <div v-if="finishedBooks.length > 0">
+            <div id="finished-books" v-if="finishedBooks.length > 0">
                 <h3 class="font-bold text-gray-700 text-xl mb-2">Finished Books</h3>
                 <ul>
                     <li class="text-gray-700 text-base" v-for="book in finishedBooks" :key="book.id">

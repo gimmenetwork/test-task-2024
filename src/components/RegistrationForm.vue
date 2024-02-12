@@ -37,10 +37,8 @@ const handleRegistration = async () => {
     // Make an HTTP POST request to your JSON server endpoint
     await axios.post('http://localhost:3000/users', formData);
 
-    // Clear the form data after successful registration
-    formData.name = '';
-    formData.email = '';
-    formData.password = '';
+        // Clear the form data after successful registration
+    formData.value = { name: '', email: '', password: '' };
 
 
     router.push('/');
