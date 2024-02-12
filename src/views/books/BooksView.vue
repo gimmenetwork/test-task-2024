@@ -113,7 +113,6 @@ export default defineComponent({
                 return;
             }
             booksStore.deleteBook(bookId);
-            alert('Book deleted');
         };
 
         const goToReviewPage = (bookId: string | undefined) => {
