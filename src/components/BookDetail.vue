@@ -1,39 +1,48 @@
 <template>
   <div v-if="book" class="w-full bg-yellow-100 rounded overflow-hidden shadow-lg">
+    <RouterLink class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-900 hover:text-blue-500 " to="/">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span class="pl-3">Back</span>
+    </RouterLink>
 
-      <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-      </svg>
-      <span>Go back</span>
-
-    <div class="px-6 py-4">
-      <div class="font-bold text-5xl mb-8">{{ book.title }}</div>
+    <div class="px-8 py-6 flex  text-center flex-col">
+      <div class="font-bold text-5xl mb-8">
+        <h2>{{ book.title }}</h2>
+      </div>
       <p class="text-gray-700 text-xl mb-2">
-        Genre: {{ book.genre }}
+        <span class="font-bold">Genre:</span> {{ book.genre }}
       </p>
       <p class="text-gray-700 text-xl mb-2">
-        Pages: {{ book.pageCount }}
+        <span class="font-bold">Pages:</span> {{ book.pageCount }}
       </p>
         
       <p class="text-gray-700 text-xl mb-2">
-        Pages Read: {{ book.pagesRead }}
+        <span class="font-bold">Pages Read:</span> {{ book.pagesRead }}
       </p>
       <div v-if="book.review">
          <p class="text-gray-700 text-xl mb-2">
-            Review: {{ book.review }}
+            <span class="font-bold">Review:</span> {{ book.review }}
           </p>
           <div>
             <p class="text-gray-700 text-xl">
-              Rating:
+              <span class="font-bold">Rating:</span>
             </p>
-            <StarRating :rating="5.5" />
+            <StarRating :rating="book.rating" />
           </div>
           
       </div>
     </div>
-    <div class="px-4 pt-2 pb-4">
+    <div class="px-4 pt-2 pb-8 flex justify-center">
       <button v-if="!book.finished" @click="openUpdateProgressModal" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors">Update Progress</button>
       <button v-if="book.finished && !book.review" @click="openLeaveReviewModal" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition-colors">Leave Review</button>
+      <div v-if="book.review">
+        <h4 class="font-bold text-xl mb-2">Please Share:</h4>
+        <div class="flex justify-between">
+          <button @click="shareOnTwitter"><i class="fab fa-twitter text-xl text-blue-500 hover:text-blue-700"></i></button>
+          <button @click="shareOnFacebook"><i class="fa-brands fa-facebook-f text-xl text-blue-500 hover:text-blue-700"></i></button>
+          <button @click="shareOnWhatsApp"><i class="fa-brands fa-whatsapp text-xl text-blue-500 hover:text-blue-700"></i></button>
+        </div>
+      </div>
     </div>
     
     <!-- Modal -->
@@ -70,6 +79,7 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import { RouterLink } from 'vue-router'
 import Modal from '../components/Modal.vue';
 import StarRating from './StarRating.vue'
 import { useBooksStore } from '@/stores/books'; // Import the books store from Pinia
@@ -107,6 +117,7 @@ const handleUpdateProgress = async () => {
   try {
     await booksStore.updateBookProgress(book.value.id, pagesRead.value);   
     // Make API call to get all books
+    fetchBookDetail(book.value.id);
   } catch (error) {
     console.error('Error updating progress:', error);
   }
@@ -135,6 +146,25 @@ const fetchBookDetail = async (bookId) => {
     }
 };
 
+const shareText = 'Check this out!'; // Default share text
+
+const getCurrentUrl = () => window.location.href; // Arrow function for getting the current URL
+
+const shareOnTwitter = () => {
+  const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(getCurrentUrl())}&text=${encodeURIComponent(shareText)}`;
+  window.open(url, '_blank');
+};
+
+const shareOnFacebook = () => {
+  const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(getCurrentUrl())}`;
+  window.open(url, '_blank');
+};
+
+const shareOnWhatsApp = () => {
+  const text = `${shareText} ${encodeURIComponent(getCurrentUrl())}`;
+  const url = `https://api.whatsapp.com/send?text=${text}`;
+  window.open(url, '_blank');
+};
 
 onMounted(async () => {
   try {

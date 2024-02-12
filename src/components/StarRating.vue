@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2">
+  <div class="mt-2 text-left flex justify-center">
     <div class="stars-outer">
         <div class="stars-inner" :style="{ width: calculateWidth() }"></div>
     </div>

@@ -31,9 +31,6 @@ describe('LoginForm', () => {
         // Simulate form submission
         await wrapper.find('form').trigger('submit.prevent');
     
-        // Log the form data to debug
-        console.log('form data after submission:', wrapper.vm.formData);
-    
         // Assertions
         expect(wrapper.vm.errorMessage).toBe(''); // Check if the error message is cleared after successful login
         expect(wrapper.vm.formData.email).toBe(''); // Check if the email input is cleared after successful login

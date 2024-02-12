@@ -1,7 +1,7 @@
 <template>
   <main class="container flex justify-center max-w-5xl pt-6">
     <div class="max-w-2xl w-full justify-center">
-      <h1 class="">This is the Login page</h1>
+      <h3 class="text-3xl font-Roboto mt-10 mb-6 font-bold">Login:</h3>
       <LoginForm />
     </div>
   </main>

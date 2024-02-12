@@ -40,24 +40,15 @@ export const useBooksStore = defineStore({
               this.books[bookIndex].finished = true;
               this.books[bookIndex].pagesRead = formattedTotalPages;
             } else {
-              console.log('read', updatedPagesRead);
               this.books[bookIndex].pagesRead = updatedPagesRead;
             }
 
             this.books[bookIndex].progressUpdates.push(progressUpdate);
-            
-            console.log('the books', this.books[bookIndex])
+          
             
             // Replace the entire books array at the books endpoint
-            axios.patch(`http://localhost:3000/books/${bookId}`, this.books[bookIndex])
+            await axios.patch(`http://localhost:3000/books/${bookId}`, this.books[bookIndex])
 
-            
-            // .then(response => {
-            //   // console.log('Book updated:', response.data);
-            // })
-            // .catch(error => {
-            //   // console.error('Error updating book:', error);
-            // });
           }
         } catch (error) {
           console.error('Error updating book progress:', error);
@@ -77,7 +68,6 @@ export const useBooksStore = defineStore({
             rating: rating
           });
 
-          console.log('Review added successfully');
         } else {
           console.error('Book not found');
         }

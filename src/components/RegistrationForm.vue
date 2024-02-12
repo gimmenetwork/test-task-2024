@@ -41,7 +41,7 @@ const handleRegistration = async () => {
     formData.value = { name: '', email: '', password: '' };
 
 
-    router.push('/');
+    router.push('/login');
     // Optionally, you can add logic to redirect the user to another page or display a success message
   } catch (error) {
     // Handle any errors

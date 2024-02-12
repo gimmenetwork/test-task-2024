@@ -57,7 +57,7 @@ describe('Header', () => {
 
     // Wait for the component to update
     await nextTick();
-      console.log('html///', wrapper.html())
+
     // Assertions
     expect(wrapper.find('a', { attributes: { to: '/profile' } }).exists()).toBeTruthy(); // Check if profile link exists
     expect(wrapper.text()).toContain('John Doe'); // Check if user's name is displayed
