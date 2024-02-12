@@ -1,3 +1,28 @@
+# PageTracker 📚
+
+## How to run the project locally
+
+Here I will assume you already have your node environment ready, ideally you should have node version 18.x or higher.
+
+1. First and foremost, you need to install the dependencies by running `npm i` or `npm ci`.
+2. Two terminals are required here, one for running the "server" and one for running the app, in one of the terminals, in order to run the server, simply run the following script: `npm run server`. Once that's up and running, separately, run the following script to start the app: `npm run build && npm preview`. The app will be accessbile at [localhost:4173](http://localhost:4173/).
+
+## App functionality
+
+-   The user can register
+-   The user can login
+-   The user can add books they are reading, including title, genre, page number and progress(%)
+-   The user can edit the added book
+-   If the user sets the progress to 100%, they can then review the book (out of 10)
+-   The user can delete the book
+
+## Potential improvements
+
+-   Modify the progress to not rely on % but instead of page count and then allow the review to be added if the progress is close to the total page count.
+-   Add more tests for reliability imrpvements
+-   Allow the user to share their review on social media platforms
+-   A better choice of colour pallette
+
 # Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
