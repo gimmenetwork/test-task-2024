@@ -54,7 +54,7 @@
                     <button
                         v-if="book.progress === 100"
                         @click="goToReviewPage(book.id)"
-                        class="button-primary"
+                        class="button-secondary"
                     >
                         <span v-if="book.review?.text">Edit Review</span>
                         <span v-else> Write a Review </span>
@@ -113,7 +113,6 @@ export default defineComponent({
                 return;
             }
             booksStore.deleteBook(bookId);
-            alert('Book deleted');
         };
 
         const goToReviewPage = (bookId: string | undefined) => {

@@ -79,7 +79,6 @@ export default defineComponent({
 
         const saveReview = () => {
             booksStore.addReview(bookId, review.value);
-            alert('Book review added successfully');
             router.push('/books');
         };
 
