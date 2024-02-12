@@ -1,6 +1,6 @@
 <template>
     <div class="grid place-items-center gap-y-10">
-        <h1>Welcome to PageTracker 📚</h1>
+        <h1 class="text-center">Welcome to PageTracker 📚</h1>
         <div>
             <p class="text-center">Keep records of your reading progress</p>
             <div v-if="authStore.token" class="mt-10 text-center">
