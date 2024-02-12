@@ -1,5 +1,5 @@
 import './assets/index.css'
-import persistStatePlugin from './stores/persistStatePlugin'
+import persistStatePlugin from './stores/helpers/persistStatePlugin'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 

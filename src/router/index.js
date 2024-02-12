@@ -29,9 +29,9 @@ const router = createRouter({
       component: ProfileView
     },
     {
-      path: '/book/:id', // Dynamic segment for the book ID
-      name: 'bookDetail', // Name for easy navigation
-      component: BookDetailView // Component for the book detail page
+      path: '/book/:id', 
+      name: 'bookDetail', 
+      component: BookDetailView 
     }
   ]
 })

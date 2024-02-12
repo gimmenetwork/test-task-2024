@@ -23,8 +23,6 @@ export const useUserStore = defineStore({
               this.isUserLoggedIn = true;
               this.user = matchedUser;
     
-              // Optionally, you can store the user token in local storage or session storage
-              // localStorage.setItem('token', response.data.token);
             } else {
               throw new Error('Login failed. Please check your credentials.');
             }

@@ -4,7 +4,8 @@ import axios from 'axios';
 export const useBooksStore = defineStore({
   id: 'books',
   state: () => ({
-    books: [] // Initialize books as an empty array
+    // Initialize books as an empty array
+    books: [] 
   }),
   getters: {
     // Getter to retrieve a book by its ID
@@ -16,10 +17,10 @@ export const useBooksStore = defineStore({
     }
   },
   actions: {
-    // Method to set books in the store
     setBooks(books) {
       this.books = books;
     },
+    // Action to update book progress with amount of pages read and a date. Also sets book finished state if the total number of pages has been read
     async updateBookProgress(bookId, pagesRead) {
         try {
           // Find the index of the book in the books array
@@ -31,8 +32,9 @@ export const useBooksStore = defineStore({
             const formattedTotalPages = Number(this.books[bookIndex].pageCount);
             const updatedPagesRead = formattedOriginalPagesRead + formattedNewPagesRead
             const progressUpdate = {
-              date: new Date().toISOString(), // Current date in ISO format
-              pagesRead: pagesRead // Number of pages read on this update
+              // Current date in ISO format
+              date: new Date().toISOString(), 
+              pagesRead: pagesRead
             };
             const isFinished = updatedPagesRead >= formattedTotalPages;
 
@@ -46,7 +48,7 @@ export const useBooksStore = defineStore({
             this.books[bookIndex].progressUpdates.push(progressUpdate);
           
             
-            // Replace the entire books array at the books endpoint
+            // Replace the books array in the database
             await axios.patch(`http://localhost:3000/books/${bookId}`, this.books[bookIndex])
 
           }
@@ -62,7 +64,7 @@ export const useBooksStore = defineStore({
         if (bookIndex !== -1) {
          
 
-          // Update the book with the new review on the backend
+          // Update the book with the new review
           await axios.patch(`http://localhost:3000/books/${bookId}`, {
             review: review,
             rating: rating

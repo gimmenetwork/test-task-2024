@@ -1,6 +1,6 @@
 <template> 
     <div class="container w-full bg-yellow-100 rounded overflow-hidden shadow-lg max-w-5xl sm:flex-row items-center gap-4 text-white py-6">
-        <RouterLink class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-900 hover:text-blue-500 " to="/">
+        <RouterLink class="inline-flex items-center justify-center p-5 text-base font-medium text-gray-900 hover:text-blue-500 " to="/" aria-label="Go back to home page">
             <i class="fa-solid fa-arrow-left"></i>
             <span class="pl-3">Back</span>
         </RouterLink>
@@ -23,7 +23,7 @@
                     </li>
                 </ul>
             </div>
-            <div class='text-center' v-if="unfinishedBooks.length > 0">
+            <div class='text-center' v-if="unfinishedBooks.some(book => book.recentProgress)">
 
                 <h3 class="font-bold text-gray-700 text-2xl mb-2">Latest Progress:</h3>
                 <ul class="list-none text-center">
@@ -33,7 +33,7 @@
                 </ul>
             </div>
              <div class="px-4 pt-8 pb-6 flex justify-center">
-                <button @click="handleLogout" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors">Logout</button>
+                <button @click="handleLogout" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors" aria-label="Log out">Logout</button>
             </div>
         </div>
     </div>
@@ -55,6 +55,7 @@ const user = computed(() => userStore.user);
 const finishedBooks = ref([]);
 const unfinishedBooks = ref([]);
 
+// Logout function to clear user session and redirect to the homepage.
 const handleLogout = async () => {
     try {
         await userStore.logout()
@@ -64,6 +65,7 @@ const handleLogout = async () => {
     }
 }
 
+// Function to process books data and extract most recent progress if relevant 
 const mostRecentProgress = (books) => {
     return books.value.map(book => {
             
@@ -97,7 +99,7 @@ const mostRecentProgress = (books) => {
 }
 
 onMounted(async () => {
-    
+    // Fetch and process book data on component mount
     try {
 
         if (user.value) {

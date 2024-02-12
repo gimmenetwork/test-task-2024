@@ -1,28 +1,33 @@
 <template>
     <div>
-        <button @click="openAddBookModal" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+       <button 
+          @click="openAddBookModal" 
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          aria-controls="addBookModal" 
+          aria-expanded="false">
             Add New Book
         </button>
-        <Modal ref="addBookModalRef">
+       <Modal ref="addBookModalRef" id="addBookModal" aria-modal="true" role="dialog">
             <form @submit.prevent="addNewBook">
                 <div>
-                    <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="email">Title:</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" v-model="title" required>
+                    <label for="bookTitle" class="block text-gray-700 text-sm font-bold mt-4 mb-2">Title:</label>
+                    <input id="bookTitle" type="text" name="title" v-model="title" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" aria-label="Book Title"/>
                 </div>
                 <div>
-                    <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="password">Genre:</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="genre" v-model="genre" required>
+                    <label for="bookGenre" class="block text-gray-700 text-sm font-bold mt-4 mb-2">Genre:</label>
+                    <input id="bookGenre" type="text" name="genre" v-model="genre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" aria-label="Book Genre"/>
                 </div>
                 <div>
-                    <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="password">Page Count:</label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="pagecount" v-model="pageCount" required>
+                    <label for="bookPageCount" class="block text-gray-700 text-sm font-bold mt-4 mb-2">Page Count:</label>
+                    <input id="bookPageCount" type="text" name="pagecount" v-model="pageCount" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" aria-label="Page Count"/>
                 </div>
+
                 <div class="flex items-center justify-between mt-6">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" aria-label="Add Book">
                         Add Book
                     </button>
                 </div>
-                <!-- Error message display -->
+ 
                 <div v-if="errorMessage" class="mt-4 text-red-500">
                     {{ errorMessage }}
                 </div>
@@ -53,7 +58,7 @@ function openAddBookModal() {
 function closeAddBookModal() {
   addBookModalRef.value.closeModal();
 }
-
+// Function to handle the submission of the new book form
 const addNewBook = async () => {
     try {
         const user = computed(() => userStore.user);
@@ -64,8 +69,8 @@ const addNewBook = async () => {
             title: title.value,
             genre: genre.value,
             pageCount: Number(pageCount.value),
-            pagesRead: 0, // Initial progress
-            finished: false, // Initial finished state
+            pagesRead: 0, 
+            finished: false,
             progressUpdates: [],
             review: null,
             rating: null
@@ -79,24 +84,8 @@ const addNewBook = async () => {
         errorMessage.value = '';
     } catch (error) {
         // Handle any errors
-         errorMessage.value = 'Failed to add the book. Please try again.';
+        errorMessage.value = 'Failed to add the book. Please try again.';
         console.error('Error registering user:', error);
     }
 }
-
-// const handleLogin = async () => {
-//   try {
-//     // Call the login action from the authentication store
-//     await userStore.login(formData.email, formData.password);
-    
-//     // Clear the form after successful login
-//     formData.email = '';
-//     formData.password = '';
-//     router.push('/');
-//     // Optionally, you can add logic to redirect the user to another page
-//   } catch (error) {
-//     console.error('Error logging in:', error);
-//     errorMessage.value = 'Failed to log in. Please check your credentials and try again.';
-//   }
-// };
 </script>

@@ -1,9 +1,9 @@
 <template>
-  <div class="mt-2 text-left flex justify-center">
-    <div class="stars-outer">
+  <div class="mt-2 text-left flex justify-center" role="img" aria-label="Book Rating">
+    <div class="stars-outer" aria-hidden="true">
         <div class="stars-inner" :style="{ width: calculateWidth() }"></div>
     </div>
-    <span class="number-rating">{{ rating }}</span>
+    <span class="number-rating" aria-hidden="true">{{ rating }}</span>
   </div>
 </template>
 

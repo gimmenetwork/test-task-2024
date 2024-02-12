@@ -37,3 +37,25 @@ More bonus points are given for:
 4. Tests
 5. Using current industry-standard-tools properly.
 6. Good documentation
+
+
+# My implementation of the Book club app
+This is my implementation of the Book club app. The technologies I used were Vue, Pinia, Tailwind, JSON server and Vitest
+
+### Setup
+- Install dependencies
+npm install 
+
+- Run test server
+json-server --watch db.json
+
+- Run app
+npm run dev
+
+- Run tests
+npm run test
+
+### Improvements:
+Design and layout overall could be greatly improved, I would like to add a better UI and some animations on the transitions to add some elegance.
+
+I would also add more comprehensive testing to the app
