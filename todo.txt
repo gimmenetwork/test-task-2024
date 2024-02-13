@@ -1,0 +1,12 @@
+TODO:
+
+Add new Book and update data.
+Get all completed books (History)
+Add reviews to cards and also functionality.
+Work on other Analytics (e.g 5/30 pages read, Total Number of pages read from all books, Top rated books)
+Design (Finalize) 
+Write tests (Unit) ()
+
+
+If time permits:
+Write E-2-E tests (login, signup, addnewbook, logout)
