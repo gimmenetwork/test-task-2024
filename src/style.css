@@ -16,7 +16,7 @@
     }
 
     .input {
-        @apply mb-4 rounded-full bg-gray-50 p-3 text-gray-950 shadow-lg;
+        @apply mb-4 w-full rounded-full bg-gray-50 p-3 text-gray-950 shadow-lg;
     }
 
     .link {
@@ -35,8 +35,16 @@
         @apply rounded-full border border-darkGreen bg-transparent px-5 py-3 text-gray-50 shadow transition-all duration-200 will-change-transform hover:bg-darkGreen hover:text-gray-950 hover:shadow-xl disabled:border-gray-500 disabled:bg-gray-500 disabled:text-gray-50 disabled:hover:bg-gray-500;
     }
 
+    .button-secondary-danger {
+        @apply button-secondary hover:border-red-600 hover:bg-red-600 hover:text-gray-50;
+    }
+
     .form-wrapper {
         @apply mx-auto w-full max-w-full rounded-2xl border border-darkBrown p-5 shadow-xl md:w-1/2 md:p-14 lg:w-2/6;
+    }
+
+    .book-wrapper {
+        @apply relative h-64 max-w-full rounded-3xl border border-gray-700 bg-lint/80 p-6 shadow transition-shadow duration-200 hover:shadow-xl;
     }
 }
 
