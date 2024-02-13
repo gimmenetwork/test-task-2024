@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { GetAllBooks, AddBook, AddBookReview } from '@/services/books/api'
+import { GetAllBooks, AddBook, UpdateBook } from '@/services/books/api'
 import type { Book } from '@/types/Books/Book'
 import { useLocalStorage } from '@/composables/useLocalStorage'
 
@@ -12,16 +12,33 @@ export const useBookStore = defineStore('books', () => {
 
   const Books = ref<Book[]>([])
   const showAddNewBookView = ref(false)
+  
+ 
  
   //create this
   const totalPagesRead = computed(()=>{
-    return true
+    let initialValue = 0
+    Books.value.map((book)=>{
+      initialValue += parseInt(book.pagesRead)
+    })
+    return initialValue
+  })
+
+  const popularGenres = computed(()=>{
+    const genres = Books.value.map((book)=>{
+      return book.genre
+    })
+    console.log([...new Set(genres)])
+    return [...new Set(genres)]
   })
 
 
 
+  //completed
   const completedBooks = computed(()=>{
-    return Books.value.length > 0 && Books.value.filter((book)=>book.pagesRead === book.pageCount)
+    const completed = Books.value.filter((book)=>book.pagesRead === book.pageCount)
+    console.log('completed', completed)
+    return completed
   })
 
   const user = computed(() => getStorageItem('user'))
@@ -50,8 +67,10 @@ export const useBookStore = defineStore('books', () => {
     const data = await AddBook(bookToSave)
     return data
   }
-  async function addBookReview(reviewText:string, bookId:string){
- 
+
+
+
+  async function updateBookReview(reviewText:string, bookId:string){
     const bookToAdd = Books.value.find((book)=>{
       return book.id === bookId
     })
@@ -60,19 +79,33 @@ export const useBookStore = defineStore('books', () => {
       reviews: reviewText
     }
 
-    const data = await AddBookReview(newBook.id as string, newBook as Book)
+    const data = await UpdateBook(newBook.id as string, newBook as Book)
     return data
   }
 
-//   async function authRegister(data: User){
-//     const userData = await Register(data)
-//     return userData
-//   }
+  async function updateBookProgress(pagesRead:number, bookId:string){
+    const bookToAdd = Books.value.find((book)=>{
+      return book.id === bookId
+    })
+    const newBook = {
+      ...bookToAdd,
+      pagesRead: pagesRead.toString()
+    }
 
-//   async function authLogout(){
-//     const loggedOut = await Logout()
-//     return loggedOut
-//   }
+    const data = await UpdateBook(newBook.id as string, newBook as Book)
+    return data
+  }
 
-  return { Books, getAllBooks, userBooks, addBook, showAddNewBookView, addBookReview }
+  return { 
+    Books, 
+    getAllBooks, 
+    userBooks, 
+    addBook, 
+    showAddNewBookView, 
+    updateBookReview, 
+    updateBookProgress,
+    totalPagesRead,
+    popularGenres,
+    completedBooks
+  }
 })
