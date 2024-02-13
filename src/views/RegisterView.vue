@@ -34,10 +34,8 @@ const onSubmit = handleSubmit(async (values) => {
 
     const user = await store.authRegister(values)
     if (user) {
-        console.log('should push')
         isLoading.value = false
         router.push('/')
-
     }
     else {
         isLoading.value = false
@@ -99,12 +97,13 @@ const onSubmit = handleSubmit(async (values) => {
                         </div>
 
 
-                    <p class="text-sm font-light text-gray-500">
-                        Already have an account? <RouterLink class="font-medium underline" to="/">Login Here
-                        </RouterLink>
-                    </p>
-                </form>
+                        <p class="text-sm font-light text-gray-500">
+                            Already have an account? <RouterLink class="font-medium underline" to="/">Login Here
+                            </RouterLink>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section></template>
+    </section>
+</template>
