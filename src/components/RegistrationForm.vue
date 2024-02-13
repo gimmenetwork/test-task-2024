@@ -4,6 +4,9 @@
     class="bg-amber-100 shadow-md rounded px-8 pt-6 pb-8 mb-4"
     aria-label="Registration Form"
     >
+    <div v-if="errorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+      {{ errorMessage }}
+    </div>
     <div>
       <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="name">Name:</label>
       <input 
@@ -51,6 +54,7 @@
 
 <script setup>
 import axios from 'axios';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -61,20 +65,22 @@ const formData = {
   password: ''
 };
 
+const errorMessage = ref('');
+
 //Handles the registration process
 const handleRegistration = async () => {
   try {
-    // Make an HTTP POST request to your JSON server endpoint
+
     await axios.post('http://localhost:3000/users', formData);
 
-        // Clear the form data after successful registration
+     // Clear the form data after successful registration
     formData.value = { name: '', email: '', password: '' };
 
 
     router.push('/login');
 
   } catch (error) {
-
+     errorMessage.value = 'Failed to register your account, Please try again.';
     console.error('Error registering user:', error);
   }
 };

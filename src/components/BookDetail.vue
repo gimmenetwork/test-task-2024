@@ -60,9 +60,11 @@
       </div>
     </div>
     
-    <!-- Modal -->
     <Modal ref="updateProgressModalRef">
       <form @submit.prevent="handleUpdateProgress">
+         <div v-if="progressErrorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+          {{ progressErrorMessage }}
+        </div>
         <div>
           <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="progress">How many pages did you read today?</label>
           <input 
@@ -88,6 +90,9 @@
 
     <Modal ref="leaveReviewModalRef">
       <form @submit.prevent="handleLeaveReview">
+        <div v-if="reviewErrorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+          {{ reviewErrorMessage }}
+        </div>
         <div>
           <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="progress">Review:</label>
           <textarea 
@@ -132,12 +137,12 @@ import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router'
 import Modal from '../components/Modal.vue';
 import StarRating from './StarRating.vue'
-import { useBooksStore } from '@/stores/books'; // Import the books store from Pinia
+import { useBooksStore } from '@/stores/books'; 
 
-const booksStore = useBooksStore(); // Access the books store
+const booksStore = useBooksStore(); 
+const progressErrorMessage = ref('');
+const reviewErrorMessage = ref('');
 
-
-// Define props using `defineProps`
 const props = defineProps({
   bookId: {
     type: String,
@@ -146,7 +151,6 @@ const props = defineProps({
 });
 const book = ref(null);
 
-// Define refs
 const pagesRead = ref('');
 const review = ref('');
 const rating = ref('');
@@ -162,28 +166,29 @@ const openLeaveReviewModal = () => {
   leaveReviewModalRef.value.openModal();
 };
 
-// Function to handle updating the progress
+// Handle updating the reading progress
 const handleUpdateProgress = async () => {
   try {
     await booksStore.updateBookProgress(book.value.id, pagesRead.value);   
     // Reload book detail
-    fetchBookDetail(book.value.id);
+    await fetchBookDetail(book.value.id);
+    updateProgressModalRef.value.closeModal();
   } catch (error) {
+    progressErrorMessage.value = 'Failed to update your progress, please try again';
     console.error('Error updating progress:', error);
-  }
-  updateProgressModalRef.value.closeModal();
+  } 
 };
 
-// Function to handle leaving a Review
+// Handle leaving a Review
 const handleLeaveReview = async () => {
   try {
       await booksStore.addReview(book.value.id, review.value, rating.value);    
-      // Reload book detail
-      fetchBookDetail(book.value.id);
+      await fetchBookDetail(book.value.id);
+      leaveReviewModalRef.value.closeModal();
     } catch (error) {
+      reviewErrorMessage.value = 'Failed to leave your review, Please try again.';
       console.error('Error updating progress:', error);
-    }
-  leaveReviewModalRef.value.closeModal();
+    } 
 }
 
 // Fetch a specific book
@@ -192,11 +197,12 @@ const fetchBookDetail = async (bookId) => {
         const response = await axios.get(`http://localhost:3000/books/${bookId}`);
         book.value = response.data; 
     } catch (error) {
-        console.error('Failed to fetch books:', error);
-        
+        console.error('Failed to fetch book details', error);
+        throw new Error('Failed to fetch book details',  error);
     }
 };
 
+// Add social media sharing functionality
 const shareText = 'Check this out!'; 
 
 const getCurrentUrl = () => window.location.href; 

@@ -31,7 +31,6 @@ import { computed } from 'vue';
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/stores/user';
 
-// Accessing the user store to manage authentication state and user information
 const userStore = useUserStore();
 
 const isUserLoggedIn = computed(() => userStore.isUserLoggedIn);

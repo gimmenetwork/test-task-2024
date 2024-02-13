@@ -4,7 +4,6 @@ import axios from 'axios';
 export const useBooksStore = defineStore({
   id: 'books',
   state: () => ({
-    // Initialize books as an empty array
     books: [] 
   }),
   getters: {

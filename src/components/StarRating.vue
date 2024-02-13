@@ -8,6 +8,9 @@
 </template>
 
 <script>
+ /**
+   *  A component for displaying a star rating based on a number between 0 and 5
+   */
 export default {
   props: {
     // Define rating as a prop
@@ -17,7 +20,7 @@ export default {
     }
   },
   computed: {
-    // Computed property for stars total can be a simple property if it's constant
+    // Computed property for stars total
     starsTotal() {
       return 5;
     }

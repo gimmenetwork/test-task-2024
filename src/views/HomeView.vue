@@ -22,7 +22,7 @@
 </template>
 <script setup>
 import axios from 'axios';
-import { computed, ref, onMounted, watchEffect } from 'vue';
+import { computed, ref, onMounted, watch, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/stores/user';
 import { useBooksStore } from '@/stores/books';
@@ -30,26 +30,33 @@ import MyLibrary from '../components/MyLibrary.vue';
 import AddBook from '../components/AddBook.vue';
 
 const userStore = useUserStore();
-
 const booksStore = useBooksStore();
-const books = ref([]);
 
-// Define reactive variables to track user's login status and user information
 const isUserLoggedIn = computed(() => userStore.isUserLoggedIn);
 
-// Watch for changes in the user's login status or specifically the user.id
-watchEffect(async () => {
-  const userId = userStore.user.id;
-  if (userId) {
+const fetchBooks = async () => {
+  if (userStore.user.id) { // Check if there is a user ID
     try {
-      // Make sure to include the correct endpoint and adjust parameters as needed
-      const response = await axios.get(`http://localhost:3000/books?userId=${userId}`);
-      // Assuming your store has a method to set books data
+      const response = await axios.get(`http://localhost:3000/books?userId=${userStore.user.id}`);
       booksStore.setBooks(response.data);
     } catch (error) {
       console.error('Failed to fetch books:', error);
     }
   }
+};
+
+// Fetch books once the component is mounted and the user is logged in
+onMounted(() => {
+  if (isUserLoggedIn.value) {
+    fetchBooks();
+  }
 });
+
+// Make sure that page is updated when there is a change in the book store
+watch(() => booksStore.books, (newBooks) => {
+  if (isUserLoggedIn.value) {
+      fetchBooks();
+    }
+}, { deep: true });
 
 </script>

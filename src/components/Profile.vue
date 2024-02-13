@@ -99,7 +99,7 @@ const mostRecentProgress = (books) => {
 }
 
 onMounted(async () => {
-    // Fetch and process book data on component mount
+    // Fetch book data and check if it is finished or not
     try {
 
         if (user.value) {

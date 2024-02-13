@@ -11,7 +11,6 @@ export const useUserStore = defineStore({
   actions: {
     async login(email, password) {
         try {
-            // Make an HTTP request to fetch users
             const response = await axios.get('http://localhost:3000/users');
             const users = response.data;
             
@@ -34,9 +33,6 @@ export const useUserStore = defineStore({
       // Clear authentication state and user information on logout
       this.isUserLoggedIn = false;
       this.user = null;
-
-      // Clear the token from local storage or session storage
-      localStorage.removeItem('token');
     },
   },
 });

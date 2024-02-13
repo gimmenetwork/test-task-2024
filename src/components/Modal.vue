@@ -24,7 +24,7 @@
 
 <script setup>
  /**
-   *  A generic Modal component used to wrapper modal content
+   *  A generic Modal component used to wrap modal content
    */
 import { ref } from 'vue';
 
