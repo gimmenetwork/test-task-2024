@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { storeToRefs } from 'pinia';
 import BookList from '@/components/BookList.vue'
-import AddNewBook from '@/components/AddNewBook.vue'
+import BookNew from '@/components/BookNew.vue'
 import { useBookStore } from '@/stores/bookStore';
 
 const bookStore = useBookStore()
@@ -31,7 +30,7 @@ function toggleAddBook() {
         </section>
       </header>
       <section v-if="showAddNewBookView">
-        <AddNewBook />
+        <BookNew />
       </section>
 
       <section>
@@ -62,6 +61,7 @@ function toggleAddBook() {
         </div>
       </section>
 
-  </section>
+    </section>
 
-</main></template>
+  </main>
+</template>
