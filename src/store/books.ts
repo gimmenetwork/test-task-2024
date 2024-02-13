@@ -18,6 +18,11 @@ export const useBooksStore = defineStore('books', {
                 this.books = updatedBooks;
             } catch (error) {
                 console.error('Failed to fetch books', error);
+                notify({
+                    type: 'error',
+                    title: 'Could not find book!',
+                    text: 'There was an issue finding your book. Please try again.',
+                });
             } finally {
                 this.isLoadingBooks = false;
             }
@@ -30,6 +35,11 @@ export const useBooksStore = defineStore('books', {
                     (books) => [...books, newBook]
                 );
                 this.books = updatedBooks;
+                notify({
+                    type: 'success',
+                    title: 'Book added!',
+                    text: `${newBook.title} is now available in your list`,
+                });
             } catch (error) {
                 notify({
                     type: 'error',
@@ -39,11 +49,6 @@ export const useBooksStore = defineStore('books', {
                 console.error('Failed to add book', error);
             } finally {
                 this.isLoadingBooks = false;
-                notify({
-                    type: 'success',
-                    title: 'Book added!',
-                    text: `${newBook.title} is now available in your list`,
-                });
             }
         },
 
@@ -69,6 +74,11 @@ export const useBooksStore = defineStore('books', {
                         )
                 );
                 this.books = updatedBooks;
+                notify({
+                    type: 'success',
+                    title: 'Book updated!',
+                    text: `${updatedBook.title} has been updated.`,
+                });
             } catch (error) {
                 console.error('Failed to edit book', error);
                 notify({
@@ -78,11 +88,6 @@ export const useBooksStore = defineStore('books', {
                 });
             } finally {
                 this.isLoadingBooks = false;
-                notify({
-                    type: 'success',
-                    title: 'Book updated!',
-                    text: `${updatedBook.title} has been updated.`,
-                });
             }
         },
 
@@ -93,15 +98,20 @@ export const useBooksStore = defineStore('books', {
                     (books) => books.filter((book) => book.id !== bookId)
                 );
                 this.books = updatedBooks;
-            } catch (error) {
-                console.error('Failed to delete book', error);
-            } finally {
-                this.isLoadingBooks = false;
                 notify({
                     type: 'success',
                     title: 'Book deleted!',
                     text: `The book has been deleted.`,
                 });
+            } catch (error) {
+                console.error('Failed to delete book', error);
+                notify({
+                    type: 'Error',
+                    title: 'Could not delete book!',
+                    text: 'There was an issue deleting your book. Please try again.',
+                });
+            } finally {
+                this.isLoadingBooks = false;
             }
         },
 
@@ -117,6 +127,11 @@ export const useBooksStore = defineStore('books', {
                         )
                 );
                 this.books = updatedBooks;
+                notify({
+                    type: 'success',
+                    title: 'Review added!',
+                    text: `The book has been reviewed.`,
+                });
             } catch (error) {
                 console.error('Failed to edit book', error);
                 notify({
@@ -126,11 +141,6 @@ export const useBooksStore = defineStore('books', {
                 });
             } finally {
                 this.isLoadingBooks = false;
-                notify({
-                    type: 'success',
-                    title: 'Review added!',
-                    text: `The book has been reviewed.`,
-                });
             }
         },
 
