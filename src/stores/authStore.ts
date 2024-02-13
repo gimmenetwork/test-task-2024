@@ -4,10 +4,11 @@ import { Login, Register, Logout } from '@/services/auth/api'
 import type { User } from '@/types/auth/User'
 
 export const useAuthStore = defineStore('auth', () => {
-  // const loggedInUser= ref({})
+  const loggedInUser = ref<User>()
 
   async function authLogin(email: string, password: string) {
     const userData = await Login(email, password)
+    loggedInUser.value = userData[0]
     return userData[0]
   }
 
@@ -21,5 +22,5 @@ export const useAuthStore = defineStore('auth', () => {
     return loggedOut
   }
 
-  return { authLogin, authRegister, authLogout }
+  return { authLogin, authRegister, authLogout, loggedInUser }
 })
