@@ -15,9 +15,7 @@
                 </div>
             </li>
             <li v-for="book in booksStore.books" :key="book.id">
-                <div
-                    class="relative h-64 max-w-full rounded-3xl border border-gray-700 bg-lint/80 p-6 shadow transition-shadow duration-200 hover:shadow-xl"
-                >
+                <div class="book-wrapper">
                     <h2
                         class="mb-2 truncate font-semibold capitalize tracking-tight text-gray-50"
                     >
@@ -39,22 +37,12 @@
                                 class="h-7 w-7"
                             />
                         </button>
-                        <button @click="deleteBook(book.id)">
-                            <div>
-                                <img
-                                    src="@/assets/delete.svg"
-                                    alt="Delete book"
-                                    title="Delete book - Please note that this is irreversible"
-                                    class="h-7 w-7"
-                                />
-                            </div>
-                        </button>
                     </div>
 
                     <button
                         v-if="book.progress === 100"
                         @click="goToReviewPage(book.id)"
-                        class="button-secondary"
+                        class="link hover:text-gray-300"
                     >
                         <span v-if="book.review?.text">Edit Review</span>
                         <span v-else> Write a Review </span>
@@ -80,7 +68,6 @@ import { defineComponent, onMounted } from 'vue';
 import { useBooksStore } from '@/store/books';
 import { Loading } from '@/components';
 import router from '@/router';
-import { notify } from '@kyvg/vue3-notification';
 
 export default defineComponent({
     components: {
@@ -92,37 +79,14 @@ export default defineComponent({
         const editBook = (bookId: string | undefined) => {
             if (!bookId) {
                 console.error('Book ID is undefined');
-                notify({
-                    type: 'error',
-                    title: 'Could not find book!',
-                    text: 'There was an issue accessing your book. Please try again.',
-                });
                 return;
             }
             router.push(`/edit-book/${bookId}`);
         };
 
-        const deleteBook = (bookId: string | undefined) => {
-            if (!bookId) {
-                console.error('Book ID is undefined');
-                notify({
-                    type: 'error',
-                    title: 'Could not find book!',
-                    text: 'There was an issue accessing your book. Please try again.',
-                });
-                return;
-            }
-            booksStore.deleteBook(bookId);
-        };
-
         const goToReviewPage = (bookId: string | undefined) => {
             if (!bookId) {
                 console.error('Book ID is undefined');
-                notify({
-                    type: 'error',
-                    title: 'Could not find book!',
-                    text: 'There was an issue accessing your book. Please try again.',
-                });
                 return;
             }
             router.push(`/review-book/${bookId}`);
@@ -134,7 +98,7 @@ export default defineComponent({
 
         return {
             booksStore,
-            deleteBook,
+
             editBook,
             goToReviewPage,
         };
