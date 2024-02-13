@@ -45,7 +45,9 @@
                         placeholder="Progress..."
                     />
                 </label>
-                <button type="submit" class="button-primary">Add Book</button>
+                <button type="submit" class="button-primary mt-2.5">
+                    Add Book
+                </button>
             </form>
             <button @click="cancelBook" class="button-secondary mt-5 w-full">
                 Cancel

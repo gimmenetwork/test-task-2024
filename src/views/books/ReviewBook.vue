@@ -32,10 +32,10 @@
                 <button type="submit" class="button-primary">
                     Save Review
                 </button>
-                <button @click="cancelReview" class="button-secondary">
-                    Cancel
-                </button>
             </form>
+            <button @click="cancelReview" class="button-secondary mt-5 w-full">
+                Cancel
+            </button>
         </div>
     </div>
 </template>
