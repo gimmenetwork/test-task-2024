@@ -1,0 +1,101 @@
+{
+  "users": [
+    {
+      "id": "67f8997g87g8665554",
+      "email": "johndoe@mail.com",
+      "password": "pass1234",
+      "firstname": "john",
+      "lastname": "doe"
+    },
+    {
+      "id": "dfytf76f6yg877",
+      "email": "superman@mail.com",
+      "password": "somepass",
+      "firstname": "super",
+      "lastname": "man"
+    },
+    {
+      "id": "f67a",
+      "firstname": "Ken",
+      "lastname": "Katas",
+      "email": "kenkatas@mail.com",
+      "password": "kenkats"
+    },
+    {
+      "id": "9bdc",
+      "firstname": "min",
+      "lastname": "max",
+      "email": "minmax@ak.com",
+      "password": "minmax"
+    },
+    {
+      "id": "c597",
+      "firstname": "tan",
+      "lastname": "pen",
+      "email": "tanpen@gg.com",
+      "password": "tanpen"
+    }
+  ],
+  "books": [
+    {
+      "id": "245gvv",
+      "userId": "9bdc",
+      "title": "Twilight Moon",
+      "genre": "Action",
+      "pageCount": "157",
+      "pagesRead": "30",
+      "reviews": "",
+      "rating": ""
+    },
+    {
+      "id": "683cd",
+      "userId": "9bdc",
+      "title": "The Beautiful Lie",
+      "genre": "Romance",
+      "pageCount": "200",
+      "pagesRead": "0",
+      "reviews": "",
+      "rating": ""
+    },
+    {
+      "id": "3cd90",
+      "userId": "67f8997g87g8665554",
+      "title": "Lies To Love",
+      "genre": "Romance",
+      "pageCount": "323",
+      "pagesRead": "70",
+      "reviews": "",
+      "rating": ""
+    },
+    {
+      "id": "28cgj",
+      "userId": "67f8997g87g8665554",
+      "title": "Witch Hunt",
+      "genre": "Fantasy",
+      "pageCount": "22",
+      "pagesRead": "22",
+      "reviews": "",
+      "rating": ""
+    },
+    {
+      "id": "4ff94",
+      "userId": "67f8997g87g8665554",
+      "title": "Rich Dad Poor Dad",
+      "genre": "Business",
+      "pageCount": "200",
+      "pagesRead": "105",
+      "reviews": "An awesome read about money",
+      "rating": ""
+    },
+    {
+      "id": "",
+      "title": "One Time",
+      "genre": "Romance",
+      "pageCount": "561",
+      "userId": "67f8997g87g8665554",
+      "pagesRead": "561",
+      "reviews": "",
+      "rating": ""
+    }
+  ]
+}
