@@ -1,9 +1,11 @@
 <template>
     <notifications position="top left" classes="notification" />
     <Layout>
-        <Transition>
-            <RouterView />
-        </Transition>
+        <router-view v-slot="{ Component }">
+            <transition name="fade" mode="out-in">
+                <component :is="Component" />
+            </transition>
+        </router-view>
     </Layout>
 </template>
 
@@ -13,13 +15,13 @@ import Layout from '@/layout/Layout.vue';
 </script>
 
 <style lang="css">
-.v-enter-active,
-.v-leave-active {
+.fade-enter-active,
+.fade-leave-active {
     transition: opacity 0.6s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.fade-enter-from,
+.fade-leave-to {
     opacity: 0;
 }
 </style>
