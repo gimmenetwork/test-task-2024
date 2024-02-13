@@ -24,15 +24,14 @@ export const GetAllBooks = async () => {
 export const AddBook = async (book:Book) => {
     //backend should fill other parts
     const data = await axios.post(`${booksUrl}`, book)
-    console.log('added!', data)
     return data
 }
-export const AddBookReview = async (id:string, book:Book) => {
+export const UpdateBook = async (id:string, book:Book) => {
     //backend should fill other parts
     const data = await axios.put(`${booksUrl}/${id}`, book)
-    console.log('added!', data)
     return data
 }
+
 export const DeleteBook = async (id:string) => {
     const users = await axios.delete('http://localhost:3000/users')
 }
