@@ -45,7 +45,7 @@
       "pageCount": "157",
       "pagesRead": "30",
       "reviews": "",
-      "rating": 4
+      "rating": ""
     },
     {
       "id": "683cd",
@@ -63,7 +63,7 @@
       "title": "Lies To Love",
       "genre": "Romance",
       "pageCount": "323",
-      "pagesRead": "40",
+      "pagesRead": "70",
       "reviews": "",
       "rating": ""
     },
@@ -72,8 +72,8 @@
       "userId": "67f8997g87g8665554",
       "title": "Witch Hunt",
       "genre": "Fantasy",
-      "pageCount": "89",
-      "pagesRead": "0",
+      "pageCount": "22",
+      "pagesRead": "22",
       "reviews": "",
       "rating": ""
     },
@@ -82,8 +82,8 @@
       "userId": "67f8997g87g8665554",
       "title": "Rich Dad Poor Dad",
       "genre": "Business",
-      "pageCount": "100",
-      "pagesRead": "100",
+      "pageCount": "200",
+      "pagesRead": "105",
       "reviews": "An awesome read about money",
       "rating": ""
     },
@@ -93,7 +93,7 @@
       "genre": "Romance",
       "pageCount": "561",
       "userId": "67f8997g87g8665554",
-      "pagesRead": "0",
+      "pagesRead": "561",
       "reviews": "",
       "rating": ""
     }
