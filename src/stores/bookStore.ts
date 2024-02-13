@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { GetAllBooks, AddBook, UpdateBook } from '@/services/books/api'
 import type { Book } from '@/types/Books/Book'
 import { useLocalStorage } from '@/composables/useLocalStorage'
+import type { User } from '@/types/auth/User'
 
 export const useBookStore = defineStore('books', () => {
   const { getStorageItem } = useLocalStorage()
@@ -23,14 +24,12 @@ export const useBookStore = defineStore('books', () => {
     const genres = Books.value.map((book) => {
       return book.genre
     })
-    console.log([...new Set(genres)])
     return [...new Set(genres)]
   })
 
   //completed
   const completedBooks = computed(() => {
     const completed = Books.value.filter((book) => book.pagesRead === book.pageCount)
-    console.log('completed', completed)
     return completed
   })
 
@@ -41,8 +40,17 @@ export const useBookStore = defineStore('books', () => {
   })
 
   async function getAllBooks() {
+    const user: User = getStorageItem('user')
     const data: Book[] = await GetAllBooks()
-    Books.value = data.filter((book) => user.value.id === book.userId)
+
+    //for mock testing
+    if (user == null) {
+      const id = '67f8997g87g8665554'
+      Books.value = data.filter((book) => id === book.userId)
+      return
+    }
+
+    Books.value = data.filter((book) => user.id === book.userId)
   }
 
   async function addBook(book: Book) {
@@ -96,6 +104,7 @@ export const useBookStore = defineStore('books', () => {
     updateBookProgress,
     totalPagesRead,
     popularGenres,
-    completedBooks
+    completedBooks,
+    user
   }
 })
