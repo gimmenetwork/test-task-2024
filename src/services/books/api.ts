@@ -11,11 +11,6 @@ export const GetAllBooks = async () => {
   return data
 }
 
-// export const GetBookById = async (id:string) => {
-//     const users = await axios.get(`${booksUrl}/${id}`)
-
-// }
-
 export const AddBook = async (book: Book) => {
   //backend should fill other parts
   const data = await axios.post(`${booksUrl}`, book)
