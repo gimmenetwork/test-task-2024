@@ -56,6 +56,14 @@ const Navbar = () => {
             <div>
                 {/*LOGO*/}
                 <Link to="/" className='text-2xl font-bold text-blue-700 flex items-center gap-2'><FaBlog className='inline-block'/>Books</Link>
+
+                {/* nav items for large devices */}
+
+                <ul>
+                    {navItems.map(({link, path}) => (
+                        <Link key = {path} to={path} className='block text-base text-black'>{link}</Link>
+                    ))}
+                </ul>
             </div>
         </nav>
     </header>
