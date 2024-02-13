@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import { useBookStore } from '@/stores/bookStore'
 
 const router = useRouter()
 const { authLogout } = useAuthStore()
+const { user } = useBookStore()
 
 function logout() {
   authLogout()
@@ -31,7 +33,23 @@ function logout() {
         <ul
           class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
           <li>
-            <button class="text-bermuda-gray-800 px-4 py-2" @click="logout">Logout</button>
+            <p class="mt-2">
+              <span>
+                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="ml-8"
+                  viewBox="0 0 20 20">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+              </span>
+              <span class="pl-2">{{ user?.firstname }} </span>
+              <span class="pl-2">{{ user?.lastname }}</span>
+            </p>
+          </li>
+          <li>
+            <button class="text-white border rounded-xl mt-2 pt-2 bg-red-500 pl-3 pr-4 py-2"
+              @click="logout">Logout</button>
           </li>
         </ul>
       </div>
