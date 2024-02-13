@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import NavbarLayout from '@/components/layout/NavbarLayout.vue'
+import TheNavbar from '@/components/layout/TheNavbar.vue'
 import BookView from '@/components/BookView.vue'
 
 </script>
 
 <template>
-  <NavbarLayout />
+  <TheNavbar />
   <BookView />
 </template>
