@@ -5,37 +5,41 @@
             <h2 class="mb-5 text-center text-2xl font-semibold">Register</h2>
             <form
                 @submit.prevent="registerAndLogin"
-                class="flex flex-col gap-y-2.5"
+                class="flex flex-col gap-y-4"
             >
-                <input
-                    required
-                    type="text"
-                    class="input"
-                    v-model="username"
-                    placeholder="Pick a username"
-                />
-                <div class="relative">
+                <div class="relative w-full">
+                    <label for="username" class="sr-only">Username</label>
+                    <input
+                        required
+                        type="text"
+                        id="username"
+                        class="input"
+                        v-model="form.username"
+                        placeholder="Pick a username"
+                    />
                     <p
-                        v-if="usernameError"
-                        class="absolute -top-6 text-red-500"
+                        v-if="submitted && !usernameValid"
+                        class="absolute -bottom-2 text-red-500"
                     >
-                        {{ usernameError }}
+                        Username must be 6+ characters long.
                     </p>
                 </div>
 
-                <input
-                    required
-                    class="input"
-                    type="password"
-                    v-model="password"
-                    placeholder="Choose a password"
-                />
-                <div class="relative">
+                <div class="relative w-full">
+                    <label for="password" class="sr-only">Password</label>
+                    <input
+                        required
+                        class="input"
+                        id="password"
+                        type="password"
+                        v-model="form.password"
+                        placeholder="Choose a password"
+                    />
                     <p
-                        v-if="passwordError"
-                        class="absolute -top-6 text-red-500"
+                        v-if="submitted && !passwordValid"
+                        class="absolute -bottom-2 text-red-500"
                     >
-                        {{ passwordError }}
+                        Password must be 10+ characters long.
                     </p>
                 </div>
 
@@ -54,40 +58,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, reactive, computed } from 'vue';
 import { useAuthStore } from '@/store/auth';
+import { isValidUsername, isValidPassword } from '@/utils/validations';
+import { User } from '@/types';
 
 export default defineComponent({
     setup() {
-        const username = ref('');
-        const password = ref('');
-        const usernameError = ref('');
-        const passwordError = ref('');
+        const form = reactive<User>({
+            username: '',
+            password: '',
+        });
+
+        const submitted = ref<boolean>(false);
+
+        const usernameValid = computed(() => isValidUsername(form.username));
+        const passwordValid = computed(() => isValidPassword(form.password));
+
         const authStore = useAuthStore();
 
-        const validateInput = () => {
-            usernameError.value =
-                username.value.length < 6
-                    ? 'Username must be at least 6 characters long.'
-                    : '';
-            passwordError.value =
-                password.value.length < 10
-                    ? 'Password must be at least 10 characters long.'
-                    : '';
-            return !usernameError.value && !passwordError.value;
-        };
-
         const registerAndLogin = async () => {
-            if (validateInput()) {
-                await authStore.register(username.value, password.value);
+            submitted.value = true;
+            if (usernameValid.value && passwordValid.value) {
+                await authStore.register(form.username, form.password);
             }
         };
 
         return {
-            username,
-            password,
-            usernameError,
-            passwordError,
+            form,
+            submitted,
+            usernameValid,
+            passwordValid,
             registerAndLogin,
         };
     },
