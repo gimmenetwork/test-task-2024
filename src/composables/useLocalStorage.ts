@@ -11,13 +11,23 @@ export function useLocalStorage() {
     }
   }
 
-  // function setItem(key:string, value:string){
-  //     localStorage.setItem(key, JSON.stringify(value))
-  // }
+  function setStorageItem(key: string, value: string) {
+    try {
+      const data = localStorage.setItem(key, value)
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
-  // function removeItem(key:string){
-  //     localStorage.removeItem(key)
-  // }
+  function removeStorageItem(key: string) {
+    try {
+      const data = localStorage.removeItem(key)
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   function localStorageSetup(key: string, value: User) {
     try {
@@ -36,5 +46,5 @@ export function useLocalStorage() {
     }
   }
 
-  return { localStorageSetup, getStorageItem }
+  return { localStorageSetup, getStorageItem, removeStorageItem, setStorageItem }
 }
