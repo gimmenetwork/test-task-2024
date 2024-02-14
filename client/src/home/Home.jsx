@@ -4,6 +4,7 @@ import BestSellerBooks from './BestSellerBooks'
 import FavBook from './FavBook'
 import PromoBanner from './PromoBanner'
 import OtherBooks from './OtherBooks'
+// import Testimonials from './Testimonials'
 
 export const Home = () => {
   return (
@@ -13,6 +14,7 @@ export const Home = () => {
       <FavBook />
       <PromoBanner />
       <OtherBooks />
+      {/* <Testimonials /> */}
     </div>
   )
 }
