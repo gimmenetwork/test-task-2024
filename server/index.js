@@ -40,11 +40,11 @@ async function run() {
     });
 
     // get all books from the db : using get method
-    app.get("/all-books", async (req, res) => {
-      const books = await bookCollections.find();
-      const result = await books.toArray();
-      res.send(result);
-    })
+    // app.get("/all-books", async (req, res) => {
+    //   const books = await bookCollections.find();
+    //   const result = await books.toArray();
+    //   res.send(result);
+    // })
 
     // update a book in the db : using patch method
     app.patch("/book/:id", async(req, res) => {
@@ -82,12 +82,20 @@ async function run() {
       res.send(result);
     })
 
+    // to get single book data
+    app.get("/book/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const result = await bookCollections.findOne(filter);
+      res.send(result);
+    })
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close();
+    // await client.close();
   }
 }
 run().catch(console.dir);
