@@ -20,7 +20,7 @@ const BookCards = ({ headline, books }) => {
       <h2 className='text-5xl text-center font-bold text-black my-5'>{headline}</h2>
 
       {/* book cards */}
-      <div>
+      <div className='mt-12'>
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -47,10 +47,10 @@ const BookCards = ({ headline, books }) => {
 
           {
             books.map(book => <SwiperSlide key={book._id}>
-              <Link to="/">
-                <div>
+              <Link to={`/book/${book._id}`}>
+                <div className='relative'>
                   <img src={book.imageURL} alt='' />
-                  <div className='bg-blue-600 hover:bg-black p-2 rounded'>
+                  <div className='absolute top-3 right-3 bg-blue-600 hover:bg-black p-2 rounded'>
                     <FaCartShopping className='w-4 h-4 text-white'/>
                   </div>
                 </div>
