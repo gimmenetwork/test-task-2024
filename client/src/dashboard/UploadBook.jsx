@@ -29,10 +29,47 @@ const UploadBook = () => {
     setSelectedBookCategories(event.target.value)
   }
 
+  // handle book submission
+  const handleBookSubmission = (event) => {
+    event.preventDefault()
+    const form = event.target
+
+    const bookTitle = form.bookTitle.value
+    const authorName = form.authorName.value
+    const imageURL = form.imageURL.value
+    const category = form.categoryName.value
+    const bookDescription = form.bookDescription.value
+    const bookPDFURL = form.bookPDFURL.value
+
+    const bookObj = {
+      bookTitle,
+      authorName,
+      imageURL,
+      category,
+      bookDescription,
+      bookPDFURL
+    }
+
+    console.log(bookObj)
+
+    // send data to the server
+    fetch("http://localhost:3000/upload-book", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bookObj)
+    }).then(res => res.json()).then(data => {
+      // console.log(data)
+      alert('Book Uploaded Successfully')
+      form.reset()
+    })
+  }
+
   return (
     <div className='px-4 my-12'>
       <h2 className='mb-8 text-3xl font-bold'>Upload A Book</h2>
-      <form className="flex lg:w-[1180px] flex-col flex-wrap gap-4">
+      <form onSubmit={handleBookSubmission} className="flex lg:w-[1180px] flex-col flex-wrap gap-4">
         {/* First Row */}
         <div className='flex gap-8'>
           {/* bookTitle */}
