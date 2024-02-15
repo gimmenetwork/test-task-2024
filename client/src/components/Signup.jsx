@@ -85,7 +85,7 @@ const Signup = () => {
 
                         <hr />
                         <div className='flex w-full items-center flex-col mt-5 gap-3'>
-                            <button onClick={handleRegister} className='block'><img src={googleLogo} alt='' className='w-12 h-12 inline-block' />Loogin with Google</button>
+                            <button onClick={handleRegister} className='block'><img src={googleLogo} alt='' className='w-12 h-12 inline-block' />SignUp with Google</button>
                         </div>
                     </div>
                 </div>

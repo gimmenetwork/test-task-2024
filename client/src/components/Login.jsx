@@ -5,7 +5,7 @@ import googleLogo from '../assets/google-logo.svg'
 
 const Login = () => {
     const { login, loginwithGooogle } = useContext(AuthContext)
-    const [error, setError] = useState("error")
+    const [error, setError] = useState("")
 
     const location = useLocation()
     const navigate = useNavigate()
@@ -70,16 +70,17 @@ const Login = () => {
                                     <input id="password" name="password" type="password" className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
 
                                 </div>
+                                <p className='text-red-600'>{error ? "Email or Password doesn't match :(" : ""}</p>
                                 <p>If you have an account. Please <Link to="/sign-up" className='text-blue-600'>Sign-Up</Link></p>
                                 <div className="relative">
-                                    <button className="bg-blue-500 text-white rounded-md px-6 py-2">Submit</button>
+                                    <button className="bg-blue-500 text-white rounded-md px-6 py-2">Login</button>
                                 </div>
                             </form>
                         </div>
 
                         <hr />
                         <div className='flex w-full items-center flex-col mt-5 gap-3'>
-                            <button onClick={handleRegister} className='block'><img src={googleLogo} alt='' className='w-12 h-12 inline-block' />Loogin with Google</button>
+                            <button onClick={handleRegister} className='block'><img src={googleLogo} alt='' className='w-12 h-12 inline-block' />Login with Google</button>
                         </div>
                     </div>
                 </div>
