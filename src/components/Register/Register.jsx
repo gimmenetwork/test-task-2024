@@ -45,6 +45,16 @@ const Register = () => {
     setErrMsg('')
   }, [username, pwd, matchPwd])
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!USER_REGEX.test(username) || !PWD_REGEX.test(pwd)) {
+      setErrMsg('Invalid Entry')
+      returnNufc
+    }
+    console.log(username, pwd)
+    setSuccess(true)
+  }
+
   return (
     <section className='w-[100%] max-w-[420px] min-h-[400px] flex flex-col justify-start p-1 bg-white shadow-bshadow2 px-10 py-12 rounded-3xl'>
       <p
@@ -57,7 +67,10 @@ const Register = () => {
 
       <h2 className='text-3xl font-semibold'>{TEXTS.title}</h2>
       <p className='font-medium text-sm text-gray-400 mt-2'>{TEXTS.subtitle}</p>
-      <form className='flex flex-col justify-evenly flex-1 pb-1 mt-4'>
+      <form
+        onSubmit={handleSubmit}
+        className='flex flex-col justify-evenly flex-1 pb-1 mt-4'
+      >
         <div className='relative mb-3'>
           <label
             htmlFor={TEXTS.fields.username.name}
