@@ -23,10 +23,18 @@ module.exports = {
           tertiary: '#90c6cd',
         },
         grey: '#e8f0f1',
+        lightgrey: '#fafafa',
+        success: '#4bb543',
+        error: '#ed4337',
+        info: '#ffc300',
       },
     },
     fontFamily: {
       primary: ['Poppins, sans-serif'],
+    },
+    boxShadow: {
+      bshadow1: '0px 2px 40px 0px rgba(8,70,78,.08)',
+      bshadow2: '0px 0px 30px 0px rgba(8,70,81,.06)',
     },
   },
   plugins: [],

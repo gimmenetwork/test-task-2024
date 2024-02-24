@@ -1,0 +1,213 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "The Lord of the Rings",
+      "publicationDate": "1954-07-29",
+      "author": "J. R. R. Tolkien",
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "adventure",
+        "fiction",
+        "novels",
+        "literature"
+      ],
+      "pages": 1216,
+      "reviews": {}
+    },
+    {
+      "id": 2,
+      "title": "The Cyberiad",
+      "publicationDate": "1965-01-01",
+      "author": "Stanislaw Lem",
+      "genres": [
+        "science fiction",
+        "humor",
+        "speculative fiction",
+        "short stories",
+        "fantasy"
+      ],
+      "pages": 295,
+      "reviews": {}
+    },
+    {
+      "id": 3,
+      "title": "Dune",
+      "publicationDate": "1965-01-01",
+      "author": "Frank Herbert",
+      "genres": ["science fiction", "novel", "adventure"],
+      "pages": 658,
+      "reviews": {}
+    },
+    {
+      "id": 4,
+      "title": "The Hitchhiker's Guide to the Galaxy",
+      "publicationDate": "1979-10-12",
+      "author": "Douglas Adams",
+      "genres": ["science fiction", "fantasy", "adventure"],
+      "pages": 216,
+      "reviews": {}
+    },
+    {
+      "id": 5,
+      "title": "The Restaurant at the End of the Universe",
+      "publicationDate": "1980-10-28",
+      "author": "Douglas Adams",
+      "genres": ["science fiction", "fantasy", "adventure"],
+      "pages": 208,
+      "reviews": {}
+    },
+    {
+      "id": 6,
+      "title": "Life, the Universe and Everything",
+      "publicationDate": "1982-08-10",
+      "author": "Douglas Adams",
+      "genres": ["science fiction", "fantasy", "adventure"],
+      "pages": 160,
+      "reviews": {}
+    },
+    {
+      "id": 6,
+      "title": "So Long, and Thanks for All the Fish",
+      "publicationDate": "1984-11-09",
+      "author": "Douglas Adams",
+      "genres": ["science fiction", "fantasy", "adventure"],
+      "pages": 192,
+      "reviews": {}
+    },
+    {
+      "id": 7,
+      "title": "Harry Potter and the Philosopher's Stone",
+      "publicationDate": "1997-06-26",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 223,
+      "reviews": {}
+    },
+    {
+      "id": 8,
+      "title": "Harry Potter and the Chamber of Secrets",
+      "publicationDate": "1998-07-02",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 251,
+      "reviews": {}
+    },
+    {
+      "id": 9,
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "publicationDate": "1999-07-08",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 317,
+      "reviews": {}
+    },
+    {
+      "id": 10,
+      "title": "Harry Potter and the Goblet of Fire",
+      "publicationDate": "2000-07-08",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 636,
+      "reviews": {}
+    },
+    {
+      "id": 11,
+      "title": "Harry Potter and the Order of the Phoenix",
+      "publicationDate": "2003-06-21",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 766,
+      "reviews": {}
+    },
+    {
+      "id": 12,
+      "title": "Harry Potter and the Half-Blood Prince",
+      "publicationDate": "2005-07-16",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 607,
+      "reviews": {}
+    },
+    {
+      "id": 13,
+      "title": "Harry Potter and the Deathly Hallows",
+      "publicationDate": "2007-07-21",
+      "author": "J. K. Rowling",
+      "genres": ["fantasy", "adventure"],
+      "pages": 607,
+      "reviews": {}
+    },
+    {
+      "id": 14,
+      "title": "The Hobbit",
+      "publicationDate": "1937-09-21",
+      "author": "J. R. R. Tolkien",
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "adventure",
+        "fiction",
+        "novels",
+        "literature"
+      ],
+      "pages": 310,
+      "reviews": {}
+    },
+    {
+      "id": 15,
+      "title": "A Game of Thrones",
+      "publicationDate": "1996-08-01",
+      "author": "George R. R. Martin",
+      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "pages": 694,
+      "reviews": {}
+    },
+    {
+      "id": 16,
+      "title": "A Clash of Kings",
+      "publicationDate": "1998-11-16",
+      "author": "George R. R. Martin",
+      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "pages": 761,
+      "reviews": {}
+    },
+    {
+      "id": 17,
+      "title": "A Storm of Swords",
+      "publicationDate": "2000-08-08",
+      "author": "George R. R. Martin",
+      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "pages": 973,
+      "reviews": {}
+    },
+    {
+      "id": 18,
+      "title": "A Feast for Crows",
+      "publicationDate": "2005-10-17",
+      "author": "George R. R. Martin",
+      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "pages": 753,
+      "reviews": {}
+    },
+    {
+      "id": 19,
+      "title": "A Dance with Dragons",
+      "publicationDate": "2011-07-12",
+      "author": "George R. R. Martin",
+      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "pages": 1016,
+      "reviews": {}
+    },
+    {
+      "id": 20,
+      "title": "The Alchemist",
+      "publicationDate": "1988-02-23",
+      "author": "Paulo Coelho",
+      "genres": ["quest", "novel", "adventure", "fantasy fiction"],
+      "pages": 163,
+      "reviews": {}
+    }
+  ]
+}
