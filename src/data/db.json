@@ -1,5 +1,11 @@
 {
-  "user": {},
+  "user": [
+    {
+      "id": "cc70",
+      "username": "test4",
+      "pwd": "123!@#Qa"
+    }
+  ],
   "books": [
     {
       "id": 1,
@@ -40,7 +46,11 @@
       "publicationDate": "1965-01-01",
       "author": "Frank Herbert",
       "image": "https://m.media-amazon.com/images/I/81TmnPZWb0L._SY466_.jpg",
-      "genres": ["science fiction", "novel", "adventure"],
+      "genres": [
+        "science fiction",
+        "novel",
+        "adventure"
+      ],
       "pages": 658,
       "reviews": {}
     },
@@ -50,7 +60,11 @@
       "publicationDate": "1979-10-12",
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/816nXdf490L._SY466_.jpg",
-      "genres": ["science fiction", "fantasy", "adventure"],
+      "genres": [
+        "science fiction",
+        "fantasy",
+        "adventure"
+      ],
       "pages": 216,
       "reviews": {}
     },
@@ -60,7 +74,11 @@
       "publicationDate": "1980-10-28",
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/81c+nZwjzDL._SY466_.jpg",
-      "genres": ["science fiction", "fantasy", "adventure"],
+      "genres": [
+        "science fiction",
+        "fantasy",
+        "adventure"
+      ],
       "pages": 208,
       "reviews": {}
     },
@@ -70,7 +88,11 @@
       "publicationDate": "1982-08-10",
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/81wGDmo3osL._SY466_.jpg",
-      "genres": ["science fiction", "fantasy", "adventure"],
+      "genres": [
+        "science fiction",
+        "fantasy",
+        "adventure"
+      ],
       "pages": 160,
       "reviews": {}
     },
@@ -80,7 +102,11 @@
       "publicationDate": "1984-11-09",
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/81zjgwacswL._SY466_.jpg",
-      "genres": ["science fiction", "fantasy", "adventure"],
+      "genres": [
+        "science fiction",
+        "fantasy",
+        "adventure"
+      ],
       "pages": 192,
       "reviews": {}
     },
@@ -90,7 +116,10 @@
       "publicationDate": "1997-06-26",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/5152XTq24+L._SY445_SX342_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 223,
       "reviews": {}
     },
@@ -100,7 +129,10 @@
       "publicationDate": "1998-07-02",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/91WqeCn-PxL._SY466_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 251,
       "reviews": {}
     },
@@ -110,7 +142,10 @@
       "publicationDate": "1999-07-08",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/51RjWBYGweL._SY445_SX342_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 317,
       "reviews": {}
     },
@@ -120,7 +155,10 @@
       "publicationDate": "2000-07-08",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/91SI2owt1XL._SY466_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 636,
       "reviews": {}
     },
@@ -130,7 +168,10 @@
       "publicationDate": "2003-06-21",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/41rJXvwOiOL._SY445_SX342_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 766,
       "reviews": {}
     },
@@ -140,7 +181,10 @@
       "publicationDate": "2005-07-16",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/61sXBXmAWML._SY466_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 607,
       "reviews": {}
     },
@@ -150,7 +194,10 @@
       "publicationDate": "2007-07-21",
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/811t1pfIZXL._SY466_.jpg",
-      "genres": ["fantasy", "adventure"],
+      "genres": [
+        "fantasy",
+        "adventure"
+      ],
       "pages": 607,
       "reviews": {}
     },
@@ -177,7 +224,12 @@
       "publicationDate": "1996-08-01",
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/71X8ahevL+L._SY466_.jpg",
-      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "novel",
+        "fantasy fiction"
+      ],
       "pages": 694,
       "reviews": {}
     },
@@ -187,7 +239,12 @@
       "publicationDate": "1998-11-16",
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41s6ph2CVTL._SY445_SX342_.jpg",
-      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "novel",
+        "fantasy fiction"
+      ],
       "pages": 761,
       "reviews": {}
     },
@@ -197,7 +254,12 @@
       "publicationDate": "2000-08-08",
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41Wwu9zuzIL._SY445_SX342_.jpg",
-      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "novel",
+        "fantasy fiction"
+      ],
       "pages": 973,
       "reviews": {}
     },
@@ -207,7 +269,12 @@
       "publicationDate": "2005-10-17",
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41a50IW1ceL._SY445_SX342_.jpg",
-      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "novel",
+        "fantasy fiction"
+      ],
       "pages": 753,
       "reviews": {}
     },
@@ -217,7 +284,12 @@
       "publicationDate": "2011-07-12",
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41GHrsYqdeL._SY445_SX342_.jpg",
-      "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+      "genres": [
+        "fantasy",
+        "high-fantasy",
+        "novel",
+        "fantasy fiction"
+      ],
       "pages": 1016,
       "reviews": {}
     },
@@ -227,7 +299,12 @@
       "publicationDate": "1988-02-23",
       "author": "Paulo Coelho",
       "image": "https://m.media-amazon.com/images/I/51bDuU2p5zL._SY445_SX342_.jpg",
-      "genres": ["quest", "novel", "adventure", "fantasy fiction"],
+      "genres": [
+        "quest",
+        "novel",
+        "adventure",
+        "fantasy fiction"
+      ],
       "pages": 163,
       "reviews": {}
     }

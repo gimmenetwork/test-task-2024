@@ -53,8 +53,20 @@ const Register = () => {
       setErrMsg('Invalid Entry')
       return
     }
-    console.log(username, pwd)
-    setSuccess(true)
+    let regData = { username, pwd }
+
+    fetch(`${process.env.REACT_APP_JSON_SERVER_URL}/user`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(regData),
+    })
+      .then((res) => {
+        setSuccess(true)
+        console.log('Registration Data', regData)
+      })
+      .catch((err) => {
+        setErrMsg(`Server Error: ${err}`)
+      })
   }
 
   return (
