@@ -73,7 +73,7 @@ button {
 } */
 
 .btn {
-  @apply rounded-full uppercase tracking-[1.02px] flex items-center justify-center transition-all;
+  @apply rounded-xl uppercase tracking-[1.02px] flex items-center justify-center transition-all cursor-pointer;
 }
 
 .btn-sm {

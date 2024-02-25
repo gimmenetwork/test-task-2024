@@ -1,5 +1,6 @@
 {
-  "data": [
+  "user": {},
+  "books": [
     {
       "id": 1,
       "title": "The Lord of the Rings",

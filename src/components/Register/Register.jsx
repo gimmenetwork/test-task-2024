@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import { TEXTS } from './Register.text'
 import { USER_REGEX, PWD_REGEX } from '../../utils/Utils'
 import ValidationMessage from '../../utils/InputHelpers'
@@ -49,7 +51,7 @@ const Register = () => {
     e.preventDefault()
     if (!USER_REGEX.test(username) || !PWD_REGEX.test(pwd)) {
       setErrMsg('Invalid Entry')
-      returnNufc
+      return
     }
     console.log(username, pwd)
     setSuccess(true)
@@ -131,7 +133,7 @@ const Register = () => {
           />
         </div>
 
-        <div className='relative mb-3'>
+        <div className='relative mb-6'>
           <label
             htmlFor={TEXTS.fields.confirmPassword.name}
             className='text-md font-normal'
@@ -164,14 +166,15 @@ const Register = () => {
           className='btn btn-lg btn-accent'
           disabled={!validName || !validPwd || !validMatch}
         >
-          Sign Up
+          {TEXTS.btnText}
         </button>
       </form>
-      <p className='text-xs mt-6'>
-        {TEXTS.registered}
-        <br />
-        <a href='#'>{TEXTS.signIn}</a>
-      </p>
+      <div className='text-xs mt-6 flex justify-center items-center'>
+        <p>{TEXTS.registered}</p>
+        <Link to='/sign-in' className='text-accent ml-1'>
+          {TEXTS.signIn}
+        </Link>
+      </div>
     </section>
   )
 }

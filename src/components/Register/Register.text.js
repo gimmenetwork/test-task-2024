@@ -43,6 +43,7 @@ export const TEXTS = {
       note: 'Must match the password input field.',
     },
   },
+  btnText: 'Sign Up',
   registered: 'Already registered?',
   signIn: 'Sign In',
 }
