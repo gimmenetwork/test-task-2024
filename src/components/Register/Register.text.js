@@ -16,7 +16,7 @@ export const TEXTS = {
         </>
       ),
     },
-    password: {
+    pwd: {
       name: 'password',
       label: 'Password',
       placeholder: 'Enter Password',
@@ -36,7 +36,7 @@ export const TEXTS = {
         </>
       ),
     },
-    confirmPassword: {
+    confirmPwd: {
       name: 'confirm_password',
       label: 'Confirm Password',
       placeholder: 'Enter Password to confirm',
@@ -44,6 +44,8 @@ export const TEXTS = {
     },
   },
   btnText: 'Sign Up',
-  registered: 'Already registered?',
-  signIn: 'Sign In',
+  login: {
+    text: 'Already registered?',
+    cta: 'Sign In',
+  },
 }

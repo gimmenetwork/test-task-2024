@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import { Link } from 'react-router-dom'
 
+import AuthPageLayout from '../Layout/AuthPageLayout'
 import { TEXTS } from './Register.text'
 import { USER_REGEX, PWD_REGEX } from '../../utils/Utils'
 import ValidationMessage from '../../utils/InputHelpers'
@@ -65,129 +66,136 @@ const Register = () => {
         console.log('Registration Data', regData)
       })
       .catch((err) => {
-        setErrMsg(`Server Error: ${err}`)
+        setErrMsg(`Server Error: ${err.message}`)
       })
   }
 
   return (
-    <section className='w-[100%] max-w-[420px] min-h-[400px] flex flex-col justify-start p-1 bg-white shadow-bshadow2 px-10 py-12 rounded-3xl'>
-      <p
-        ref={errRef}
-        className={errMsg ? 'errmsg' : 'offscreen'}
-        aria-live='assertive'
+    <AuthPageLayout>
+      <section
+        id='register'
+        className='relative w-[100%] max-w-[420px] min-h-[400px] flex flex-col justify-start bg-white shadow-bshadow2 px-10 py-12 rounded-3xl'
       >
-        {errMsg}
-      </p>
-
-      <h2 className='text-3xl font-semibold'>{TEXTS.title}</h2>
-      <p className='font-medium text-sm text-gray-400 mt-2'>{TEXTS.subtitle}</p>
-      <form
-        onSubmit={handleSubmit}
-        className='flex flex-col justify-evenly flex-1 pb-1 mt-4'
-      >
-        <div className='relative mb-3'>
-          <label
-            htmlFor={TEXTS.fields.username.name}
-            className='text-md font-normal'
-          >
-            {TEXTS.fields.username.label}
-          </label>
-          <input
-            type='text'
-            id={TEXTS.fields.username.name}
-            name={TEXTS.fields.username.name}
-            className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-            ref={userRef}
-            autoComplete='off'
-            required
-            placeholder={TEXTS.placeholder}
-            aria-invalid={validName}
-            aria-describedby='uid-note'
-            onChange={(e) => setUsername(e.target.value)}
-            onFocus={() => setUserFocus(true)}
-            onBlur={() => setUserFocus(false)}
-          />
-          {validName && <SuccessIcon />}
-          {validName || !username ? null : <ErrorIcon />}
-          <ValidationMessage
-            isShown={userFocus && username && !validName}
-            id='uid-note'
-            text={TEXTS.fields.username.note}
-          />
-        </div>
-
-        <div className='relative mb-3'>
-          <label
-            htmlFor={TEXTS.fields.password.name}
-            className='text-md font-normal'
-          >
-            {TEXTS.fields.password.label}
-          </label>
-          <input
-            type='password'
-            id={TEXTS.fields.password.name}
-            name={TEXTS.fields.password.name}
-            className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-            required
-            placeholder={TEXTS.fields.password.placeholder}
-            aria-invalid={validPwd}
-            aria-describedby='pwd-note'
-            onChange={(e) => setPwd(e.target.value)}
-            onFocus={() => setPwdFocus(true)}
-            onBlur={() => setPwdFocus(false)}
-          />
-          {validPwd && <SuccessIcon />}
-          {validPwd || !pwd ? null : <ErrorIcon />}
-          <ValidationMessage
-            isShown={pwdFocus && !validPwd}
-            id='pwd-note'
-            text={TEXTS.fields.password.note}
-          />
-        </div>
-
-        <div className='relative mb-6'>
-          <label
-            htmlFor={TEXTS.fields.confirmPassword.name}
-            className='text-md font-normal'
-          >
-            {TEXTS.fields.confirmPassword.label}
-          </label>
-          <input
-            type='password'
-            id={TEXTS.fields.confirmPassword.name}
-            name={TEXTS.fields.confirmPassword.name}
-            className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-            required
-            placeholder={TEXTS.fields.confirmPassword.placeholder}
-            aria-invalid={validMatch}
-            aria-describedby='confirm-note'
-            onChange={(e) => setMatchPwd(e.target.value)}
-            onFocus={() => setMatchFocus(true)}
-            onBlur={() => setMatchFocus(false)}
-          />
-          {validMatch && matchPwd && <SuccessIcon />}
-          {validMatch || !matchPwd ? null : <ErrorIcon />}
-          <ValidationMessage
-            isShown={matchFocus && !validMatch}
-            id='confirm-note'
-            text={TEXTS.fields.confirmPassword.note}
-          />
-        </div>
-
-        <button
-          className='btn btn-lg btn-accent'
-          disabled={!validName || !validPwd || !validMatch}
+        <p
+          ref={errRef}
+          className={`absolute w-[100%] max-w-[340px] bg-error px-4 py-2 text-white rounded-2xl -top-14 ${
+            errMsg ? 'flex' : 'hidden'
+          }`}
+          aria-live='assertive'
         >
-          {TEXTS.btnText}
-        </button>
-      </form>
-      <div className='text-xs mt-6 flex justify-center items-center'>
-        <p>{TEXTS.registered}</p>
-        <Link to='/sign-in' className='text-accent ml-1'>
-          {TEXTS.signIn}
-        </Link>
-      </div>
-    </section>
+          {errMsg}
+        </p>
+
+        <h2 className='text-3xl font-semibold'>{TEXTS.title}</h2>
+        <form
+          onSubmit={handleSubmit}
+          className='flex flex-col justify-evenly flex-1 pb-1 mt-4'
+        >
+          <div className='relative mb-3'>
+            <label
+              htmlFor={TEXTS.fields.username.name}
+              className='text-md font-normal'
+            >
+              {TEXTS.fields.username.label}
+            </label>
+            <input
+              type='text'
+              id={TEXTS.fields.username.name}
+              name={TEXTS.fields.username.name}
+              className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent placeholder:italic placeholder:text-xs'
+              ref={userRef}
+              autoComplete='off'
+              required
+              placeholder={TEXTS.fields.username.placeholder}
+              aria-invalid={validName}
+              aria-describedby='uid-note'
+              onChange={(e) => setUsername(e.target.value)}
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+            />
+            {validName && <SuccessIcon />}
+            {validName || !username ? null : <ErrorIcon />}
+            <ValidationMessage
+              isShown={userFocus && username && !validName}
+              id='uid-note'
+              text={TEXTS.fields.username.note}
+            />
+          </div>
+
+          <div className='relative mb-3'>
+            <label
+              htmlFor={TEXTS.fields.pwd.name}
+              className='text-md font-normal'
+            >
+              {TEXTS.fields.pwd.label}
+            </label>
+            <input
+              type='password'
+              id={TEXTS.fields.pwd.name}
+              name={TEXTS.fields.pwd.name}
+              className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent placeholder:italic placeholder:text-xs'
+              required
+              placeholder={TEXTS.fields.pwd.placeholder}
+              aria-invalid={validPwd}
+              aria-describedby='pwd-note'
+              onChange={(e) => setPwd(e.target.value)}
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+            {validPwd && <SuccessIcon />}
+            {validPwd || !pwd ? null : <ErrorIcon />}
+            <ValidationMessage
+              isShown={pwdFocus && !validPwd}
+              id='pwd-note'
+              text={TEXTS.fields.pwd.note}
+            />
+          </div>
+
+          <div className='relative mb-6'>
+            <label
+              htmlFor={TEXTS.fields.confirmPwd.name}
+              className='text-md font-normal'
+            >
+              {TEXTS.fields.confirmPwd.label}
+            </label>
+            <input
+              type='password'
+              id={TEXTS.fields.confirmPwd.name}
+              name={TEXTS.fields.confirmPwd.name}
+              className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent placeholder:italic placeholder:text-xs'
+              required
+              placeholder={TEXTS.fields.confirmPwd.placeholder}
+              aria-invalid={validMatch}
+              aria-describedby='confirm-note'
+              onChange={(e) => setMatchPwd(e.target.value)}
+              onFocus={() => setMatchFocus(true)}
+              onBlur={() => setMatchFocus(false)}
+            />
+            {validMatch && matchPwd && <SuccessIcon />}
+            {validMatch || !matchPwd ? null : <ErrorIcon />}
+            <ValidationMessage
+              isShown={matchFocus && !validMatch}
+              id='confirm-note'
+              text={TEXTS.fields.confirmPwd.note}
+            />
+          </div>
+
+          <button
+            className='btn btn-lg btn-accent'
+            disabled={!validName || !validPwd || !validMatch}
+          >
+            {TEXTS.btnText}
+          </button>
+        </form>
+
+        <div className='text-xs mt-6 flex justify-center items-center'>
+          <p>{TEXTS.login.text}</p>
+          <Link to='/login' className='text-accent ml-1'>
+            {TEXTS.login.cta}
+          </Link>
+        </div>
+      </section>
+    </AuthPageLayout>
   )
 }
 

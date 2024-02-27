@@ -36,6 +36,11 @@ module.exports = {
       bshadow1: '0px 2px 40px 0px rgba(8,70,78,.08)',
       bshadow2: '0px 0px 30px 0px rgba(8,70,81,.06)',
     },
+    backgroundImage: {
+      register: 'url(./assets/images/alejandro-barba-rj9TiGkLRN8-unsplash.jpg)',
+      login: 'url(./assets/images/julia-kicova-g827ZOCwt30-unsplash.jpg)',
+      notfound: 'url(./assets/images/jaredd-craig-HH4WBGNyltc-unsplash.jpg)',
+    },
   },
   plugins: [],
 }

@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import './index.css'
 import App from './App'
-import SignIn from './components/SignIn'
+import Login from './components/Login'
 import Register from './components/Register'
 import NotFound404 from './components/NotFound404'
 
@@ -16,8 +16,8 @@ const router = createBrowserRouter([
     errorElement: <NotFound404 />,
   },
   {
-    path: '/sign-in',
-    element: <SignIn />,
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '/register',
