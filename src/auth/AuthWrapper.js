@@ -1,31 +1,19 @@
-import { createContext, useContext, useState } from 'react'
+import React, { useState } from 'react'
 
-// import routes
+import { Outlet } from 'react-router-dom'
 
-const AuthContext = createContext()
-export const AuthData = () => useContext(AuthContext)
+const AuthWrapper = () => {
+  const [user, setUser] = useState({ username: '', isAuthenticated: false })
 
-export const AuthWrapper = () => {
-  const [user, setUser] = useState({ name: '', isAuthenticated: false })
-
-  const login = (username, pwd) => {
-    return new Promise((resolve, reject) => {
-      if (pwd === 'password') {
-        setUser({ name: username, isAuthenticated: true })
-        resolve('success')
-      } else {
-        reject('Incorrect Password')
-      }
-    })
+  const login = (username) => {
+    setUser({ username: username, isAuthenticated: true })
   }
 
   const logout = () => {
-    setUser({ ...user, isAuthenticated: false })
+    setUser({ username: '', isAuthenticated: false })
   }
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      <>{/* // routes */}</>
-    </AuthContext.Provider>
-  )
+  return <Outlet context={{ user, login, logout }} />
 }
+
+export default AuthWrapper

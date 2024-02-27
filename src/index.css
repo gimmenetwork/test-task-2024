@@ -33,10 +33,10 @@ body {
   @apply bg-accent text-white hover:bg-accent-secondary disabled:opacity-50;
 }
 
-/* .btn-white {
+.btn-white {
   @apply bg-white text-secondary hover:bg-white/90;
 }
 
 .btn-outline {
   @apply bg-transparent border-2 border-accent text-secondary hover:bg-accent hover:border-transparent hover:text-white;
-} */
+}

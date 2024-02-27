@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import AuthPageLayout from '../Layout/AuthPageLayout'
+import AuthPageLayout from './AuthPageLayout'
 
 const NotFound404 = () => {
   return (
@@ -15,7 +15,7 @@ const NotFound404 = () => {
         <p className='font-medium text-md text-gray-400'>Page Not Found</p>
 
         <Link to='/' className='btn px-4 py-2 btn-accent'>
-          Go back to Home
+          Go back to Homepage
         </Link>
       </section>
     </AuthPageLayout>

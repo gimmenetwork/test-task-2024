@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useOutletContext } from 'react-router-dom'
 
 import AuthPageLayout from '../Layout/AuthPageLayout'
 import { TEXTS } from './Login.text'
@@ -10,6 +10,7 @@ const Login = () => {
   const userRef = useRef()
   const errRef = useRef()
   const navigate = useNavigate()
+  const context = useOutletContext()
 
   const [username, setUsername] = useState('')
   const [pwd, setPwd] = useState('')
@@ -43,6 +44,7 @@ const Login = () => {
           if (user.username === formData.username) {
             if (user.pwd === formData.pwd) {
               // success
+              context.login(user.username)
               console.log('Login successful')
               navigate('/')
             } else {
