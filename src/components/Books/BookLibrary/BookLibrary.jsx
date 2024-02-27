@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-import axios from 'axios'
+import { useOutletContext } from 'react-router-dom'
 
-const BookLibrary = () => {
-  const [books, setBooks] = useState([])
+const BookLibrary = ({ books }) => {
+  const context = useOutletContext()
   const [isOpen, setIsOpen] = useState(true)
-
-  useEffect(() => {
-    axios.get(`${process.env.REACT_APP_JSON_SERVER_URL}/books`).then((res) => {
-      setBooks(res.data)
-    })
-  }, [])
 
   return (
     <>
       <div className='flex flex-row items-center justify-between'>
         <h2 className='text-2xl font-semibold'>Our Book Library</h2>
         <button
-          className='flex lg:hidden'
+          className='flex lg:lg:hidden'
           onClick={() => setIsOpen((open) => !open)}
         >
           {isOpen ? (
-            <i className='ri-indeterminate-circle-fill text-2xl text-accent hover:text-accent-secondary'></i>
+            <i className='ri-arrow-up-s-line text-2xl text-accent hover:text-accent-secondary'></i>
           ) : (
-            <i className='ri-add-circle-fill text-2xl text-accent'></i>
+            <i className='ri-arrow-down-s-line text-2xl text-accent'></i>
           )}
         </button>
       </div>
@@ -33,18 +27,29 @@ const BookLibrary = () => {
           {books?.map((book) => (
             <li
               key={book.id}
-              className='flex flex-row justify-start items-start gap-4 mb-6 border-t border-[#666666] pt-6'
+              className='flex flex-row justify-between items-start mb-6 border-t border-[#666666] pt-6'
             >
-              <img src={book.image} alt={book.title} className='w-[50px]' />
-              <div className=''>
-                <h3 className='text-md'>{book.title}</h3>
-                <div className='meta'>
-                  <p className='text-xs'>
-                    {book.author},{' '}
-                    {new Date(book.publicationDate).getFullYear()}
-                  </p>
+              <div className='flex flex-row justify-start items-start gap-4'>
+                <img src={book.image} alt={book.title} className='w-[50px]' />
+                <div className='flex flex-col justify-start items-start gap-1'>
+                  <h3 className='text-md'>{book.title}</h3>
+                  <div className='meta flex flex-col gap-1'>
+                    <p className='flex flex-row gap-1 text-xs'>
+                      <i className='ri-quill-pen-fill'></i>
+                      {book.author},{' '}
+                      {new Date(book.publicationDate).getFullYear()}
+                    </p>
+                    <p className='flex flex-row gap-1 text-xs'>
+                      <i className='ri-book-open-line'></i>
+                      {book.pages}
+                    </p>
+                  </div>
                 </div>
               </div>
+
+              {context.user.isAuthenticated && (
+                <i className='ri-add-circle-fill text-2xl text-accent hover:text-accent-secondary'></i>
+              )}
             </li>
           ))}
         </ul>

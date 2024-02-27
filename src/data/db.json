@@ -3,22 +3,46 @@
     {
       "id": "d2d2",
       "username": "Test User 1",
-      "pwd": "123!@#Qa"
+      "pwd": "123!@#Qa",
+      "books": [
+        {
+          "id": "1",
+          "progress": "31",
+          "review": ""
+        },
+        {
+          "id": "15",
+          "progress": "0",
+          "review": ""
+        },
+        {
+          "id": "3",
+          "progress": "2",
+          "review": ""
+        }
+      ]
     },
     {
-      "id": "ec4a",
+      "id": "d2d3",
       "username": "Test User 2",
-      "pwd": "123!@#Qa"
-    },
-    {
-      "id": "edac",
-      "username": "Test User 3",
-      "pwd": "123!@#Qa"
-    },
-    {
-      "id": "eb3b",
-      "username": "Test User 4",
-      "pwd": "123!@#Qa"
+      "pwd": "123!@#Qa",
+      "books": [
+        {
+          "id": "1",
+          "progress": "31",
+          "review": ""
+        },
+        {
+          "id": "15",
+          "progress": "0",
+          "review": ""
+        },
+        {
+          "id": "3",
+          "progress": "2",
+          "review": ""
+        }
+      ]
     }
   ],
   "books": [
@@ -36,8 +60,7 @@
         "novels",
         "literature"
       ],
-      "pages": 1216,
-      "reviews": {}
+      "pages": 1216
     },
     {
       "id": "2",
@@ -52,8 +75,7 @@
         "short stories",
         "fantasy"
       ],
-      "pages": 295,
-      "reviews": {}
+      "pages": 295
     },
     {
       "id": "3",
@@ -62,8 +84,7 @@
       "author": "Frank Herbert",
       "image": "https://m.media-amazon.com/images/I/81TmnPZWb0L._SY466_.jpg",
       "genres": ["science fiction", "novel", "adventure"],
-      "pages": 658,
-      "reviews": {}
+      "pages": 658
     },
     {
       "id": "4",
@@ -72,8 +93,7 @@
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/816nXdf490L._SY466_.jpg",
       "genres": ["science fiction", "fantasy", "adventure"],
-      "pages": 216,
-      "reviews": {}
+      "pages": 216
     },
     {
       "id": "5",
@@ -82,8 +102,7 @@
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/81c+nZwjzDL._SY466_.jpg",
       "genres": ["science fiction", "fantasy", "adventure"],
-      "pages": 208,
-      "reviews": {}
+      "pages": 208
     },
     {
       "id": "6",
@@ -92,8 +111,7 @@
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/81wGDmo3osL._SY466_.jpg",
       "genres": ["science fiction", "fantasy", "adventure"],
-      "pages": 160,
-      "reviews": {}
+      "pages": 160
     },
     {
       "id": "7",
@@ -102,8 +120,7 @@
       "author": "Douglas Adams",
       "image": "https://m.media-amazon.com/images/I/81zjgwacswL._SY466_.jpg",
       "genres": ["science fiction", "fantasy", "adventure"],
-      "pages": 192,
-      "reviews": {}
+      "pages": 192
     },
     {
       "id": "8",
@@ -112,8 +129,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/5152XTq24+L._SY445_SX342_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 223,
-      "reviews": {}
+      "pages": 223
     },
     {
       "id": "9",
@@ -122,8 +138,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/91WqeCn-PxL._SY466_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 251,
-      "reviews": {}
+      "pages": 251
     },
     {
       "id": "10",
@@ -132,8 +147,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/51RjWBYGweL._SY445_SX342_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 317,
-      "reviews": {}
+      "pages": 317
     },
     {
       "id": "11",
@@ -142,8 +156,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/91SI2owt1XL._SY466_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 636,
-      "reviews": {}
+      "pages": 636
     },
     {
       "id": "12",
@@ -152,8 +165,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/41rJXvwOiOL._SY445_SX342_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 766,
-      "reviews": {}
+      "pages": 766
     },
     {
       "id": "13",
@@ -162,8 +174,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/61sXBXmAWML._SY466_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 607,
-      "reviews": {}
+      "pages": 607
     },
     {
       "id": "14",
@@ -172,8 +183,7 @@
       "author": "J. K. Rowling",
       "image": "https://m.media-amazon.com/images/I/811t1pfIZXL._SY466_.jpg",
       "genres": ["fantasy", "adventure"],
-      "pages": 607,
-      "reviews": {}
+      "pages": 607
     },
     {
       "id": "15",
@@ -189,8 +199,7 @@
         "novels",
         "literature"
       ],
-      "pages": 310,
-      "reviews": {}
+      "pages": 310
     },
     {
       "id": "16",
@@ -199,8 +208,7 @@
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/71X8ahevL+L._SY466_.jpg",
       "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
-      "pages": 694,
-      "reviews": {}
+      "pages": 694
     },
     {
       "id": "17",
@@ -209,8 +217,7 @@
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41s6ph2CVTL._SY445_SX342_.jpg",
       "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
-      "pages": 761,
-      "reviews": {}
+      "pages": 761
     },
     {
       "id": "18",
@@ -219,8 +226,7 @@
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41Wwu9zuzIL._SY445_SX342_.jpg",
       "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
-      "pages": 973,
-      "reviews": {}
+      "pages": 973
     },
     {
       "id": "19",
@@ -229,8 +235,7 @@
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41a50IW1ceL._SY445_SX342_.jpg",
       "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
-      "pages": 753,
-      "reviews": {}
+      "pages": 753
     },
     {
       "id": "20",
@@ -239,8 +244,7 @@
       "author": "George R. R. Martin",
       "image": "https://m.media-amazon.com/images/I/41GHrsYqdeL._SY445_SX342_.jpg",
       "genres": ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
-      "pages": 1016,
-      "reviews": {}
+      "pages": 1016
     },
     {
       "id": "21",
@@ -249,8 +253,16 @@
       "author": "Paulo Coelho",
       "image": "https://m.media-amazon.com/images/I/51bDuU2p5zL._SY445_SX342_.jpg",
       "genres": ["quest", "novel", "adventure", "fantasy fiction"],
-      "pages": 163,
-      "reviews": {}
+      "pages": 163
+    },
+    {
+      "id": "22",
+      "title": "Leberecht am schiefen Fenster",
+      "publicationDate": "1981-08-01",
+      "author": "Peter Hacks",
+      "image": "https://m.media-amazon.com/images/I/41AQOkAsZVL._SY466_.jpg",
+      "genres": ["children", "fantasy"],
+      "pages": 28
     }
   ]
 }
