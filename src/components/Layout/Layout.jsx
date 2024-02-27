@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AuthPageLayout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className='layout'>
       <header>Navbar</header>
@@ -9,4 +9,4 @@ const AuthPageLayout = ({ children }) => {
     </div>
   )
 }
-export default AuthPageLayout
+export default Layout

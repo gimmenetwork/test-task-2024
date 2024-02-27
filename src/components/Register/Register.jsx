@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
 
 import AuthPageLayout from '../Layout/AuthPageLayout'
 import { TEXTS } from './Register.text'
 import { USER_REGEX, PWD_REGEX } from '../../utils/Utils'
-import ValidationMessage from '../../utils/InputHelpers'
+import ValidationMessage from '../../utils/InputHelpers/ValidationMessage'
 import {
   SuccessIcon,
   ErrorIcon,
@@ -14,6 +15,7 @@ import {
 const Register = () => {
   const userRef = useRef()
   const errRef = useRef()
+  const navigate = useNavigate()
 
   const [username, setUsername] = useState('')
   const [validName, setValidName] = useState(false)
@@ -28,7 +30,6 @@ const Register = () => {
   const [matchFocus, setMatchFocus] = useState(false)
 
   const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     userRef.current.focus()
@@ -54,16 +55,13 @@ const Register = () => {
       setErrMsg('Invalid Entry')
       return
     }
-    let regData = { username, pwd }
+    let formData = { username, pwd }
 
-    fetch(`${process.env.REACT_APP_JSON_SERVER_URL}/user`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(regData),
-    })
+    axios
+      .post(`${process.env.REACT_APP_JSON_SERVER_URL}/user`, formData)
       .then((res) => {
-        setSuccess(true)
-        console.log('Registration Data', regData)
+        console.log('Register success')
+        navigate('/login')
       })
       .catch((err) => {
         setErrMsg(`Server Error: ${err.message}`)

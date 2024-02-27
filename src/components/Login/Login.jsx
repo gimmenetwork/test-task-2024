@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 
 import AuthPageLayout from '../Layout/AuthPageLayout'
@@ -14,7 +15,6 @@ const Login = () => {
   const [pwd, setPwd] = useState('')
 
   const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     userRef.current.focus()
@@ -27,26 +27,29 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    fetch(`${process.env.REACT_APP_JSON_SERVER_URL}/user/${username}`)
+    if (username === '' || username === null) {
+      setErrMsg(TEXTS.fields.username.errors.required)
+    }
+    if (pwd === '' || pwd === null) {
+      setErrMsg(TEXTS.fields.pwd.errors.required)
+    }
+
+    let formData = { username, pwd }
+
+    axios
+      .get(`${process.env.REACT_APP_JSON_SERVER_URL}/user`)
       .then((res) => {
-        console.log('res', res)
-        return res.json()
-      })
-      .then((res) => {
-        if (Object.keys(res).length === 0) {
-          setErrMsg(TEXTS.fields.username.error)
-        } else {
-          console.log('res2', res)
-          if (res.pwd === pwd) {
-            setUsername('')
-            setPwd('')
-            setErrMsg('')
-            setSuccess(true)
-            navigate('/')
-          } else {
-            setErrMsg(TEXTS.fields.pwd.error)
+        res.data.map((user) => {
+          if (user.username === formData.username) {
+            if (user.pwd === formData.pwd) {
+              // success
+              console.log('Login successful')
+              navigate('/')
+            } else {
+              setErrMsg(TEXTS.fields.pwd.errors.incorrect)
+            }
           }
-        }
+        })
       })
       .catch((err) => {
         setErrMsg(`Server Error: ${err.message}`)
@@ -123,7 +126,12 @@ const Login = () => {
             </div>
           </div>
 
-          <button className='btn btn-lg btn-accent'>{TEXTS.btnText}</button>
+          <button
+            className='btn btn-lg btn-accent'
+            disabled={username === '' || pwd === ''}
+          >
+            {TEXTS.btnText}
+          </button>
         </form>
 
         <div className='text-xs mt-6 flex justify-center items-center'>

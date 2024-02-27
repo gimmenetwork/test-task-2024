@@ -5,13 +5,21 @@ export const TEXTS = {
       name: 'username',
       label: 'Username',
       placeholder: 'Enter Username',
-      error: 'Please enter valid username',
+      errors: {
+        invalid: 'Please enter valid username',
+        incorrect: 'Username is incorrect',
+        required: 'Username is required',
+      },
     },
     pwd: {
       name: 'password',
       label: 'Password',
       placeholder: 'Enter Password',
-      error: 'Please enter valid credentials',
+      errors: {
+        invalid: 'Please enter a valid password',
+        incorrect: 'Password is incorrect',
+        required: 'Password is required',
+      },
     },
   },
   btnText: 'Sign In',

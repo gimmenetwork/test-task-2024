@@ -1,13 +1,17 @@
-import AuthPageLayout from './components/Layout/AuthPageLayout'
-import Register from './components/Register'
-import Login from './components/Login'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import PrivateRoute from './routes/PrivateRoutes'
+import PublicRoute from './routes/PublicRoutes'
+
+const checkAuth = true
 
 function App() {
-  return (
-    <main className='App'>
-      <Login />
-    </main>
-  )
+  const router = createBrowserRouter([
+    checkAuth ? PrivateRoute() : {},
+    ...PublicRoute(),
+  ])
+
+  return <RouterProvider router={router} />
 }
 
 export default App
