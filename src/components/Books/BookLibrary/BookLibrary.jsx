@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { useOutletContext } from 'react-router-dom'
 
+import BookOnList from './BookOnList'
+
 const BookLibrary = ({ books }) => {
   const context = useOutletContext()
   const [isOpen, setIsOpen] = useState(true)
@@ -29,23 +31,7 @@ const BookLibrary = ({ books }) => {
               key={book.id}
               className='flex flex-row justify-between items-start mb-6 border-t border-[#666666] pt-6'
             >
-              <div className='flex flex-row justify-start items-start gap-4'>
-                <img src={book.image} alt={book.title} className='w-[50px]' />
-                <div className='flex flex-col justify-start items-start gap-1'>
-                  <h3 className='text-md'>{book.title}</h3>
-                  <div className='meta flex flex-col gap-1'>
-                    <p className='flex flex-row gap-1 text-xs'>
-                      <i className='ri-quill-pen-fill'></i>
-                      {book.author},{' '}
-                      {new Date(book.publicationDate).getFullYear()}
-                    </p>
-                    <p className='flex flex-row gap-1 text-xs'>
-                      <i className='ri-book-open-line'></i>
-                      {book.pages}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <BookOnList book={book} />
 
               {context.user.isAuthenticated && (
                 <i className='ri-add-circle-fill text-2xl text-accent hover:text-accent-secondary'></i>

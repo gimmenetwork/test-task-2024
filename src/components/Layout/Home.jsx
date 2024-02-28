@@ -22,11 +22,11 @@ const Home = () => {
       <Navbar />
       <main className='container mx-auto my-6'>
         <div className='flex flex-col lg:flex-row justify-center items-start gap-2'>
-          <div className='w-full flex-1 lg:min-h-[800px] rounded-xl py-4 px-6 bg-[#333333] text-white'>
+          <div className='w-full flex-1 rounded-xl py-4 px-6 bg-[#333333] text-white'>
             <BookLibrary books={books} />
           </div>
           {context.user.isAuthenticated && (
-            <div className='w-full flex-1 lg:min-h-[800px] rounded-xl py-4 px-6 bg-[#333333] text-white'>
+            <div className='w-full flex-1 rounded-xl py-4 px-6 bg-[#333333] text-white'>
               <UserBooks books={books} />
             </div>
           )}

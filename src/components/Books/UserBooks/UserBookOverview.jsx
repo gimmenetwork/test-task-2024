@@ -3,12 +3,9 @@ import React, { useState } from 'react'
 const UserBookOverview = ({ userBooks }) => {
   return (
     <div className='book-overview'>
-      <h2>Your Books</h2>
-      <div className=''>
-        <p>
-          <span></span>
-          <span>{userBooks.length} Books</span>
-        </p>
+      <div className='flex flex-row gap-2 text-sm'>
+        <i className='ri-book-marked-fill'></i>
+        <span>{userBooks.length} Books</span>
       </div>
     </div>
   )
