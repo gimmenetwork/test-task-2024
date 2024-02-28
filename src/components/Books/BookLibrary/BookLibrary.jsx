@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import BookOnList from './BookOnList'
 
-const BookLibrary = ({ user, books, handleAddBook }) => {
+const BookLibrary = ({ user, books, userBooks, handleAddBook }) => {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
@@ -31,12 +31,15 @@ const BookLibrary = ({ user, books, handleAddBook }) => {
               <BookOnList book={book} />
 
               {user.isAuthenticated && (
-                <i
+                <button
                   title='Add Book'
                   aria-description='Add Book'
-                  className='ri-add-circle-fill text-2xl text-accent hover:text-accent-secondary cursor-pointer'
                   onClick={() => handleAddBook(book, user)}
-                ></i>
+                  disabled={userBooks.some((item) => item.id === book.id)}
+                  className='text-2xl text-accent disabled:text-grey hover:text-accent-secondary cursor-pointer disabled:opacity-10 disabled:cursor-not-allowed'
+                >
+                  <i className='ri-add-circle-fill'></i>
+                </button>
               )}
             </li>
           ))}

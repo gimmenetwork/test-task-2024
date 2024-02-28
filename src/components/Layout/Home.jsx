@@ -28,19 +28,16 @@ const Home = () => {
           setUserBooks(dbUser.books)
           setIsLoading(false)
         }
+
+        // dbUser.books
       })
     })
   }, [refreshKey])
 
   const handleAddBook = async (book, user) => {
-    console.log(user)
-    console.log(book)
-
     axios.get(`${process.env.REACT_APP_JSON_SERVER_URL}/user`).then((res) => {
       res.data.map((dbUser) => {
         if (dbUser.username === user.username) {
-          console.log(dbUser.id)
-
           const updatedUser = {
             ...dbUser,
             books: [...dbUser.books, { id: book.id, progress: 0, review: '' }],
@@ -52,7 +49,7 @@ const Home = () => {
               updatedUser
             )
             .then((res) => {
-              console.log('Update success')
+              console.log(`Update success: ${res}`)
               setRefreshKey((oldKey) => oldKey + 1)
             })
             .catch((err) => {
@@ -72,6 +69,7 @@ const Home = () => {
             <BookLibrary
               user={user}
               books={books}
+              userBooks={userBooks}
               handleAddBook={handleAddBook}
             />
           </div>
