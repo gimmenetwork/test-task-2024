@@ -17,11 +17,15 @@ const Register = () => {
   const errRef = useRef()
   const navigate = useNavigate()
 
-  const [username, setUsername] = useState('')
+  const [newUser, setNewUser] = useState({
+    username: '',
+    pwd: '',
+    books: [],
+  })
+
   const [validName, setValidName] = useState(false)
   const [userFocus, setUserFocus] = useState(false)
 
-  const [pwd, setPwd] = useState('')
   const [validPwd, setValidPwd] = useState(false)
   const [pwdFocus, setPwdFocus] = useState(false)
 
@@ -36,29 +40,25 @@ const Register = () => {
   }, [])
 
   useEffect(() => {
-    setValidName(USER_REGEX.test(username))
-  }, [username])
+    setValidName(USER_REGEX.test(newUser.username))
+  }, [newUser])
 
   useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd))
-    const match = pwd === matchPwd
+    setValidPwd(PWD_REGEX.test(newUser.pwd))
+    const match = newUser.pwd === matchPwd
     setValidMatch(match)
-  }, [pwd, matchPwd])
-
-  useEffect(() => {
     setErrMsg('')
-  }, [username, pwd, matchPwd])
+  }, [newUser, matchPwd])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!USER_REGEX.test(username) || !PWD_REGEX.test(pwd)) {
+    if (!USER_REGEX.test(newUser.username) || !PWD_REGEX.test(newUser.pwd)) {
       setErrMsg('Invalid Entry')
       return
     }
-    let formData = { username, pwd }
 
     axios
-      .post(`${process.env.REACT_APP_JSON_SERVER_URL}/user`, formData)
+      .post(`${process.env.REACT_APP_JSON_SERVER_URL}/user`, newUser)
       .then((res) => {
         console.log('Register success')
         navigate('/login')
@@ -107,14 +107,16 @@ const Register = () => {
               placeholder={TEXTS.fields.username.placeholder}
               aria-invalid={validName}
               aria-describedby='uid-note'
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) =>
+                setNewUser({ ...newUser, username: e.target.value })
+              }
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
             {validName && <SuccessIcon />}
-            {validName || !username ? null : <ErrorIcon />}
+            {validName || !newUser.username ? null : <ErrorIcon />}
             <ValidationMessage
-              isShown={userFocus && username && !validName}
+              isShown={userFocus && newUser.username && !validName}
               id='uid-note'
               text={TEXTS.fields.username.note}
             />
@@ -136,12 +138,12 @@ const Register = () => {
               placeholder={TEXTS.fields.pwd.placeholder}
               aria-invalid={validPwd}
               aria-describedby='pwd-note'
-              onChange={(e) => setPwd(e.target.value)}
+              onChange={(e) => setNewUser({ ...newUser, pwd: e.target.value })}
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
             {validPwd && <SuccessIcon />}
-            {validPwd || !pwd ? null : <ErrorIcon />}
+            {validPwd || !newUser.pwd ? null : <ErrorIcon />}
             <ValidationMessage
               isShown={pwdFocus && !validPwd}
               id='pwd-note'

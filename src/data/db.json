@@ -40,14 +40,30 @@
         {
           "id": "1",
           "progress": 1216,
+          "review": "Super long, but I liked it"
+        },
+        {
+          "id": "5",
+          "progress": 0,
+          "review": ""
+        },
+        {
+          "id": "7",
+          "progress": 0,
           "review": ""
         }
       ]
+    },
+    {
+      "id": "44c1",
+      "username": "test4",
+      "pwd": "123",
+      "books": []
     }
   ],
   "books": [
     {
-      "id": 1,
+      "id": "1",
       "title": "The Lord of the Rings",
       "publicationDate": "1954-07-29",
       "author": "J. R. R. Tolkien",
@@ -63,7 +79,7 @@
       "pages": 1216
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "The Cyberiad",
       "publicationDate": "1965-01-01",
       "author": "Stanislaw Lem",
@@ -78,7 +94,7 @@
       "pages": 295
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Dune",
       "publicationDate": "1965-01-01",
       "author": "Frank Herbert",
@@ -87,7 +103,7 @@
       "pages": 658
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "The Hitchhiker's Guide to the Galaxy",
       "publicationDate": "1979-10-12",
       "author": "Douglas Adams",
@@ -96,7 +112,7 @@
       "pages": 216
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "The Restaurant at the End of the Universe",
       "publicationDate": "1980-10-28",
       "author": "Douglas Adams",
@@ -105,7 +121,7 @@
       "pages": 208
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Life, the Universe and Everything",
       "publicationDate": "1982-08-10",
       "author": "Douglas Adams",
@@ -114,7 +130,7 @@
       "pages": 160
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "So Long, and Thanks for All the Fish",
       "publicationDate": "1984-11-09",
       "author": "Douglas Adams",
@@ -123,7 +139,7 @@
       "pages": 192
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Harry Potter and the Philosopher's Stone",
       "publicationDate": "1997-06-26",
       "author": "J. K. Rowling",
@@ -132,7 +148,7 @@
       "pages": 223
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Harry Potter and the Chamber of Secrets",
       "publicationDate": "1998-07-02",
       "author": "J. K. Rowling",
@@ -141,7 +157,7 @@
       "pages": 251
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Harry Potter and the Prisoner of Azkaban",
       "publicationDate": "1999-07-08",
       "author": "J. K. Rowling",
@@ -150,7 +166,7 @@
       "pages": 317
     },
     {
-      "id": 11,
+      "id": "11",
       "title": "Harry Potter and the Goblet of Fire",
       "publicationDate": "2000-07-08",
       "author": "J. K. Rowling",
@@ -159,7 +175,7 @@
       "pages": 636
     },
     {
-      "id": 12,
+      "id": "12",
       "title": "Harry Potter and the Order of the Phoenix",
       "publicationDate": "2003-06-21",
       "author": "J. K. Rowling",
@@ -168,7 +184,7 @@
       "pages": 766
     },
     {
-      "id": 13,
+      "id": "13",
       "title": "Harry Potter and the Half-Blood Prince",
       "publicationDate": "2005-07-16",
       "author": "J. K. Rowling",
@@ -177,7 +193,7 @@
       "pages": 607
     },
     {
-      "id": 14,
+      "id": "14",
       "title": "Harry Potter and the Deathly Hallows",
       "publicationDate": "2007-07-21",
       "author": "J. K. Rowling",
@@ -186,7 +202,7 @@
       "pages": 607
     },
     {
-      "id": 15,
+      "id": "15",
       "title": "The Hobbit",
       "publicationDate": "1937-09-21",
       "author": "J. R. R. Tolkien",
@@ -202,7 +218,7 @@
       "pages": 310
     },
     {
-      "id": 16,
+      "id": "16",
       "title": "A Game of Thrones",
       "publicationDate": "1996-08-01",
       "author": "George R. R. Martin",
@@ -211,7 +227,7 @@
       "pages": 694
     },
     {
-      "id": 17,
+      "id": "17",
       "title": "A Clash of Kings",
       "publicationDate": "1998-11-16",
       "author": "George R. R. Martin",
@@ -220,7 +236,7 @@
       "pages": 761
     },
     {
-      "id": 18,
+      "id": "18",
       "title": "A Storm of Swords",
       "publicationDate": "2000-08-08",
       "author": "George R. R. Martin",
@@ -229,7 +245,7 @@
       "pages": 973
     },
     {
-      "id": 19,
+      "id": "19",
       "title": "A Feast for Crows",
       "publicationDate": "2005-10-17",
       "author": "George R. R. Martin",
@@ -238,7 +254,7 @@
       "pages": 753
     },
     {
-      "id": 20,
+      "id": "20",
       "title": "A Dance with Dragons",
       "publicationDate": "2011-07-12",
       "author": "George R. R. Martin",
@@ -247,7 +263,7 @@
       "pages": 1016
     },
     {
-      "id": 21,
+      "id": "21",
       "title": "The Alchemist",
       "publicationDate": "1988-02-23",
       "author": "Paulo Coelho",
@@ -256,7 +272,7 @@
       "pages": 163
     },
     {
-      "id": 22,
+      "id": "22",
       "title": "Leberecht am schiefen Fenster",
       "publicationDate": "1981-08-01",
       "author": "Peter Hacks",

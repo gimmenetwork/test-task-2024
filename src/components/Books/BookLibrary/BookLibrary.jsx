@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 
-import { useOutletContext } from 'react-router-dom'
-
 import BookOnList from './BookOnList'
 
-const BookLibrary = ({ books }) => {
-  const context = useOutletContext()
+const BookLibrary = ({ user, books, handleAddBook }) => {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
@@ -33,8 +30,13 @@ const BookLibrary = ({ books }) => {
             >
               <BookOnList book={book} />
 
-              {context.user.isAuthenticated && (
-                <i className='ri-add-circle-fill text-2xl text-accent hover:text-accent-secondary'></i>
+              {user.isAuthenticated && (
+                <i
+                  title='Add Book'
+                  aria-description='Add Book'
+                  className='ri-add-circle-fill text-2xl text-accent hover:text-accent-secondary cursor-pointer'
+                  onClick={() => handleAddBook(book, user)}
+                ></i>
               )}
             </li>
           ))}
