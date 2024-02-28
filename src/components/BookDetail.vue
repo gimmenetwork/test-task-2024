@@ -38,14 +38,14 @@
     <div class="px-4 pt-2 pb-8 flex justify-center">
       <button 
         v-if="!book.finished" 
-        @click="openUpdateProgressModal" 
+        @click="isUpdateProgressModalOpen = true"
         class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors" 
         aria-label="Update reading progress">
           Update Progress
       </button>
       <button 
         v-if="book.finished && !book.review" 
-        @click="openLeaveReviewModal" 
+        @click="isLeaveReviewModalOpen = true"
         class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition-colors" 
         aria-label="Leave a book review">
         Leave Review
@@ -60,7 +60,7 @@
       </div>
     </div>
     
-    <Modal ref="updateProgressModalRef">
+    <Modal v-model="isUpdateProgressModalOpen">
       <form @submit.prevent="handleUpdateProgress">
          <div v-if="progressErrorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
           {{ progressErrorMessage }}
@@ -88,7 +88,7 @@
       </form>
     </Modal>
 
-    <Modal ref="leaveReviewModalRef">
+    <Modal v-model:isOpen="isLeaveReviewModalOpen">
       <form @submit.prevent="handleLeaveReview">
         <div v-if="reviewErrorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
           {{ reviewErrorMessage }}
@@ -154,17 +154,9 @@ const book = ref(null);
 const pagesRead = ref('');
 const review = ref('');
 const rating = ref('');
-const updateProgressModalRef = ref(null);
-const leaveReviewModalRef = ref(null);
 
-
-const openUpdateProgressModal = () => {
-  updateProgressModalRef.value.openModal();
-};
-
-const openLeaveReviewModal = () => {
-  leaveReviewModalRef.value.openModal();
-};
+const isUpdateProgressModalOpen = ref(false);
+const isLeaveReviewModalOpen = ref(false);
 
 const getBookDetail = async (bookId) => {
   const bookData = await booksStore.getBookById(bookId);
@@ -177,7 +169,7 @@ const handleUpdateProgress = async () => {
     await booksStore.updateBookProgress(book.value.id, pagesRead.value);   
     // Reload book detail
     await getBookDetail(props.bookId)
-    updateProgressModalRef.value.closeModal();
+    isUpdateProgressModalOpen.value = false;
   } catch (error) {
     progressErrorMessage.value = 'Failed to update your progress, please try again';
     console.error('Error updating progress:', error);
@@ -189,7 +181,7 @@ const handleLeaveReview = async () => {
   try {
       await booksStore.addReview(book.value.id, review.value, rating.value);    
       await getBookDetail(props.bookId);
-      leaveReviewModalRef.value.closeModal();
+      isLeaveReviewModalOpen.value = false;
     } catch (error) {
       reviewErrorMessage.value = 'Failed to leave your review, Please try again.';
       console.error('Error updating progress:', error);
