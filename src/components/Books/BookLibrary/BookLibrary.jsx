@@ -24,7 +24,7 @@ const BookLibrary = ({ user, books, userBooks, handleAddBook }) => {
 
   return (
     <>
-      <div className='sticky top-0 w-full flex flex-row items-center justify-between bg-[#333333] pt-4 pb-0 lg:py-4 z-10'>
+      <div className='sticky top-0 w-full flex flex-row items-center justify-between bg-[#333333] px-6 pt-4 pb-0 lg:py-4 z-10'>
         <h2 className='text-2xl font-semibold'>Our Book Library</h2>
         <button
           className='flex lg:lg:hidden'
@@ -39,7 +39,7 @@ const BookLibrary = ({ user, books, userBooks, handleAddBook }) => {
       </div>
 
       {isOpen && (
-        <ul className='library mt-4'>
+        <ul className='library px-6'>
           {books?.map((book) => (
             <li
               key={book.id}

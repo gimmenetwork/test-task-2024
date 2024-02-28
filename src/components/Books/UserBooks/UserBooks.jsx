@@ -4,7 +4,13 @@ import UserBookOverview from './UserBookOverview'
 import BookOnUserList from './BookOnUserList'
 import BookListProgress from './BookListProgress'
 
-const UserBooks = ({ user, books, userBooks, isLoading }) => {
+const UserBooks = ({
+  user,
+  books,
+  userBooks,
+  isLoading,
+  handleShowSingleBook,
+}) => {
   const [isOpen, setIsOpen] = useState(true)
   const prevWidth = useRef(window.innerWidth)
 
@@ -29,8 +35,8 @@ const UserBooks = ({ user, books, userBooks, isLoading }) => {
   }
 
   return (
-    <>
-      <div className='sticky top-0 w-full flex flex-row items-center justify-between bg-[#333333] pt-4 pb-0 lg:py-4 z-10'>
+    <div className='user-books w-full relative'>
+      <div className='sticky top-0 w-full flex flex-row items-center justify-between bg-[#333333] px-6 pt-4 pb-0 lg:py-4 z-10'>
         <div className='flex flex-col gap-2'>
           <h2 className='text-2xl font-semibold'>{user.username}'s Books</h2>
           <UserBookOverview userBooks={userBooks} />
@@ -48,13 +54,14 @@ const UserBooks = ({ user, books, userBooks, isLoading }) => {
       </div>
 
       {isOpen && (
-        <ul className='library mt-4'>
+        <ul className='library mt-4 px-6'>
           {books
             .filter(({ id }) => new Set(userBooks.map(({ id }) => id)).has(id))
             .map((book) => (
               <li
                 key={book.id}
-                className='relative flex flex-row justify-between items-start mb-6 border-t border-[#666666] pt-6'
+                className='relative flex flex-row justify-between items-start mb-6 border-t border-[#666666] pt-6 cursor-pointer'
+                onClick={() => handleShowSingleBook(book)}
               >
                 <BookOnUserList
                   book={book}
@@ -68,7 +75,7 @@ const UserBooks = ({ user, books, userBooks, isLoading }) => {
             ))}
         </ul>
       )}
-    </>
+    </div>
   )
 }
 
