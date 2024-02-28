@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-lightgrey min-h-full text-primary font-primary;
+  /* text-[17px] leading-8 */
+}
+
+.instructions {
+  @apply rounded-lg bg-info text-black text-xs p-1 relative -bottom-1 px-3 py-2 mt-1 flex items-center gap-x-2;
+}
+
+.offscreen {
+  @apply absolute -left-[9999px];
+}
+
+.btn {
+  @apply rounded-xl uppercase tracking-[1.02px] flex items-center justify-center transition-all disabled:transition-none cursor-pointer disabled:cursor-not-allowed;
+}
+
+.btn-sm {
+  @apply h-14 px-10;
+}
+
+.btn-lg {
+  @apply h-16 px-[50px];
+}
+
+.btn-accent {
+  @apply bg-accent text-white hover:bg-accent-secondary disabled:opacity-50;
+}
+
+.btn-white {
+  @apply bg-white text-secondary hover:bg-white/90;
+}
+
+.btn-outline {
+  @apply bg-transparent border-2 border-accent text-secondary hover:bg-accent hover:border-transparent hover:text-white;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
