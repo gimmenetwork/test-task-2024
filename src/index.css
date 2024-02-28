@@ -40,3 +40,12 @@ body {
 .btn-outline {
   @apply bg-transparent border-2 border-accent text-secondary hover:bg-accent hover:border-transparent hover:text-white;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

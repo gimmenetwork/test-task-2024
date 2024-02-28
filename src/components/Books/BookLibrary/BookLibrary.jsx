@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import BookOnList from './BookOnList'
 
 const BookLibrary = ({ user, books, userBooks, handleAddBook }) => {
   const [isOpen, setIsOpen] = useState(true)
+  const prevWidth = useRef(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currWidth = window.innerWidth
+
+      if (currWidth > 960 && prevWidth.current <= 960) {
+        setIsOpen(true)
+      }
+      prevWidth.current = currWidth
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <>
-      <div className='flex flex-row items-center justify-between'>
+      <div className='sticky top-0 w-full flex flex-row items-center justify-between bg-[#333333] pt-4 pb-0 lg:py-4 z-10'>
         <h2 className='text-2xl font-semibold'>Our Book Library</h2>
         <button
           className='flex lg:lg:hidden'

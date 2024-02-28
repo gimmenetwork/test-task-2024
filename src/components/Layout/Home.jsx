@@ -65,7 +65,7 @@ const Home = () => {
       <Navbar />
       <main className='container mx-auto my-6'>
         <div className='flex flex-col lg:flex-row justify-center items-start gap-2'>
-          <div className='w-full flex-1 rounded-xl py-4 px-6 bg-[#333333] text-white'>
+          <div className='w-full lg:h-[calc(100vh-110px)] relative overflow-y-scroll no-scrollbar flex-1 rounded-xl pt-0 pb-4 px-6 bg-[#333333] text-white'>
             <BookLibrary
               user={user}
               books={books}
@@ -74,7 +74,7 @@ const Home = () => {
             />
           </div>
           {context.user.isAuthenticated && (
-            <div className='w-full flex-1 rounded-xl py-4 px-6 bg-[#333333] text-white'>
+            <div className='w-full lg:h-[calc(100vh-110px)] relative overflow-y-scroll no-scrollbar flex-1 rounded-xl pt-0 pb-4 px-6 bg-[#333333] text-white'>
               <UserBooks
                 user={user}
                 books={books}

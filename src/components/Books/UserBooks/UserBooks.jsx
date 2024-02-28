@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import UserBookOverview from './UserBookOverview'
 import BookOnUserList from './BookOnUserList'
@@ -6,6 +6,23 @@ import BookListProgress from './BookListProgress'
 
 const UserBooks = ({ user, books, userBooks, isLoading }) => {
   const [isOpen, setIsOpen] = useState(true)
+  const prevWidth = useRef(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currWidth = window.innerWidth
+
+      if (currWidth > 960 && prevWidth.current <= 960) {
+        setIsOpen(true)
+      }
+      prevWidth.current = currWidth
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   if (isLoading) {
     return <p className='text-base font-medium'>Data Loading...</p>
@@ -13,8 +30,11 @@ const UserBooks = ({ user, books, userBooks, isLoading }) => {
 
   return (
     <>
-      <div className='flex flex-row items-center justify-between'>
-        <h2 className='text-2xl font-semibold'>{user.username}'s Books</h2>
+      <div className='sticky top-0 w-full flex flex-row items-center justify-between bg-[#333333] pt-4 pb-0 lg:py-4 z-10'>
+        <div className='flex flex-col gap-2'>
+          <h2 className='text-2xl font-semibold'>{user.username}'s Books</h2>
+          <UserBookOverview userBooks={userBooks} />
+        </div>
         <button
           className='flex lg:hidden'
           onClick={() => setIsOpen((open) => !open)}
@@ -26,8 +46,6 @@ const UserBooks = ({ user, books, userBooks, isLoading }) => {
           )}
         </button>
       </div>
-
-      <UserBookOverview userBooks={userBooks} />
 
       {isOpen && (
         <ul className='library mt-4'>
