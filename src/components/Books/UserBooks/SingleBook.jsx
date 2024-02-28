@@ -1,5 +1,7 @@
 import React from 'react'
 
+import UserProgress from './UserProgress'
+
 const SingleBook = ({ book, handleShowSingleBook }) => {
   return (
     <div className='single-book w-full relative z-20'>
@@ -19,10 +21,10 @@ const SingleBook = ({ book, handleShowSingleBook }) => {
           <img src={book.image} className='w-[200px]' />
           <div className='badge flex flex-col gap-3'>
             <p className='text-xs'>Genres:</p>
-            {book.genres.map((genre) => (
+            {book.genres?.map((genre) => (
               <span
                 key={genre}
-                className='bg-accent text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-full'
+                className='bg-accent text-white text-xs font-light me-2 px-2.5 py-0.5 rounded-full'
               >
                 {genre}
               </span>
@@ -30,7 +32,7 @@ const SingleBook = ({ book, handleShowSingleBook }) => {
           </div>
         </div>
 
-        <div className='flex flex-col justify-start items-start gap-1 pb-4 border-b border-white'>
+        <div className='flex flex-col justify-start items-start gap-1 pb-4 mb-4 border-b border-white'>
           <div className='meta flex flex-col gap-2'>
             <p className='flex flex-row gap-1 text-xs'>
               <i className='ri-quill-pen-fill'></i>
@@ -48,7 +50,7 @@ const SingleBook = ({ book, handleShowSingleBook }) => {
           </div>
         </div>
 
-        <div className='flex flex-col justify-start items-start gap-1'></div>
+        <UserProgress book={book} />
       </div>
     </div>
   )
