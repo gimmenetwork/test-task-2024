@@ -71,7 +71,6 @@ vi.mock('@/stores/user', () => ({
   
       // Assertions
       expect(axios.post).toHaveBeenCalled();
-      expect(wrapper.emitted()).toHaveProperty('bookAdded');
       expect(wrapper.find('.text-red-500').exists()).toBe(false); // Error message should not be displayed
     });
   });

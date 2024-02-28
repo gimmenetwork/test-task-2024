@@ -94,7 +94,7 @@
           {{ reviewErrorMessage }}
         </div>
         <div>
-          <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="progress">Review:</label>
+          <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="review">Review:</label>
           <textarea 
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             id="review" 
@@ -105,7 +105,7 @@
           </textarea>
         </div>
         <div>
-          <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="progress">Rating:</label>
+          <label class="block text-gray-700 text-sm font-bold mt-4 mb-2" for="rating">Rating:</label>
            <input 
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
             max="5" 
@@ -132,7 +132,7 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router'
 import Modal from '../components/Modal.vue';
@@ -166,12 +166,17 @@ const openLeaveReviewModal = () => {
   leaveReviewModalRef.value.openModal();
 };
 
+const getBookDetail = async (bookId) => {
+  const bookData = await booksStore.getBookById(bookId);
+  book.value = bookData;
+}
+
 // Handle updating the reading progress
 const handleUpdateProgress = async () => {
   try {
     await booksStore.updateBookProgress(book.value.id, pagesRead.value);   
     // Reload book detail
-    await fetchBookDetail(book.value.id);
+    await getBookDetail(props.bookId)
     updateProgressModalRef.value.closeModal();
   } catch (error) {
     progressErrorMessage.value = 'Failed to update your progress, please try again';
@@ -183,24 +188,13 @@ const handleUpdateProgress = async () => {
 const handleLeaveReview = async () => {
   try {
       await booksStore.addReview(book.value.id, review.value, rating.value);    
-      await fetchBookDetail(book.value.id);
+      await getBookDetail(props.bookId);
       leaveReviewModalRef.value.closeModal();
     } catch (error) {
       reviewErrorMessage.value = 'Failed to leave your review, Please try again.';
       console.error('Error updating progress:', error);
     } 
 }
-
-// Fetch a specific book
-const fetchBookDetail = async (bookId) => {
-    try {
-        const response = await axios.get(`http://localhost:3000/books/${bookId}`);
-        book.value = response.data; 
-    } catch (error) {
-        console.error('Failed to fetch book details', error);
-        throw new Error('Failed to fetch book details',  error);
-    }
-};
 
 // Add social media sharing functionality
 const shareText = 'Check this out!'; 
@@ -225,8 +219,7 @@ const shareOnWhatsApp = () => {
 
 onMounted(async () => {
   try {
-    const bookData = await booksStore.getBookById(props.bookId);
-    book.value = bookData;
+    await getBookDetail(props.bookId)
   } catch (error) {
     console.error('Failed to fetch book data:', error);
   }

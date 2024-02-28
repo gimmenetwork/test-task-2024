@@ -3,17 +3,16 @@
       <div class="flex flex-wrap justify-center flex-col">
         <h3 class="text-4xl text-center font-bold my-6">Welcome to the Book Club!</h3>
         <p class="text-lg text-center">Here you can share info about your favourite books, leave updates on your reading progress and leave a review! </p>
-        
         <template v-if="!isUserLoggedIn">
           <p class="text-lg mt-6 text-center">Please Login <RouterLink class='text-blue-500' aria-label="Log in" to="/login">here</RouterLink> or if you haven't already, you can register <RouterLink class='text-blue-500' aria-label="Register as a user" to="/register">here</RouterLink></p>
         </template>
         <template v-else>
           <div class="flex my-12 flex-col items-center">
             <div class="flex my-4 flex-1">
-              <AddBook @bookAdded="fetchBooks" />
+              <AddBook />
             </div>
-            <div  v-if="booksStore.books.length > 0" class="flex w-full flex-1">
-              <MyLibrary />
+            <div  v-if="booksData.length > 0" class="flex w-full flex-1">
+              <MyLibrary :booksData="booksData" />
             </div>
           </div>
         </template>
@@ -21,7 +20,6 @@
   </main>
 </template>
 <script setup>
-import axios from 'axios';
 import { computed, ref, onMounted, watch, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/stores/user';
@@ -33,30 +31,13 @@ const userStore = useUserStore();
 const booksStore = useBooksStore();
 
 const isUserLoggedIn = computed(() => userStore.isUserLoggedIn);
-
-const fetchBooks = async () => {
-  if (userStore.user.id) { // Check if there is a user ID
-    try {
-      const response = await axios.get(`http://localhost:3000/books?userId=${userStore.user.id}`);
-      booksStore.setBooks(response.data);
-    } catch (error) {
-      console.error('Failed to fetch books:', error);
-    }
-  }
-};
+const booksData = computed(() => booksStore.books); // Reflects the current books
 
 // Fetch books once the component is mounted and the user is logged in
-onMounted(() => {
+onMounted(async () => {
   if (isUserLoggedIn.value) {
-    fetchBooks();
+    await booksStore.fetchBooks(userStore.user.id);
   }
 });
-
-// Make sure that page is updated when there is a change in the book store
-watch(() => booksStore.books, (newBooks) => {
-  if (isUserLoggedIn.value) {
-      fetchBooks();
-    }
-}, { deep: true });
 
 </script>

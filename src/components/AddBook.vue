@@ -36,14 +36,14 @@
 </template>
 
 <script setup>
-import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { computed, ref, defineEmits } from 'vue';
 import { useUserStore } from '@/stores/user';
+import { useBooksStore } from '@/stores/books';
 import Modal from '../components/Modal.vue';
 
 const userStore = useUserStore();
-const emit = defineEmits(['bookAdded']);
+const bookStore = useBooksStore();
 const addBookModalRef = ref(null);
 const title = ref('');
 const genre = ref('');
@@ -74,12 +74,11 @@ const addNewBook = async () => {
             review: null,
             rating: null
         }
-        await axios.post('http://localhost:3000/books', formData);
+        await bookStore.addNewBook(formData);
         title.value = '';
         genre.value = '';
         pageCount.value = 0;
-        // When book is added fetch books is called again to update book store
-        emit('bookAdded');
+
         closeAddBookModal();
         errorMessage.value = '';
     } catch (error) {

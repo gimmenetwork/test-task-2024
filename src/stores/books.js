@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import { addNewBookApi, fetchBooksApi, updateBookProgressApi, addReviewApi } from '@/api/api';
 
 export const useBooksStore = defineStore({
   id: 'books',
@@ -18,6 +19,23 @@ export const useBooksStore = defineStore({
   actions: {
     setBooks(books) {
       this.books = books;
+    },
+    async fetchBooks(userId) {
+      try {
+        const response = await fetchBooksApi(userId)
+        this.setBooks(response);
+      } catch (error) {
+        console.log('There was an error while retrieving the books', error);
+      }
+    },
+    async addNewBook(formData) {
+      try {
+        const addedBook = await addNewBookApi(formData);
+        this.books = [addedBook, ...this.books];
+      } catch (error) {
+        console.error(error);
+
+      }
     },
     // Action to update book progress with amount of pages read and a date. Also sets book finished state if the total number of pages has been read
     async updateBookProgress(bookId, pagesRead) {
@@ -45,11 +63,9 @@ export const useBooksStore = defineStore({
             }
 
             this.books[bookIndex].progressUpdates.push(progressUpdate);
-          
             
             // Replace the books array in the database
-            await axios.patch(`http://localhost:3000/books/${bookId}`, this.books[bookIndex])
-
+            await updateBookProgressApi(bookId, this.books[bookIndex])
           }
         } catch (error) {
           console.error('Error updating book progress:', error);
@@ -62,13 +78,15 @@ export const useBooksStore = defineStore({
         const bookIndex = this.books.findIndex(book => book.id === bookId);
         if (bookIndex !== -1) {
          
-
-          // Update the book with the new review
-          await axios.patch(`http://localhost:3000/books/${bookId}`, {
+          this.books[bookIndex] = {
+            ...this.books[bookIndex],
             review: review,
             rating: rating
-          });
+          }
 
+          this.setBooks(this.books);
+          // Update the book with the new review
+          await addReviewApi(bookId, review, rating)
         } else {
           console.error('Book not found');
         }

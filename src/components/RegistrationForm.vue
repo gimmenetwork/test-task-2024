@@ -53,11 +53,12 @@
 </template>
 
 <script setup>
-import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
 
-const router = useRouter();
+// const router = useRouter();
+// const userStore = useUserStore();
 
 const formData = {
   name: '',
@@ -70,18 +71,14 @@ const errorMessage = ref('');
 //Handles the registration process
 const handleRegistration = async () => {
   try {
-
-    await axios.post('http://localhost:3000/users', formData);
-
-     // Clear the form data after successful registration
+    // Clear the form data after successful registration and send user to login page
     formData.value = { name: '', email: '', password: '' };
-
-
     router.push('/login');
 
-  } catch (error) {
-     errorMessage.value = 'Failed to register your account, Please try again.';
-    console.error('Error registering user:', error);
+  } catch(error) {
+    console.log('Registration error:', error);
+    errorMessage.value = 'Failed to register your account, Please try again.';
   }
+
 };
 </script>

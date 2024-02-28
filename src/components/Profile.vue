@@ -33,7 +33,7 @@
                 </ul>
             </div>
              <div class="px-4 pt-8 pb-6 flex justify-center">
-                <button @click="handleLogout" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors" aria-label="Log out">Logout</button>
+                <button id='user-logout' @click="handleLogout" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors" aria-label="Log out">Logout</button>
             </div>
         </div>
     </div>
